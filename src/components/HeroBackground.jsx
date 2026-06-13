@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const HERO_IMAGES = [
   {
@@ -21,67 +21,148 @@ const HERO_IMAGES = [
 
 export default function HeroBackground() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState(new Set([0]));
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const containerRef = useRef(null);
 
+  // Preload next images
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % HERO_IMAGES.length;
+    const img = new Image();
+    img.src = HERO_IMAGES[nextIndex].url;
+    img.onload = () => {
+      setLoadedImages(prev => new Set([...prev, nextIndex]));
+    };
+  }, [currentIndex]);
+
+  // Auto-rotate
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 5000); // Change every 5 seconds
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+        setIsTransitioning(false);
+      }, 500);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            HERO_IMAGES.forEach((image, index) => {
+              const img = new Image();
+              img.src = image.url;
+              img.onload = () => {
+                setLoadedImages(prev => new Set([...prev, index]));
+              };
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const goToSlide = (index) => {
+    if (index !== currentIndex) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex(index);
+        setIsTransitioning(false);
+      }, 300);
+    }
+  };
+
+  const goToPrev = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + HERO_IMAGES.length) % HERO_IMAGES.length);
+      setIsTransitioning(false);
+    }, 300);
+  };
+
+  const goToNext = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+      setIsTransitioning(false);
+    }, 300);
+  };
+
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden">
       {HERO_IMAGES.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
-          }`}
+          } ${isTransitioning ? 'pointer-events-none' : ''}`}
           style={{
             backgroundImage: `url(${image.url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* Overlay */}
+          {/* Optimized Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-900/60 to-gray-900/80 dark:from-gray-950/80 dark:via-gray-900/70 dark:to-gray-950/90"></div>
         </div>
       ))}
 
-      {/* Dots Indicator */}
+      {/* Dots Indicator - Enhanced */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {HERO_IMAGES.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            onClick={() => goToSlide(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? 'w-8 bg-white'
-                : 'bg-white/50 hover:bg-white/80'
+                ? 'w-8 bg-white shadow-lg shadow-white/30'
+                : 'w-2 bg-white/50 hover:bg-white/80 hover:w-4'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Left Arrow */}
+      {/* Left Arrow - Enhanced */}
       <button
-        onClick={() => setCurrentIndex((prev) => (prev - 1 + HERO_IMAGES.length) % HERO_IMAGES.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center hover:bg-white/40 transition-colors z-20"
+        onClick={goToPrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-300 z-20 opacity-0 hover:opacity-100 focus:opacity-100"
         aria-label="Previous image"
       >
         <i className="fas fa-chevron-left text-white"></i>
       </button>
 
-      {/* Right Arrow */}
+      {/* Right Arrow - Enhanced */}
       <button
-        onClick={() => setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center hover:bg-white/40 transition-colors z-20"
+        onClick={goToNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-300 z-20 opacity-0 hover:opacity-100 focus:opacity-100"
         aria-label="Next image"
       >
         <i className="fas fa-chevron-right text-white"></i>
       </button>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 z-20">
+        <div
+          className="h-full bg-white/60 transition-all duration-300"
+          style={{
+            width: `${((currentIndex + 1) / HERO_IMAGES.length) * 100}%`,
+          }}
+        />
+      </div>
     </div>
   );
 }

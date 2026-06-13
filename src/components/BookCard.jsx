@@ -34,6 +34,7 @@ const CATEGORY_LABELS = {
 export default function BookCard({ book, index }) {
   const [imgError, setImgError] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const colorClass = COVER_COLORS[index % COVER_COLORS.length];
   const cat = book.category ? CATEGORY_COLORS[book.category] : null;
@@ -44,8 +45,13 @@ export default function BookCard({ book, index }) {
     : null;
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm
-                    hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+    <div
+      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm
+                 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-2
+                 transition-all duration-300 flex flex-col h-full transform hover:scale-[1.02]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
 
       {/* Cover */}
       <div className={`relative h-48 bg-gradient-to-br ${colorClass} flex items-center justify-center overflow-hidden flex-shrink-0`}>
@@ -53,35 +59,45 @@ export default function BookCard({ book, index }) {
           <img
             src={coverUrl}
             alt={book.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className={`w-full h-full object-cover transition-transform duration-500 ${
+              isHovered ? 'scale-110' : 'scale-100'
+            }`}
+            loading="lazy"
             onError={() => setImgError(true)}
           />
         ) : (
           <div className="text-center p-4">
-            <i className="fas fa-book text-white/80 text-4xl mb-2 block"></i>
+            <i className={`fas fa-book text-white/80 text-4xl mb-2 block transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`}></i>
             <p className="text-white/80 text-xs font-medium text-center leading-tight">{book.title}</p>
           </div>
         )}
 
         {/* Category badge */}
         {catLabel && (
-          <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold ${cat.bg} ${cat.text} border ${cat.border}`}>
+          <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold ${cat.bg} ${cat.text} border ${cat.border} transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`}>
             {catLabel}
           </div>
         )}
 
-        {/* Save button */}
+        {/* Save button - Enhanced */}
         <button
-          onClick={() => setSaved(!saved)}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all
-            ${saved ? 'bg-rose-500 text-white' : 'bg-black/30 text-white hover:bg-rose-500'}`}
-          aria-label="Simpan buku">
+          onClick={(e) => {
+            e.preventDefault();
+            setSaved(!saved);
+          }}
+          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+            saved
+              ? 'bg-rose-500 text-white scale-110'
+              : 'bg-black/30 text-white hover:bg-rose-500 hover:scale-110'
+          } ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          aria-label="Simpan buku"
+        >
           <i className={`${saved ? 'fas' : 'far'} fa-heart text-xs`}></i>
         </button>
 
-        {/* Read badge */}
-        <div className="absolute bottom-3 right-3">
-          <span className="px-2.5 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-brand-700">
+        {/* Read badge - Enhanced */}
+        <div className={`absolute bottom-3 right-3 transition-all duration-300 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'}`}>
+          <span className="px-2.5 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold text-brand-700 shadow-lg">
             <i className="fas fa-eye mr-1"></i> Baca Gratis
           </span>
         </div>
@@ -101,9 +117,9 @@ export default function BookCard({ book, index }) {
             <span>{book.pages || '—'} halaman</span>
           </div>
           <a href={book.readUrl || '#'} target="_blank" rel="noopener noreferrer"
-             className="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-600 text-white text-xs font-semibold rounded-full
-                        hover:bg-brand-700 transition-colors">
-            <i className="fas fa-book-reader"></i>
+             className="group/link inline-flex items-center gap-1.5 px-4 py-2 bg-brand-600 text-white text-xs font-semibold rounded-full
+                        hover:bg-brand-700 hover:shadow-glow-btn transition-all duration-300">
+            <i className="fas fa-book-reader group-hover/link:animate-bounce"></i>
             Baca
           </a>
         </div>
