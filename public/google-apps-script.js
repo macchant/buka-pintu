@@ -51,6 +51,10 @@ function doGet(e) {
       return handleDelete(params, sheet);
     }
 
+    if (action === 'verify') {
+      return jsonOutput({ success: params.password === ADMIN_PASSWORD });
+    }
+
     return jsonOutput({ error: 'Unknown action' });
   } catch (err) {
     return jsonOutput({ success: false, error: err.toString() });
