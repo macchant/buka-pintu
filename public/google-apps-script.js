@@ -17,64 +17,11 @@ const ADMIN_PASSWORD = 'admin123'; // Ganti dengan kata sandi admin Anda
 const SHEET_NAME = 'Buku';          // Nama sheet tab (ubah jika berbeda)
 
 // ============================================================
-// DOGET — Ambil data buku
+// DOGET — Semua operasi (list, add, update, delete)
 // ============================================================
 function doGet(e) {
   const action = e.parameter.action;
 
-  if (action === 'verify') {
-    const pwd = e.parameter.password;
-    if (pwd === ADMIN_PASSWORD) {
-      return ContentService
-        .createTextOutput(JSON.stringify({ success: true }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
-  if (action === 'list') {
-    return handleList(e);
-  }
-
-  return ContentService
-    .createTextOutput(JSON.stringify({ error: 'Unknown action' }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-// ============================================================
-// DOPOST — Tambah / Update / Hapus buku
-// ============================================================
-function doPost(e) {
-  try {
-    const data = JSON.parse(e.postData.contents);
-    const action = data.action;
-    const pwd = data.password;
-
-    // Verify password
-    if (pwd !== ADMIN_PASSWORD) {
-      return jsonOutput({ success: false, error: 'Unauthorized' });
-    }
-
-    if (action === 'add') {
-      return handleAdd(data);
-    } else if (action === 'update') {
-      return handleUpdate(data);
-    } else if (action === 'delete') {
-      return handleDelete(data);
-    }
-
-    return jsonOutput({ success: false, error: 'Unknown action' });
-  } catch (err) {
-    return jsonOutput({ success: false, error: err.toString() });
-  }
-}
-
-// ============================================================
-// HANDLE LIST
-// ============================================================
-function handleList(e) {
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     let sheet = ss.getSheetByName(SHEET_NAME);
@@ -85,6 +32,33 @@ function handleList(e) {
       setupHeaders(sheet);
     }
 
+    if (action === 'list') {
+      return handleList(sheet);
+    }
+
+    if (action === 'add') {
+      return handleAdd(e.parameter, sheet);
+    }
+
+    if (action === 'update') {
+      return handleUpdate(e.parameter, sheet);
+    }
+
+    if (action === 'delete') {
+      return handleDelete(e.parameter, sheet);
+    }
+
+    return jsonOutput({ error: 'Unknown action' });
+  } catch (err) {
+    return jsonOutput({ success: false, error: err.toString() });
+  }
+}
+
+// ============================================================
+// HANDLE LIST
+// ============================================================
+function handleList(sheet) {
+  try {
     const lastRow = sheet.getLastRow();
     if (lastRow < 2) {
       return jsonOutput({ books: [] });
@@ -117,13 +91,30 @@ function handleList(e) {
 // ============================================================
 // HANDLE ADD
 // ============================================================
-function handleAdd(data) {
+function handleAdd(params, sheet) {
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      setupHeaders(sheet);
+    // Decode base64 data if provided, otherwise use individual params
+    let data;
+    if (params.data) {
+      data = JSON.parse(Utilities.newBlob(Utilities.base64Decode(params.data)).getDataAsString());
+    } else {
+      data = {
+        title: params.title || '',
+        author: params.author || '',
+        year: params.year || new Date().getFullYear().toString(),
+        category: params.category || 'pengembangan-diri',
+        pdfUrl: params.pdfUrl || '',
+        pages: params.pages || '',
+        featured: params.featured || 'Tidak',
+        aktif: params.aktif || 'Ya',
+        gradientFrom: params.gradientFrom || 'from-amber-500',
+        gradientTo: params.gradientTo || 'to-orange-600',
+      };
+    }
+
+    // Verify password
+    if (params.password !== ADMIN_PASSWORD) {
+      return jsonOutput({ success: false, error: 'Password salah' });
     }
 
     const row = [
@@ -149,28 +140,31 @@ function handleAdd(data) {
 // ============================================================
 // HANDLE UPDATE
 // ============================================================
-function handleUpdate(data) {
+function handleUpdate(params, sheet) {
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) return jsonOutput({ success: false, error: 'Sheet tidak ditemukan' });
+    // Verify password
+    if (params.password !== ADMIN_PASSWORD) {
+      return jsonOutput({ success: false, error: 'Password salah' });
+    }
 
-    const id = parseInt(data.id);
-    if (isNaN(id) || id < 2) return jsonOutput({ success: false, error: 'ID tidak valid' });
+    const id = parseInt(params.id);
+    if (isNaN(id) || id < 2) {
+      return jsonOutput({ success: false, error: 'ID tidak valid' });
+    }
 
     const rowNum = id;
     const range = sheet.getRange(rowNum, 1, 1, 10);
     const newRow = [
-      data.title || '',
-      data.author || '',
-      data.year || '',
-      data.category || '',
-      data.pdfUrl || '',
-      data.pages || '',
-      data.featured || 'Tidak',
-      data.aktif || 'Ya',
-      data.gradientFrom || 'from-amber-500',
-      data.gradientTo || 'to-orange-600',
+      params.title || '',
+      params.author || '',
+      params.year || '',
+      params.category || '',
+      params.pdfUrl || '',
+      params.pages || '',
+      params.featured || 'Tidak',
+      params.aktif || 'Ya',
+      params.gradientFrom || 'from-amber-500',
+      params.gradientTo || 'to-orange-600',
     ];
 
     range.setValues([newRow]);
@@ -183,14 +177,17 @@ function handleUpdate(data) {
 // ============================================================
 // HANDLE DELETE
 // ============================================================
-function handleDelete(data) {
+function handleDelete(params, sheet) {
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) return jsonOutput({ success: false, error: 'Sheet tidak ditemukan' });
+    // Verify password
+    if (params.password !== ADMIN_PASSWORD) {
+      return jsonOutput({ success: false, error: 'Password salah' });
+    }
 
-    const id = parseInt(data.id);
-    if (isNaN(id) || id < 2) return jsonOutput({ success: false, error: 'ID tidak valid' });
+    const id = parseInt(params.id);
+    if (isNaN(id) || id < 2) {
+      return jsonOutput({ success: false, error: 'ID tidak valid' });
+    }
 
     sheet.deleteRow(id);
     return jsonOutput({ success: true, message: 'Buku berhasil dihapus.' });
@@ -258,7 +255,9 @@ function jsonOutput(obj) {
 // TEST FUNCTION (run this to test)
 // ============================================================
 function testList() {
-  const result = handleList({ parameter: {} });
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName(SHEET_NAME);
+  const result = handleList(sheet);
   const text = result.getContent();
   const data = JSON.parse(text);
   console.log('Books count:', data.books?.length);

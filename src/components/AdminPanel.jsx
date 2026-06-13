@@ -176,11 +176,13 @@ function BookModal({ book, onClose, onSave }) {
     }
 
     try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: isEdit ? 'update' : 'add', password: sessionStorage.getItem('bp_admin') || '', ...form }),
+      // Build query params
+      const params = new URLSearchParams({
+        action: isEdit ? 'update' : 'add',
+        password: sessionStorage.getItem('bp_admin') || '',
+        ...form
       });
+      const res = await fetch(`${API_URL}?${params}`);
       const data = await res.json();
       if (data.success) {
         setMsg({ type: 'success', text: isEdit ? 'Buku berhasil diupdate!' : 'Buku berhasil ditambahkan!' });
@@ -435,15 +437,12 @@ function DeleteModal({ book, onClose, onDelete }) {
       return;
     }
     try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'delete',
-          password: sessionStorage.getItem('bp_admin') || '',
-          id: book.id,
-        }),
+      const params = new URLSearchParams({
+        action: 'delete',
+        password: sessionStorage.getItem('bp_admin') || '',
+        id: book.id,
       });
+      const res = await fetch(`${API_URL}?${params}`);
       const data = await res.json();
       if (data.success) onDelete(book.id);
     } catch {
@@ -578,11 +577,8 @@ export default function AdminPanel() {
 
     for (const book of booksToImport) {
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'add', password, ...book }),
-        });
+        const params = new URLSearchParams({ action: 'add', password, ...book });
+        const res = await fetch(`${API_URL}?${params}`);
         const data = await res.json();
         if (data.success) successCount++;
         else errorCount++;
