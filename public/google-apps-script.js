@@ -90,7 +90,7 @@ function handleList(e) {
       return jsonOutput({ books: [] });
     }
 
-    const data = sheet.getRange(2, 1, lastRow - 1, 11).getValues();
+    const data = sheet.getRange(2, 1, lastRow - 1, 10).getValues();
 
     const books = data
       .filter(row => row[0] && row[0].toString().trim() !== '')
@@ -101,12 +101,11 @@ function handleList(e) {
         year: row[2] || '',
         category: row[3] || '',
         pdfUrl: row[4] || '',
-        coverId: row[5] || '',
-        pages: row[6] || '',
-        featured: row[7] || 'Tidak',
-        aktif: row[8] || 'Ya',
-        gradientFrom: row[9] || 'from-amber-500',
-        gradientTo: row[10] || 'to-orange-600',
+        pages: row[5] || '',
+        featured: row[6] || 'Tidak',
+        aktif: row[7] || 'Ya',
+        gradientFrom: row[8] || 'from-amber-500',
+        gradientTo: row[9] || 'to-orange-600',
       }));
 
     return jsonOutput({ books });
@@ -133,7 +132,6 @@ function handleAdd(data) {
       data.year || new Date().getFullYear().toString(),
       data.category || 'pengembangan-diri',
       data.pdfUrl || '',
-      data.coverId || '',
       data.pages || '',
       data.featured || 'Tidak',
       data.aktif || 'Ya',
@@ -161,14 +159,13 @@ function handleUpdate(data) {
     if (isNaN(id) || id < 2) return jsonOutput({ success: false, error: 'ID tidak valid' });
 
     const rowNum = id;
-    const range = sheet.getRange(rowNum, 1, 1, 11);
+    const range = sheet.getRange(rowNum, 1, 1, 10);
     const newRow = [
       data.title || '',
       data.author || '',
       data.year || '',
       data.category || '',
       data.pdfUrl || '',
-      data.coverId || '',
       data.pages || '',
       data.featured || 'Tidak',
       data.aktif || 'Ya',
@@ -212,7 +209,6 @@ function setupHeaders(sheet) {
     'year',
     'category',
     'pdfUrl',
-    'coverId',
     'pages',
     'featured',
     'aktif',
@@ -232,18 +228,17 @@ function setupHeaders(sheet) {
   sheet.setColumnWidth(3, 80);  // year
   sheet.setColumnWidth(4, 140); // category
   sheet.setColumnWidth(5, 300); // pdfUrl
-  sheet.setColumnWidth(6, 100); // coverId
-  sheet.setColumnWidth(7, 80);   // pages
-  sheet.setColumnWidth(8, 80);  // featured
-  sheet.setColumnWidth(9, 80);  // aktif
-  sheet.setColumnWidth(10, 150); // gradientFrom
-  sheet.setColumnWidth(11, 150); // gradientTo
+  sheet.setColumnWidth(6, 80);  // pages
+  sheet.setColumnWidth(7, 80);   // featured
+  sheet.setColumnWidth(8, 80);   // aktif
+  sheet.setColumnWidth(9, 150);  // gradientFrom
+  sheet.setColumnWidth(10, 150); // gradientTo
 
   // Add sample data
   const sampleData = [
-    ['Membangun Mental Baja: Bangkit dari Keterpurukan', 'Ahmad Fauzi', '2020', 'pengembangan-diri', '', '', '198', 'Ya', 'Ya', 'from-blue-500', 'to-cyan-600'],
-    ['Panduan Hukum bagi Masyarakat Indonesia', 'Dr. Rina Marlina', '2021', 'hukum', '', '', '180', 'Tidak', 'Ya', 'from-emerald-500', 'to-teal-600'],
-    ['Belajar dari Kegagalan: Kisah 100 Pengusaha', 'Budi Santoso', '2022', 'kisah-inspiratif', '', '', '212', 'Ya', 'Ya', 'from-amber-500', 'to-orange-600'],
+    ['Membangun Mental Baja: Bangkit dari Keterpurukan', 'Ahmad Fauzi', '2020', 'pengembangan-diri', '', '198', 'Ya', 'Ya', 'from-blue-500', 'to-cyan-600'],
+    ['Panduan Hukum bagi Masyarakat Indonesia', 'Dr. Rina Marlina', '2021', 'hukum', '', '180', 'Tidak', 'Ya', 'from-emerald-500', 'to-teal-600'],
+    ['Belajar dari Kegagalan: Kisah 100 Pengusaha', 'Budi Santoso', '2022', 'kisah-inspiratif', '', '212', 'Ya', 'Ya', 'from-amber-500', 'to-orange-600'],
   ];
   if (sheet.getLastRow() === 1) {
     sheet.getRange(2, 1, sampleData.length, sampleData[0].length).setValues(sampleData);
