@@ -305,6 +305,122 @@ function BookModal({ book, onClose, onSave }) {
 }
 
 // =============================================
+// IMPORT MODAL
+// =============================================
+function ImportModal({ onImport, onClose, loading }) {
+  const [input, setInput] = useState('');
+  const [preview, setPreview] = useState([]);
+  const [error, setError] = useState('');
+
+  const handlePreview = () => {
+    setError('');
+    try {
+      let data = JSON.parse(input);
+      // Handle both { books: [] } and direct array
+      if (Array.isArray(data)) {
+        setPreview(data);
+      } else if (data.books && Array.isArray(data.books)) {
+        setPreview(data.books);
+      } else {
+        setError('Format JSON tidak valid. Gunakan format: [{"title": "...", "author": "..."}]');
+      }
+    } catch {
+      setError('JSON tidak valid. Pastikan formatnya benar.');
+    }
+  };
+
+  const handleImport = () => {
+    if (preview.length === 0) {
+      setError('Klik "Preview" dulu untuk melihat data.');
+      return;
+    }
+    // Normalize fields (remove coverId if present)
+    const normalized = preview.map((b, i) => ({
+      title: b.title || '',
+      author: b.author || '',
+      year: b.year || new Date().getFullYear().toString(),
+      category: b.category || 'pengembangan-diri',
+      pdfUrl: b.pdfUrl || '',
+      pages: b.pages || '',
+      featured: b.featured || 'Tidak',
+      aktif: b.aktif || 'Ya',
+      gradientFrom: b.gradientFrom || 'from-amber-500',
+      gradientTo: b.gradientTo || 'to-orange-600',
+    }));
+    onImport(normalized);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Import Buku</h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Paste JSON dari teman kamu</p>
+          </div>
+          <button onClick={onClose} className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+            <i className="fas fa-times text-gray-600 dark:text-gray-300"></i>
+          </button>
+        </div>
+
+        <div className="p-6 space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Paste JSON Data</label>
+            <textarea
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              placeholder={'[{\n  "title": "Judul Buku",\n  "author": "Nama Penulis"\n}]'}
+              className="w-full h-40 px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-blue-400 outline-none transition-all text-sm font-mono bg-white dark:bg-gray-800"
+            />
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <i className="fas fa-info-circle mr-1"></i>
+              Paste data JSON dari browser teman kamu
+            </p>
+          </div>
+
+          {error && (
+            <div className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 rounded-xl text-rose-700 dark:text-rose-400 text-sm">
+              <i className="fas fa-exclamation-circle"></i>
+              {error}
+            </div>
+          )}
+
+          {preview.length > 0 && (
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+              <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2">
+                <i className="fas fa-check-circle mr-1"></i>
+                {preview.length} buku siap diimport:
+              </p>
+              <div className="space-y-1 max-h-40 overflow-y-auto">
+                {preview.slice(0, 10).map((b, i) => (
+                  <p key={i} className="text-xs text-blue-600 dark:text-blue-300 truncate">
+                    • {b.title || 'Tanpa judul'} - {b.author || 'Tanpa penulis'}
+                  </p>
+                ))}
+                {preview.length > 10 && (
+                  <p className="text-xs text-blue-500 dark:text-blue-400 italic">...dan {preview.length - 10} buku lainnya</p>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex gap-3 px-6 pb-6">
+          <button onClick={handlePreview}
+            className="flex-1 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all">
+            <i className="fas fa-eye mr-2"></i>Preview
+          </button>
+          <button onClick={handleImport} disabled={loading}
+            className="flex-1 py-3 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5 disabled:opacity-60">
+            {loading ? <><i className="fas fa-spinner fa-spin mr-2"></i>Mengimport...</> : <><i className="fas fa-file-import mr-2"></i>Import</>}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// =============================================
 // DELETE MODAL
 // =============================================
 function DeleteModal({ book, onClose, onDelete }) {
@@ -368,6 +484,7 @@ export default function AdminPanel() {
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('semua');
   const [showAdd, setShowAdd] = useState(false);
+  const [showImport, setShowImport] = useState(false);
   const [editBook, setEditBook] = useState(null);
   const [deleteBook, setDeleteBook] = useState(null);
   const [feedback, setFeedback] = useState(null);
@@ -450,6 +567,40 @@ export default function AdminPanel() {
     showFeedback('success', 'Buku berhasil dihapus.');
   };
 
+  const handleImport = async (booksToImport) => {
+    if (demo) {
+      showFeedback('error', 'Import hanya bisa dilakukan saat Google Sheets terhubung.');
+      return;
+    }
+    setLoading(true);
+    let successCount = 0;
+    let errorCount = 0;
+
+    for (const book of booksToImport) {
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'add', password, ...book }),
+        });
+        const data = await res.json();
+        if (data.success) successCount++;
+        else errorCount++;
+      } catch {
+        errorCount++;
+      }
+    }
+
+    setLoading(false);
+    setShowImport(false);
+    fetchBooks();
+    if (errorCount === 0) {
+      showFeedback('success', `${successCount} buku berhasil diimport!`);
+    } else {
+      showFeedback('success', `${successCount} buku berhasil, ${errorCount} gagal.`);
+    }
+  };
+
   const filtered = books.filter(b => {
     const matchSearch = !search || b.title?.toLowerCase().includes(search.toLowerCase()) || b.author?.toLowerCase().includes(search.toLowerCase());
     const matchCat = filterCat === 'semua' || b.category === filterCat;
@@ -515,11 +666,18 @@ export default function AdminPanel() {
               {demo ? 'Mode Demo — koneksi Google Sheets belum diatur.' : 'Kelola semua buku di katalog Buka Pintu.'}
             </p>
           </div>
-          <button onClick={() => setShowAdd(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all hover:-translate-y-0.5">
-            <i className="fas fa-plus"></i>
-            Tambah Buku
-          </button>
+          <div className="flex gap-3">
+            <button onClick={() => setShowImport(true)}
+              className="inline-flex items-center gap-2 px-4 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all hover:-translate-y-0.5">
+              <i className="fas fa-file-import"></i>
+              Import
+            </button>
+            <button onClick={() => setShowAdd(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all hover:-translate-y-0.5">
+              <i className="fas fa-plus"></i>
+              Tambah Buku
+            </button>
+          </div>
         </div>
 
         {/* Stats */}
@@ -650,6 +808,11 @@ export default function AdminPanel() {
           )}
         </div>
       </div>
+
+      {/* Import Modal */}
+      {showImport && (
+        <ImportModal onImport={handleImport} onClose={() => setShowImport(false)} loading={loading} />
+      )}
 
       {/* Modals */}
       {showAdd && <BookModal onSave={handleSave} onClose={() => setShowAdd(false)} />}
