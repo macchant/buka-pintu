@@ -1,27 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const team = [
+const quotes = [
   {
-    name: 'Andi Wijaya',
-    role: 'Pendiri & Ketua Program',
-    bio: 'Mantan narapidana yang now menjadi aktivis pendidikan untuk bekas narapidana. Pendiri Buka Pintu sejak 2023.',
-    avatar: 'AW',
-    color: 'from-brand-500 to-orange-500',
+    quote: 'Pengetahuan adalah kunci yang membuka setiap pintu. Terima kasih Buka Pintu telah membuka jendela dunia untuk saya.',
+    name: 'Siti Aminah',
+    role: 'Guru SD, Jawa Timur',
+    avatar: 'SA',
+    color: 'from-amber-400 to-orange-500',
   },
   {
-    name: 'Dr. Maya Suhartini',
-    role: 'Penasihat Akademik',
-    bio: 'Dosen hukum pidana Universitas Indonesia dengan spesialisasi reintegrasi sosial mantan narapidana.',
-    avatar: 'MS',
-    color: 'from-emerald-500 to-teal-500',
+    quote: 'Saya tidak punya akses ke kursus mahal, tapi melalui Buka Pintu saya bisa belajar bahasa Inggris sendiri dan sekarang bekerja di hotel.',
+    name: 'Hendra Pratama',
+    role: 'Entrepreneur, Bandung',
+    avatar: 'HP',
+    color: 'from-blue-400 to-cyan-500',
   },
   {
-    name: 'Rizky Pratama',
-    role: 'Koordinator Teknologi',
-    bio: 'Software engineer yang mengembangkan platform digital untuk akses pendidikan di daerah terpencil.',
-    avatar: 'RP',
-    color: 'from-blue-500 to-cyan-500',
+    quote: 'Buku-buku hukum di sini membantu saya memahami hak-hak saya. Pengetahuan itu sangat berharga bagi siapa pun.',
+    name: 'Dewi Kusuma',
+    role: 'Pengacara, Jakarta',
+    avatar: 'DK',
+    color: 'from-emerald-400 to-teal-500',
   },
 ];
 
@@ -40,7 +40,7 @@ const partners = [
 ];
 ---
 
-<Layout title="Tentang Kami" description="Kenali kisah di balik Buka Pintu — perpustakaan digital gratis untuk mantan narapidana Indonesia.">
+<Layout title="Tentang Kami" description="Kenali kisah di balik Buka Pintu — perpustakaan digital gratis untuk masyarakat Indonesia.">
 
   <!-- Hero -->
   <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-28 overflow-hidden">
@@ -56,7 +56,7 @@ const partners = [
         Buka Pintu<br/><span class="text-brand-400">Buka Kesempatan</span>
       </h1>
       <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-        Kami percaya bahwa mantan narapidana berhak mendapatkan kesempatan kedua untuk membangun kehidupan yang bermartabat — dimulai dari akses terhadap pengetahuan.
+        Kami percaya bahwa setiap orang berhak mendapatkan kesempatan untuk membangun kehidupan yang bermartabat — dimulai dari akses terhadap pengetahuan.
       </p>
     </div>
   </section>
@@ -72,10 +72,7 @@ const partners = [
           </h2>
           <div class="space-y-4 text-gray-600 leading-relaxed">
             <p>
-              Buka Pintu lahir pada tahun 2023 dari keprihatinan terhadap terbatasnya akses pendidikan bagi mantan narapidana di Indonesia. Banyak dari mereka yang memiliki keinginan kuat untuk berubah dan belajar, namun tidak memiliki sumber daya untuk melakukannya.
-            </p>
-            <p>
-              Pendiri kami, yang himself pernah merasakan masa tahanan, memahami secara langsung betapa sulitnya mendapatkan buku dan materi pembelajaran di dalam penjara maupun setelah bebas. Pengetahuan tentang hak-hak hukum, keterampilan kerja, dan pengembangan diri sangat sulit diakses.
+              Buka Pintu lahir pada tahun 2023 dari keprihatinan terhadap terbatasnya akses pendidikan bagi masyarakat di Indonesia. Banyak orang memiliki keinginan kuat untuk berubah dan belajar, namun tidak memiliki sumber daya untuk melakukannya.
             </p>
             <p>
               Dari situlah muncul ide untuk membangun <strong class="text-gray-900">perpustakaan digital gratis</strong> yang bisa diakses siapa saja, kapan saja — tanpa biaya, tanpa batasan, tanpa stigma.
@@ -149,24 +146,31 @@ const partners = [
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="py-24 bg-white">
+  <!-- Community Voices -->
+  <section class="py-24 bg-warm-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="tag bg-brand-100 text-brand-700 mb-4">👥 Tim Kami</span>
+        <span class="tag bg-brand-100 text-brand-700 mb-4">💬 Suara Komunitas</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
-          Orang-Orang di <span class="gradient-text">Balik Buka Pintu</span>
+          Apa yang Mereka <span class="gradient-text">Katakan</span>
         </h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        {team.map((t) => (
-          <div class="text-center group">
-            <div class={`w-28 h-28 bg-gradient-to-br ${t.color} rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-lg group-hover:scale-105 transition-transform`}>
-              <span class="text-white font-extrabold text-3xl">{t.avatar}</span>
+        {quotes.map((q) => (
+          <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col h-full">
+            <div class="flex gap-1 mb-4">
+              {[1,2,3,4,5].map(() => <i class="fas fa-star text-amber-400 text-sm"></i>)}
             </div>
-            <h3 class="font-bold text-gray-900 text-lg">{t.name}</h3>
-            <p class="text-brand-600 text-sm font-semibold mb-3">{t.role}</p>
-            <p class="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto">{t.bio}</p>
+            <p class="text-gray-600 leading-relaxed text-sm flex-1 mb-6">"{q.quote}"</p>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+              <div class={`w-11 h-11 bg-gradient-to-br ${q.color} rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                {q.avatar}
+              </div>
+              <div>
+                <p class="font-bold text-gray-900 text-sm">{q.name}</p>
+                <p class="text-xs text-gray-500">{q.role}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
