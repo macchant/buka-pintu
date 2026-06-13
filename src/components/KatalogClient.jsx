@@ -89,7 +89,7 @@ function BookCard({ book, index, onRead }) {
             <div className="w-14 h-14 bg-white/90 backdrop-blur rounded-full flex items-center justify-center">
               <i className="fas fa-book-open text-orange-600 text-2xl"></i>
             </div>
-            <span className="text-white text-sm font-bold bg-white/90 px-4 py-1.5 rounded-full shadow">Baca Sekarang</span>
+            <span className="text-orange-600 text-sm font-bold bg-white/90 px-4 py-1.5 rounded-full shadow">Baca Sekarang</span>
           </div>
         </div>
       </div>
