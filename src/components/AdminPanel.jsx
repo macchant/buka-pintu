@@ -30,11 +30,11 @@ const GRADIENTS = [
 
 // --- Demo data ---
 const DEMO_BOOKS = [
-  { id: '1', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha Sukses', author: 'Budi Santoso', year: '2022', category: 'kisah-inspiratif', pdfUrl: '', coverId: '8292851', pages: '212', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
-  { id: '2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina', year: '2021', category: 'hukum', pdfUrl: '', coverId: '8225261', pages: '180', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
-  { id: '3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', coverId: '10157403', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
-  { id: '4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', coverId: '10386659', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
-  { id: '5', title: 'Dasar-Dasar Akuntansi untuk Pelaku UMKM', author: 'Dewi Kusuma', year: '2022', category: 'wirausaha', pdfUrl: '', coverId: '8221093', pages: '224', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
+  { id: '1', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha Sukses', author: 'Budi Santoso', year: '2022', category: 'kisah-inspiratif', pdfUrl: '', pages: '212', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
+  { id: '2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina', year: '2021', category: 'hukum', pdfUrl: '', pages: '180', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
+  { id: '3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
+  { id: '4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
+  { id: '5', title: 'Dasar-Dasar Akuntansi untuk Pelaku UMKM', author: 'Dewi Kusuma', year: '2022', category: 'wirausaha', pdfUrl: '', pages: '224', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
 ];
 
 // =============================================
@@ -141,7 +141,7 @@ function BookModal({ book, onClose, onSave }) {
   const demo = !isApiConfigured();
   const [form, setForm] = useState(book || {
     title: '', author: '', year: new Date().getFullYear().toString(),
-    category: 'pengembangan-diri', pdfUrl: '', coverId: '', pages: '',
+    category: 'pengembangan-diri', pdfUrl: '', pages: '',
     featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600',
   });
   const [saving, setSaving] = useState(false);
@@ -254,17 +254,7 @@ function BookModal({ book, onClose, onSave }) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1.5">ID Cover (Open Library)</label>
-              <input type="text" value={form.coverId} onChange={e => set('coverId', e.target.value)}
-                placeholder="8225261"
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                <i className="fas fa-info-circle mr-1"></i>
-                opsional — ID dari <a href="https://openlibrary.org" target="_blank" className="underline font-medium">openlibrary.org</a>. Jika kosong, cover akan berwarna gradient.
-              </p>
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Jumlah Halaman</label>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1.5">Jumlah Halaman</label>
               <input type="number" value={form.pages} onChange={e => set('pages', e.target.value)}
                 placeholder="200" min="1"
                 className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
