@@ -20,7 +20,8 @@ const SHEET_NAME = 'Buku';          // Nama sheet tab (ubah jika berbeda)
 // DOGET — Semua operasi (list, add, update, delete)
 // ============================================================
 function doGet(e) {
-  const action = e.parameter.action;
+  e = e || {};
+  const params = e.parameter || {};
 
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -32,20 +33,22 @@ function doGet(e) {
       setupHeaders(sheet);
     }
 
+    const action = params.action;
+
     if (action === 'list') {
       return handleList(sheet);
     }
 
     if (action === 'add') {
-      return handleAdd(e.parameter, sheet);
+      return handleAdd(params, sheet);
     }
 
     if (action === 'update') {
-      return handleUpdate(e.parameter, sheet);
+      return handleUpdate(params, sheet);
     }
 
     if (action === 'delete') {
-      return handleDelete(e.parameter, sheet);
+      return handleDelete(params, sheet);
     }
 
     return jsonOutput({ error: 'Unknown action' });
