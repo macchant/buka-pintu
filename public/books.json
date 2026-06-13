@@ -1,0 +1,17 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Belajar dari Kegagalan: Kisah 100 Pengusaha Sukses",
+      "author": "Budi Santoso",
+      "year": "2022",
+      "category": "kisah-inspiratif",
+      "pdfUrl": "",
+      "pages": "212",
+      "featured": "Ya",
+      "aktif": "Ya",
+      "gradientFrom": "from-amber-500",
+      "gradientTo": "to-orange-600"
+    }
+  ]
+}

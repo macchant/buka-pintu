@@ -129,10 +129,23 @@ export default function KatalogClient({ apiUrl }) {
             setBooks(data.books);
             setDataSource('api');
           } else {
-            // API exists but empty — use localStorage demo books
-            const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
-            setBooks(localBooks.length > 0 ? localBooks : FALLBACK_BOOKS);
-            setDataSource(localBooks.length > 0 ? 'local' : 'fallback');
+            // API exists but empty — use JSON + localStorage
+            fetch('/books.json')
+              .then(r => r.json())
+              .then(json => {
+                const jsonBooks = json.books || [];
+                const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
+                // localStorage books override JSON books (same id)
+                const localIds = new Set(localBooks.map(b => b.id));
+                const otherJsonBooks = jsonBooks.filter(b => !localIds.has(b.id));
+                setBooks([...otherJsonBooks, ...localBooks]);
+                setDataSource(localBooks.length > 0 ? 'local' : 'json');
+              })
+              .catch(() => {
+                const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
+                setBooks(localBooks.length > 0 ? localBooks : FALLBACK_BOOKS);
+                setDataSource(localBooks.length > 0 ? 'local' : 'fallback');
+              });
           }
         })
         .catch(() => {
@@ -142,11 +155,24 @@ export default function KatalogClient({ apiUrl }) {
         })
         .finally(() => setLoading(false));
     } else {
-      // No API — use localStorage demo books, fall back to static
-      const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
-      setBooks(localBooks.length > 0 ? localBooks : FALLBACK_BOOKS);
-      setDataSource(localBooks.length > 0 ? 'local' : 'fallback');
-      setLoading(false);
+      // No API — first load from books.json, then merge with localStorage
+      fetch('/books.json')
+        .then(r => r.json())
+        .then(json => {
+          const jsonBooks = json.books || [];
+          const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
+          // localStorage books override JSON books (same id)
+          const localIds = new Set(localBooks.map(b => b.id));
+          const otherJsonBooks = jsonBooks.filter(b => !localIds.has(b.id));
+          setBooks([...otherJsonBooks, ...localBooks]);
+          setDataSource(localBooks.length > 0 ? 'local' : 'json');
+        })
+        .catch(() => {
+          const localBooks = JSON.parse(localStorage.getItem('bp_books') || '[]');
+          setBooks(localBooks.length > 0 ? localBooks : FALLBACK_BOOKS);
+          setDataSource(localBooks.length > 0 ? 'local' : 'fallback');
+        })
+        .finally(() => setLoading(false));
     }
   }, [isApiConfigured, apiUrl]);
 
@@ -202,6 +228,7 @@ export default function KatalogClient({ apiUrl }) {
                 }`}></span>
                 {dataSource === 'api' ? 'Data langsung dari Google Sheets' :
                  dataSource === 'local' ? 'Data dari Panel Admin' :
+                 dataSource === 'json' ? 'Data perpustakaan' :
                  'Data statis — '}
                 {dataSource !== 'api' && (
                   <a href="/admin" target="_blank" className="underline font-semibold text-orange-600 ml-1">Hubungkan API</a>
