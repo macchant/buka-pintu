@@ -241,24 +241,27 @@ function BookModal({ book, onClose, onSave }) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-              Tautan PDF (Google Drive)
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+              Link PDF (opsional)
             </label>
             <input type="url" value={form.pdfUrl} onChange={e => set('pdfUrl', e.target.value)}
               placeholder="https://drive.google.com/file/d/..."
               className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
               <i className="fas fa-info-circle mr-1"></i>
-              Unggah PDF ke Google Drive, set "Semua orang dengan tautan", salin tautannya.
+              Opsional. Jika kosong, buku tetap muncul tapi tanpa tombol baca PDF.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">ID Cover (Open Library)</label>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1.5">ID Cover (Open Library)</label>
               <input type="text" value={form.coverId} onChange={e => set('coverId', e.target.value)}
                 placeholder="8225261"
                 className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
-              <p className="text-xs text-gray-400 mt-1">Dari openlibrary.org/covers</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                <i className="fas fa-info-circle mr-1"></i>
+                opsional — ID dari <a href="https://openlibrary.org" target="_blank" className="underline font-medium">openlibrary.org</a>. Jika kosong, cover akan berwarna gradient.
+              </p>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Jumlah Halaman</label>
