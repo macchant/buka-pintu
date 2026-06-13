@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // --- CONFIGURATION ---
 // Replace with your deployed Google Apps Script Web App URL
-const API_URL = 'https://script.google.com/macros/s/AKfycbygoY_Abg3xpVb_n5IWHks_jG5UzFUy8mMCXjANo8vph-mf7NjmgUWkYjKM7-lS9V58/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycby85jDS8YDNcCs0mxejq0vEZ3CPXT2ckvxpzzqfhpQwVz3GGB3qg5k7rcpU1eOsniAI/exec';
 const isApiConfigured = () => !API_URL.includes('YOUR_SCRIPT_ID');
 
 // --- Category Options ---
