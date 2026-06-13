@@ -76,7 +76,7 @@ function LoginScreen({ onLogin }) {
           <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
             <i className="fas fa-door-open text-white text-3xl"></i>
           </div>
-          <h1 className="text-2xl font-extrabold text-gray-900">Panel Admin</h1>
+          <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white">Panel Admin</h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Buka Pintu</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -121,12 +121,12 @@ function StatsBar({ books }) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       {stats.map(s => (
-        <div key={s.label} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+        <div key={s.label} className="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 shadow-sm">
           <div className={`w-10 h-10 bg-gradient-to-br ${s.gradient} rounded-xl flex items-center justify-center mb-3`}>
             <i className={`fas ${s.icon} text-white text-sm`}></i>
           </div>
-          <div className="text-3xl font-extrabold text-gray-900">{s.value}</div>
-          <div className="text-xs text-gray-500 font-medium mt-0.5">{s.label}</div>
+          <div className="text-3xl font-extrabold text-gray-900 dark:text-white">{s.value}</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">{s.label}</div>
         </div>
       ))}
     </div>
@@ -196,10 +196,10 @@ function BookModal({ book, onClose, onSave }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 sticky top-0 bg-white rounded-t-3xl z-10">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 dark:border-gray-800 sticky top-0 bg-white dark:bg-gray-900 rounded-t-3xl z-10">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{isEdit ? 'Edit Buku' : 'Tambah Buku Baru'}</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{isEdit ? 'Edit Buku' : 'Tambah Buku Baru'}</h2>
             {demo && <p className="text-xs text-amber-600 mt-0.5">Mode Demo — perubahan tidak persist ke server</p>}
           </div>
           <button onClick={onClose} className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center hover:bg-gray-200 transition">
@@ -297,7 +297,7 @@ function BookModal({ book, onClose, onSave }) {
           </div>
           <div className="flex gap-3 pt-2">
             <button type="button" onClick={onClose}
-              className="flex-1 py-3 border-2 border-gray-200 text-gray-600 font-semibold rounded-xl hover:bg-gray-50 transition-all">
+              className="flex-1 py-3 border-2 border-gray-200 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 transition-all">
               Batal
             </button>
             <button type="submit" disabled={saving}
@@ -349,11 +349,11 @@ function DeleteModal({ book, onClose, onDelete }) {
         <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
           <i className="fas fa-trash-alt text-rose-500 text-2xl"></i>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Hapus Buku?</h3>
-        <p className="text-gray-500 text-sm mb-6">Buku <strong>"{book.title}"</strong> akan dihapus permanen dari katalog.</p>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Hapus Buku?</h3>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Buku <strong>"{book.title}"</strong> akan dihapus permanen dari katalog.</p>
         {demo && <p className="text-xs text-amber-600 mb-4">Mode Demo — penghapusan hanya berlaku lokal.</p>}
         <div className="flex gap-3">
-          <button onClick={onClose} className="flex-1 py-3 border-2 border-gray-200 text-gray-600 font-semibold rounded-xl hover:bg-gray-50 transition-all">Batal</button>
+          <button onClick={onClose} className="flex-1 py-3 border-2 border-gray-200 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">Batal</button>
           <button onClick={handleDelete} disabled={confirming}
             className="flex-1 py-3 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-600 transition-all disabled:opacity-60">
             {confirming ? <><i className="fas fa-spinner fa-spin"></i></> : <><i className="fas fa-trash-alt mr-2"></i>Hapus</>}
@@ -492,7 +492,7 @@ export default function AdminPanel() {
               </span>
             )}
             <a href="/" target="_blank"
-              className="px-4 py-2 bg-gray-100 text-gray-600 rounded-xl text-sm font-medium hover:bg-gray-200 transition">
+              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-xl text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition">
               <i className="fas fa-external-link-alt mr-1"></i>Lihat Situs
             </a>
             <button onClick={handleLogout}
@@ -567,24 +567,24 @@ export default function AdminPanel() {
               <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <i className="fas fa-book text-gray-400 text-2xl"></i>
               </div>
-              <p className="text-gray-500 font-medium">Tidak ada buku yang ditemukan.</p>
+              <p className="text-gray-500 dark:text-gray-400 font-medium">Tidak ada buku yang ditemukan.</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Sampul</th>
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Judul</th>
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Penulis</th>
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Kategori</th>
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Tahun</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Aksi</th>
+                  <tr className="bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sampul</th>
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Judul</th>
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden md:table-cell">Penulis</th>
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden lg:table-cell">Kategori</th>
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden sm:table-cell">Tahun</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
                   {filtered.map(book => (
-                    <tr key={book.id} className="hover:bg-orange-50/30 transition-colors">
+                    <tr key={book.id} className="hover:bg-orange-50/30 dark:hover:bg-gray-800 transition-colors">
                       <td className="px-5 py-4">
                         <div className={`w-10 h-14 rounded-lg bg-gradient-to-br ${book.gradientFrom || 'from-gray-400'} ${book.gradientTo || 'to-gray-500'} flex items-center justify-center overflow-hidden`}>
                           {book.coverId ? (
@@ -595,7 +595,7 @@ export default function AdminPanel() {
                         </div>
                       </td>
                       <td className="px-5 py-4">
-                        <p className="font-bold text-gray-900 text-sm leading-tight line-clamp-2 max-w-[200px]">{book.title}</p>
+                        <p className="font-bold text-gray-900 dark:text-white text-sm leading-tight line-clamp-2 max-w-[200px]">{book.title}</p>
                         {(book.featured === 'Ya' || book.featured === '1') && (
                           <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-xs">
                             <i className="fas fa-star"></i> Unggulan
@@ -603,7 +603,7 @@ export default function AdminPanel() {
                         )}
                       </td>
                       <td className="px-5 py-4 hidden md:table-cell">
-                        <span className="text-sm text-gray-600">{book.author}</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">{book.author}</span>
                       </td>
                       <td className="px-5 py-4 hidden lg:table-cell">
                         <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${getCatColor(book.category)}`}>
@@ -611,7 +611,7 @@ export default function AdminPanel() {
                         </span>
                       </td>
                       <td className="px-5 py-4 hidden sm:table-cell">
-                        <span className="text-sm text-gray-500">{book.year}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{book.year}</span>
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2 justify-end">
@@ -645,12 +645,12 @@ export default function AdminPanel() {
             Koneksi Google Sheets
           </h3>
           {demo ? (
-            <div className="space-y-2 text-sm text-gray-600">
+            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
               <p>Untuk menghubungkan ke Google Sheets, buka file <code className="bg-white px-2 py-1 rounded text-blue-700 font-mono">public/google-apps-script.js</code> di project untuk melihat kode lengkapnya.</p>
               <p className="text-xs text-gray-400 mt-2">Setelah diatur, rebuild dan deploy untuk mengaktifkan.</p>
             </div>
           ) : (
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               <i className="fas fa-check-circle text-emerald-500 mr-1"></i>
               Tersambung ke Google Sheets.
             </p>
