@@ -51,7 +51,7 @@ function BookCard({ book, index, onRead }) {
 
   return (
     <div
-      className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer group"
+      className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer group"
       onClick={() => onRead(book)}
     >
       <div className={`h-48 bg-gradient-to-br ${gradient} flex items-center justify-center p-4 relative flex-shrink-0 overflow-hidden`}>
@@ -68,7 +68,7 @@ function BookCard({ book, index, onRead }) {
             <p className="text-white/80 text-xs font-medium text-center leading-tight">{book.title}</p>
           </div>
         )}
-        <span className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-semibold text-gray-700">
+        <span className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 dark:bg-gray-700/90 backdrop-blur rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200">
           {catLabel}
         </span>
         {book.pdfUrl ? (
@@ -94,11 +94,11 @@ function BookCard({ book, index, onRead }) {
         </div>
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="font-bold text-gray-900 text-sm leading-snug mb-1 line-clamp-2">{book.title}</h3>
-        <p className="text-gray-500 text-xs mb-0.5">{book.author}</p>
-        <p className="text-xs text-gray-400 mb-3">{book.year}</p>
-        <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
-          <span className="text-xs text-gray-400"><i className="fas fa-file-lines mr-1"></i>{book.pages} hal.</span>
+        <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm leading-snug mb-1 line-clamp-2">{book.title}</h3>
+        <p className="text-gray-500 dark:text-gray-400 text-xs mb-0.5">{book.author}</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500 mb-3">{book.year}</p>
+        <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+          <span className="text-xs text-gray-400 dark:text-gray-500"><i className="fas fa-file-lines mr-1"></i>{book.pages} hal.</span>
           <span className="text-xs text-orange-500 font-semibold flex items-center gap-1">
             <i className="fas fa-eye"></i> Lihat
           </span>
@@ -171,7 +171,7 @@ export default function KatalogClient({ apiUrl }) {
   return (
     <>
       {/* Sticky Filter Bar */}
-      <section className="bg-white border-b border-gray-100 py-5 sticky top-20 z-30 shadow-sm">
+      <section className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 py-5 sticky top-20 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             {/* Search */}
@@ -182,7 +182,7 @@ export default function KatalogClient({ apiUrl }) {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Cari judul atau penulis..."
-                className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 outline-none transition-all text-sm bg-white dark:bg-gray-800"
               />
             </div>
             {/* Data source badge */}
@@ -218,7 +218,7 @@ export default function KatalogClient({ apiUrl }) {
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${
                   filterCat === cat.id
                     ? 'bg-orange-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
                 <i className={`fas ${cat.icon} text-xs`}></i>
@@ -230,7 +230,7 @@ export default function KatalogClient({ apiUrl }) {
       </section>
 
       {/* Book Grid */}
-      <section className="py-12 bg-warm-50 min-h-screen">
+      <section className="py-12 bg-warm-50 dark:bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-6">
           {loading ? (
             <div className="flex items-center justify-center py-24">
@@ -255,7 +255,7 @@ export default function KatalogClient({ apiUrl }) {
             </div>
           ) : (
             <>
-              <p className="text-sm text-gray-400 mb-6">
+              <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">
                 Menampilkan {filtered.length} dari {books.length} buku
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">

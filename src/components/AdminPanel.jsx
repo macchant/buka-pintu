@@ -70,21 +70,21 @@ function LoginScreen({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md border border-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-950 flex items-center justify-center p-4">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-8 w-full max-w-md border border-gray-100 dark:border-gray-800">
         <div className="flex flex-col items-center mb-8">
           <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
             <i className="fas fa-door-open text-white text-3xl"></i>
           </div>
           <h1 className="text-2xl font-extrabold text-gray-900">Panel Admin</h1>
-          <p className="text-gray-500 text-sm mt-1">Buka Pintu</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Buka Pintu</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">Kata Sandi</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
               placeholder="Masukkan kata sandi"
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 focus:ring-4 focus:ring-orange-100 outline-none transition-all" />
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 focus:ring-4 focus:ring-orange-100 outline-none transition-all" />
           </div>
           {error && (
             <div className="flex items-center gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-sm">
@@ -217,20 +217,20 @@ function BookModal({ book, onClose, onSave }) {
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Judul Buku *</label>
             <input type="text" value={form.title} onChange={e => set('title', e.target.value)}
               placeholder="Contoh: Membangun Mental Baja"
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Penulis *</label>
               <input type="text" value={form.author} onChange={e => set('author', e.target.value)}
                 placeholder="Nama penulis"
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Tahun</label>
               <input type="number" value={form.year} onChange={e => set('year', e.target.value)}
                 placeholder="2024" min="1900" max="2099"
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
             </div>
           </div>
           <div>
@@ -246,7 +246,7 @@ function BookModal({ book, onClose, onSave }) {
             </label>
             <input type="url" value={form.pdfUrl} onChange={e => set('pdfUrl', e.target.value)}
               placeholder="https://drive.google.com/file/d/..."
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
             <p className="text-xs text-gray-400 mt-1">
               <i className="fas fa-info-circle mr-1"></i>
               Unggah PDF ke Google Drive, set "Semua orang dengan tautan", salin tautannya.
@@ -257,14 +257,14 @@ function BookModal({ book, onClose, onSave }) {
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">ID Cover (Open Library)</label>
               <input type="text" value={form.coverId} onChange={e => set('coverId', e.target.value)}
                 placeholder="8225261"
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
               <p className="text-xs text-gray-400 mt-1">Dari openlibrary.org/covers</p>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Jumlah Halaman</label>
               <input type="number" value={form.pages} onChange={e => set('pages', e.target.value)}
                 placeholder="200" min="1"
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
             </div>
           </div>
           <div>
@@ -472,17 +472,17 @@ export default function AdminPanel() {
 
   // --- ADMIN DASHBOARD ---
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       {/* Top Bar */}
-      <div className="bg-white border-b border-gray-100 px-6 py-4 sticky top-0 z-30 shadow-sm">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 px-6 py-4 sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-green-600 rounded-xl flex items-center justify-center">
               <i className="fas fa-door-open text-white"></i>
             </div>
             <div>
-              <h1 className="font-bold text-gray-900 text-lg leading-none">Buka Pintu</h1>
-              <span className="text-xs text-gray-500">Panel Admin</span>
+              <h1 className="font-bold text-gray-900 dark:text-white text-lg leading-none">Buka Pintu</h1>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Panel Admin</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -518,7 +518,7 @@ export default function AdminPanel() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h2 className="text-2xl font-extrabold text-gray-900">Kelola Koleksi Buku</h2>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
               {demo ? 'Mode Demo — koneksi Google Sheets belum diatur.' : 'Kelola semua buku di katalog Buka Pintu.'}
             </p>
           </div>
@@ -533,13 +533,13 @@ export default function AdminPanel() {
         <StatsBar books={books} />
 
         {/* Search & Filter */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 mb-6">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm p-5 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
               <input type="text" value={search} onChange={e => setSearch(e.target.value)}
                 placeholder="Cari judul atau penulis..."
-                className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-orange-400 outline-none transition-all text-sm" />
+                className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 bg-white dark:bg-gray-800 outline-none transition-all text-sm" />
             </div>
             <div className="flex gap-2 overflow-x-auto">
               <button onClick={() => setFilterCat('semua')}
@@ -557,7 +557,7 @@ export default function AdminPanel() {
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden">
           {loading ? (
             <div className="flex items-center justify-center py-20">
               <i className="fas fa-spinner fa-spin text-3xl text-orange-400"></i>
