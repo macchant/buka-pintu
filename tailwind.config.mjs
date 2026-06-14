@@ -46,7 +46,7 @@ export default {
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
+        display: ['Lora', 'Georgia', 'serif'],
         heading: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {

@@ -38,6 +38,13 @@ const navLinks = [
           Cari Buku
         </a>
 
+        <!-- Typography Toggle -->
+        <button id="font-toggle" aria-label="Toggle font style"
+          class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110 shadow-sm"
+          title="Toggle font style">
+          <i class="fas fa-font text-sm"></i>
+        </button>
+
         <!-- Dark Mode Toggle -->
         <button id="theme-toggle" aria-label="Toggle dark mode"
           class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110 shadow-sm">
@@ -80,6 +87,7 @@ const navLinks = [
   const mobileMenu = document.getElementById('mobile-menu');
   const navbar = document.getElementById('navbar');
   const themeToggle = document.getElementById('theme-toggle');
+  const fontToggle = document.getElementById('font-toggle');
 
   mobileMenuBtn?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
@@ -104,5 +112,44 @@ const navLinks = [
   themeToggle?.addEventListener('click', () => {
     html.classList.toggle('dark');
     localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  // Typography toggle - switch between Fraunces (old) and Lora (new)
+  const savedFont = localStorage.getItem('fontStyle');
+  if (savedFont === 'classic') {
+    html.classList.add('font-classic');
+    html.classList.remove('font-modern');
+    if (fontToggle) {
+      fontToggle.innerHTML = '<i class="fas fa-pen-fancy text-sm"></i>';
+      fontToggle.title = 'Switch to Modern Font';
+    }
+  } else {
+    html.classList.add('font-modern');
+    html.classList.remove('font-classic');
+    if (fontToggle) {
+      fontToggle.innerHTML = '<i class="fas fa-font text-sm"></i>';
+      fontToggle.title = 'Switch to Classic Font';
+    }
+  }
+
+  fontToggle?.addEventListener('click', () => {
+    const isModern = html.classList.contains('font-modern');
+    if (isModern) {
+      html.classList.remove('font-modern');
+      html.classList.add('font-classic');
+      localStorage.setItem('fontStyle', 'classic');
+      if (fontToggle) {
+        fontToggle.innerHTML = '<i class="fas fa-pen-fancy text-sm"></i>';
+        fontToggle.title = 'Switch to Modern Font';
+      }
+    } else {
+      html.classList.remove('font-classic');
+      html.classList.add('font-modern');
+      localStorage.setItem('fontStyle', 'modern');
+      if (fontToggle) {
+        fontToggle.innerHTML = '<i class="fas fa-font text-sm"></i>';
+        fontToggle.title = 'Switch to Classic Font';
+      }
+    }
   });
 </script>

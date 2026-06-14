@@ -97,3 +97,39 @@
 :focus-visible {
   @apply outline-none ring-2 ring-brand-500 ring-offset-2 dark:ring-offset-gray-900;
 }
+
+/* ==================== */
+/* FONT TOGGLE STYLES  */
+/* ==================== */
+
+/* Modern Style (Default - Plus Jakarta Sans + Lora) */
+.font-modern {
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-modern h1,
+.font-modern h2,
+.font-modern h3,
+.font-modern h4,
+.font-modern h5,
+.font-modern h6,
+.font-modern .font-display {
+  font-family: 'Lora', Georgia, serif;
+}
+
+/* Classic Style (Fraunces + Plus Jakarta Sans) */
+.font-classic {
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-classic h1,
+.font-classic h2,
+.font-classic h3,
+.font-classic h4,
+.font-classic h5,
+.font-classic h6,
+.font-classic .font-display {
+  font-family: 'Fraunces', Georgia, serif;
+}
