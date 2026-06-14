@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buka Pintu - Style Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand Colors - Orange */
+      --brand-50: #FFF7ED;
+      --brand-100: #FFEDD5;
+      --brand-200: #FED7AA;
+      --brand-300: #FDBA74;
+      --brand-400: #FB923C;
+      --brand-500: #F97316;
+      --brand-600: #EA580C;
+      --brand-700: #C2410C;
+      --brand-800: #9A3412;
+      --brand-900: #7C2D12;
+      --brand-950: #431407;
+
+      /* Forest Colors - Green */
+      --forest-50: #F0FDF4;
+      --forest-100: #DCFCE7;
+      --forest-200: #BBF7D0;
+      --forest-300: #86EFAC;
+      --forest-400: #4ADE80;
+      --forest-500: #22C55E;
+      --forest-600: #16A34A;
+      --forest-700: #15803D;
+      --forest-800: #166534;
+      --forest-900: #14532D;
+
+      /* Warm Colors - Yellow */
+      --warm-50: #FFFBEB;
+      --warm-100: #FEF3C7;
+      --warm-200: #FDE68A;
+      --warm-300: #FCD34D;
+      --warm-400: #FBBF24;
+      --warm-500: #F59E0B;
+
+      /* High Contrast Text */
+      --contrast-orange: #DC4A00;
+      --contrast-green: #0D8A3E;
+
+      /* Gray Scale */
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      /* Fonts */
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-display: 'Fraunces', Georgia, serif;
+
+      /* Shadows */
+      --shadow-glow-orange: 0 0 15px rgba(249, 115, 22, 0.3);
+      --shadow-glow-green: 0 0 15px rgba(34, 197, 94, 0.3);
+      --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --shadow-glow-btn: 0 0 20px rgba(249, 115, 22, 0.4), 0 4px 15px rgba(0, 0, 0, 0.1);
+      --shadow-glow-btn-hover: 0 0 30px rgba(249, 115, 22, 0.6), 0 8px 25px rgba(0, 0, 0, 0.15);
+      --shadow-card-lift: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--brand-600), var(--forest-600));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Section */
+    .section {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--brand-100);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section h2 i {
+      color: var(--brand-500);
+    }
+
+    /* Color Grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-box {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .color-swatch {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .color-info {
+      padding: 0.75rem;
+      background: var(--gray-50);
+      font-size: 0.8rem;
+    }
+
+    .color-info code {
+      display: block;
+      color: var(--gray-600);
+      margin-top: 0.25rem;
+    }
+
+    /* Typography */
+    .font-sample {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: var(--gray-50);
+      border-radius: 0.75rem;
+    }
+
+    .font-sample h3 {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .font-sample .big {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .font-sample p {
+      color: var(--gray-600);
+      font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .btn-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-500), var(--forest-600));
+      color: white;
+      box-shadow: var(--shadow-glow-btn);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-btn-hover);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gray-200);
+      color: var(--gray-700);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--brand-400);
+      background: var(--brand-50);
+      color: var(--brand-700);
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      border: 1px solid var(--gray-100);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .card-img {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    .card-body h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+    }
+
+    /* Badges */
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-amber {
+      background: var(--warm-100);
+      color: var(--warm-500);
+    }
+
+    .badge-blue {
+      background: #DBEAFE;
+      color: #2563EB;
+    }
+
+    .badge-emerald {
+      background: var(--forest-100);
+      color: var(--forest-700);
+    }
+
+    .badge-rose {
+      background: #FFE4E6;
+      color: #E11D48;
+    }
+
+    .badge-violet {
+      background: #EDE9FE;
+      color: #7C3AED;
+    }
+
+    .badge-sky {
+      background: #E0F2FE;
+      color: #0284C7;
+    }
+
+    .badge-orange {
+      background: var(--brand-100);
+      color: var(--brand-700);
+    }
+
+    /* Gradient Cards */
+    .gradient-amber { background: linear-gradient(135deg, #F59E0B, #EA580C); }
+    .gradient-blue { background: linear-gradient(135deg, #3B82F6, #06B6D4); }
+    .gradient-emerald { background: linear-gradient(135deg, #10B981, #14B8A6); }
+    .gradient-rose { background: linear-gradient(135deg, #F43F5E, #EC4899); }
+    .gradient-violet { background: linear-gradient(135deg, #8B5CF6, #A855F7); }
+    .gradient-sky { background: linear-gradient(135deg, #0EA5E9, #3B82F6); }
+    .gradient-orange { background: linear-gradient(135deg, #F97316, #EF4444); }
+    .gradient-lime { background: linear-gradient(135deg, #84CC16, #22C55E); }
+
+    /* Code Block */
+    .code-block {
+      background: var(--gray-900);
+      color: #E5E7EB;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      font-family: 'Monaco', 'Consolas', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .code-block .comment {
+      color: #6B7280;
+    }
+
+    .code-block .string {
+      color: #34D399;
+    }
+
+    .code-block .keyword {
+      color: #F472B6;
+    }
+
+    /* Table */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      font-size: 0.9rem;
+    }
+
+    tr:hover {
+      background: var(--gray-50);
+    }
+
+    /* Spacing */
+    .spacing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .spacing-box {
+      background: var(--brand-100);
+      border: 2px solid var(--brand-300);
+      flex-shrink: 0;
+    }
+
+    .spacing-info {
+      font-size: 0.85rem;
+    }
+
+    .spacing-info strong {
+      display: block;
+      color: var(--gray-900);
+    }
+
+    .spacing-info span {
+      color: var(--gray-500);
+    }
+
+    /* Animations */
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .animation-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--gray-50);
+      border-radius: 0.75rem;
+    }
+
+    .animation-box {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--brand-500), var(--forest-600));
+      border-radius: 0.75rem;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .animation-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .animation-item code {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    .animate-bounce-subtle { animation: bounceSubtle 2s ease-in-out infinite; }
+    .animate-glow { animation: glow 2s ease-in-out infinite alternate; }
+    .animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px rgba(249, 115, 22, 0.2); }
+      100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    /* Icons */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+
+    .icon-item {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      color: var(--gray-600);
+    }
+
+    .icon-item span {
+      display: block;
+      font-size: 0.7rem;
+      margin-top: 0.5rem;
+      color: var(--gray-400);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1><i class="fas fa-door-open"></i> Buka Pintu</h1>
+    <p>Style Guide & Design Documentation</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Brand Colors -->
+    <section class="section">
+      <h2><i class="fas fa-palette"></i> Brand Colors</h2>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--gray-600);">Brand Orange</h3>
+      <div class="color-grid" style="margin-bottom: 2rem;">
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-50); color: var(--brand-900);">50</div>
+          <div class="color-info"><strong>50</strong><code>--brand-50</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-100); color: var(--brand-900);">100</div>
+          <div class="color-info"><strong>100</strong><code>--brand-100</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-200); color: var(--brand-900);">200</div>
+          <div class="color-info"><strong>200</strong><code>--brand-200</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-300); color: var(--brand-900);">300</div>
+          <div class="color-info"><strong>300</strong><code>--brand-300</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-400);">400</div>
+          <div class="color-info"><strong>400</strong><code>--brand-400</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-500);">500</div>
+          <div class="color-info"><strong>500</strong><code>--brand-500</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-600);">600</div>
+          <div class="color-info"><strong>600</strong><code>--brand-600</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-700);">700</div>
+          <div class="color-info"><strong>700</strong><code>--brand-700</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-800);">800</div>
+          <div class="color-info"><strong>800</strong><code>--brand-800</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--brand-900);">900</div>
+          <div class="color-info"><strong>900</strong><code>--brand-900</code></div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--gray-600);">Forest Green</h3>
+      <div class="color-grid">
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-400);">400</div>
+          <div class="color-info"><strong>400</strong><code>--forest-400</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-500);">500</div>
+          <div class="color-info"><strong>500</strong><code>--forest-500</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-600);">600</div>
+          <div class="color-info"><strong>600</strong><code>--forest-600</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-700);">700</div>
+          <div class="color-info"><strong>700</strong><code>--forest-700</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-800);">800</div>
+          <div class="color-info"><strong>800</strong><code>--forest-800</code></div>
+        </div>
+        <div class="color-box">
+          <div class="color-swatch" style="background: var(--forest-900);">900</div>
+          <div class="color-info"><strong>900</strong><code>--forest-900</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="section">
+      <h2><i class="fas fa-font"></i> Typography</h2>
+
+      <div class="font-sample">
+        <h3>Display Font - Fraunces</h3>
+        <p class="big" style="font-family: var(--font-display);">Fraunces - ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+        <p>Used for: Headlines, Hero text, Section titles</p>
+        <div class="code-block">
+<span class="keyword">font-family</span>: <span class="string">'Fraunces', Georgia, serif</span>;
+<span class="keyword">font-weight</span>: <span class="string">700-900</span>;
+        </div>
+      </div>
+
+      <div class="font-sample">
+        <h3>Sans Font - Plus Jakarta Sans</h3>
+        <p class="big" style="font-family: var(--font-sans);">Plus Jakarta Sans - ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+        <p>Used for: Body text, UI elements, Navigation</p>
+        <div class="code-block">
+<span class="keyword">font-family</span>: <span class="string">'Plus Jakarta Sans', system-ui, sans-serif</span>;
+<span class="keyword">font-weight</span>: <span class="string">300-800</span>;
+        </div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 1rem;">Font Sizes</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Size</th>
+              <th>Line Height</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>text-xs</code></td>
+              <td>0.75rem / 12px</td>
+              <td>1rem</td>
+              <td>Captions, timestamps</td>
+            </tr>
+            <tr>
+              <td><code>text-sm</code></td>
+              <td>0.875rem / 14px</td>
+              <td>1.25rem</td>
+              <td>Secondary text, labels</td>
+            </tr>
+            <tr>
+              <td><code>text-base</code></td>
+              <td>1rem / 16px</td>
+              <td>1.5rem</td>
+              <td>Body text</td>
+            </tr>
+            <tr>
+              <td><code>text-lg</code></td>
+              <td>1.125rem / 18px</td>
+              <td>1.75rem</td>
+              <td>Lead paragraphs</td>
+            </tr>
+            <tr>
+              <td><code>text-xl</code></td>
+              <td>1.25rem / 20px</td>
+              <td>1.75rem</td>
+              <td>Subheadings</td>
+            </tr>
+            <tr>
+              <td><code>text-2xl</code></td>
+              <td>1.5rem / 24px</td>
+              <td>2rem</td>
+              <td>Section titles</td>
+            </tr>
+            <tr>
+              <td><code>text-3xl</code></td>
+              <td>1.875rem / 30px</td>
+              <td>2.25rem</td>
+              <td>Page headings</td>
+            </tr>
+            <tr>
+              <td><code>text-4xl</code></td>
+              <td>2.25rem / 36px</td>
+              <td>2.5rem</td>
+              <td>Hero subtitles</td>
+            </tr>
+            <tr>
+              <td><code>text-5xl</code></td>
+              <td>3rem / 48px</td>
+              <td>1.1</td>
+              <td>Hero titles</td>
+            </tr>
+            <tr>
+              <td><code>text-6xl</code></td>
+              <td>3.75rem / 60px</td>
+              <td>1</td>
+              <td>Display text</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="section">
+      <h2><i class="fas fa-hand-pointer"></i> Buttons</h2>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Primary Button</h3>
+      <div class="btn-grid" style="margin-bottom: 2rem;">
+        <button class="btn btn-primary btn-lg">
+          <i class="fas fa-book-open"></i> Jelajahi Katalog
+        </button>
+        <button class="btn btn-primary">
+          <i class="fas fa-search"></i> Cari Buku
+        </button>
+        <button class="btn btn-primary btn-sm">
+          <i class="fas fa-book-reader"></i> Baca
+        </button>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Secondary Button</h3>
+      <div class="btn-grid" style="margin-bottom: 2rem;">
+        <button class="btn btn-secondary btn-lg">
+          <i class="fas fa-info-circle"></i> Pelajari Lebih
+        </button>
+        <button class="btn btn-secondary">
+          <i class="fas fa-arrow-right"></i> Lihat Semua
+        </button>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Outline Button</h3>
+      <div class="btn-grid">
+        <button class="btn btn-outline btn-lg">
+          <i class="fas fa-plus"></i> Tambah Buku
+        </button>
+        <button class="btn btn-outline">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+        <button class="btn btn-outline btn-sm">
+          <i class="fas fa-trash"></i> Hapus
+        </button>
+      </div>
+
+      <div class="code-block">
+<span class="comment">/* Primary Button */</span>
+<span class="keyword">.btn-primary</span> {
+  <span class="keyword">background</span>: <span class="string">linear-gradient(135deg, var(--brand-500), var(--forest-600))</span>;
+  <span class="keyword">color</span>: <span class="string">white</span>;
+  <span class="keyword">box-shadow</span>: <span class="string">var(--shadow-glow-btn)</span>;
+  <span class="keyword">border-radius</span>: <span class="string">9999px</span>;
+}
+
+<span class="comment">/* Hover State */</span>
+<span class="keyword">.btn-primary:hover</span> {
+  <span class="keyword">transform</span>: <span class="string">translateY(-2px)</span>;
+  <span class="keyword">box-shadow</span>: <span class="string">var(--shadow-glow-btn-hover)</span>;
+}
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="section">
+      <h2><i class="fas fa-layer-group"></i> Cards</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-img gradient-amber">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="card-body">
+            <h3>Card Title</h3>
+            <p>Card description goes here with some sample text.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-blue">
+            <i class="fas fa-tools"></i>
+          </div>
+          <div class="card-body">
+            <h3>Card Title</h3>
+            <p>Card description goes here with some sample text.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-emerald">
+            <i class="fas fa-gavel"></i>
+          </div>
+          <div class="card-body">
+            <h3>Card Title</h3>
+            <p>Card description goes here with some sample text.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+<span class="comment">/* Card Base */</span>
+<span class="keyword">.card</span> {
+  <span class="keyword">background</span>: <span class="string">white</span>;
+  <span class="keyword">border-radius</span>: <span class="string">1rem</span>;
+  <span class="keyword">border</span>: <span class="string">1px solid var(--gray-100)</span>;
+  <span class="keyword">box-shadow</span>: <span class="string">var(--shadow-card)</span>;
+  <span class="keyword">transition</span>: <span class="string">all 0.3s ease</span>;
+}
+
+<span class="comment">/* Card Hover */</span>
+<span class="keyword">.card:hover</span> {
+  <span class="keyword">transform</span>: <span class="string">translateY(-4px)</span>;
+  <span class="keyword">box-shadow</span>: <span class="string">var(--shadow-card-hover)</span>;
+}
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="section">
+      <h2><i class="fas fa-tags"></i> Badges</h2>
+
+      <div class="badge-grid">
+        <span class="badge badge-amber"><i class="fas fa-star"></i> Unggulan</span>
+        <span class="badge badge-blue"><i class="fas fa-tools"></i> Keterampilan</span>
+        <span class="badge badge-emerald"><i class="fas fa-gavel"></i> Hukum</span>
+        <span class="badge badge-rose"><i class="fas fa-heart"></i> Kesehatan</span>
+        <span class="badge badge-violet"><i class="fas fa-rocket"></i> Wirausaha</span>
+        <span class="badge badge-sky"><i class="fas fa-graduation-cap"></i> Pendidikan</span>
+        <span class="badge badge-orange"><i class="fas fa-book"></i> Pengembangan Diri</span>
+      </div>
+
+      <div class="code-block">
+<span class="comment">/* Badge Colors */</span>
+<span class="keyword">.badge-amber</span> { <span class="keyword">background</span>: <span class="string">var(--warm-100)</span>; <span class="keyword">color</span>: <span class="string">var(--warm-500)</span>; }
+<span class="keyword">.badge-blue</span> { <span class="keyword">background</span>: <span class="string">#DBEAFE</span>; <span class="keyword">color</span>: <span class="string">#2563EB</span>; }
+<span class="keyword">.badge-emerald</span> { <span class="keyword">background</span>: <span class="string">var(--forest-100)</span>; <span class="keyword">color</span>: <span class="string">var(--forest-700)</span>; }
+<span class="keyword">.badge-rose</span> { <span class="keyword">background</span>: <span class="string">#FFE4E6</span>; <span class="keyword">color</span>: <span class="string">#E11D48</span>; }
+<span class="keyword">.badge-violet</span> { <span class="keyword">background</span>: <span class="string">#EDE9FE</span>; <span class="keyword">color</span>: <span class="string">#7C3AED</span>; }
+<span class="keyword">.badge-sky</span> { <span class="keyword">background</span>: <span class="string">#E0F2FE</span>; <span class="keyword">color</span>: <span class="string">#0284C7</span>; }
+      </div>
+    </section>
+
+    <!-- Gradient Cards -->
+    <section class="section">
+      <h2><i class="fas fa-paint-brush"></i> Gradient Palettes</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-img gradient-amber"><i class="fas fa-sun"></i></div>
+          <div class="card-body">
+            <code>from-amber-500 to-orange-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-blue"><i class="fas fa-water"></i></div>
+          <div class="card-body">
+            <code>from-blue-500 to-cyan-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-emerald"><i class="fas fa-leaf"></i></div>
+          <div class="card-body">
+            <code>from-emerald-500 to-teal-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-rose"><i class="fas fa-heart"></i></div>
+          <div class="card-body">
+            <code>from-rose-500 to-pink-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-violet"><i class="fas fa-magic"></i></div>
+          <div class="card-body">
+            <code>from-violet-500 to-purple-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-sky"><i class="fas fa-cloud"></i></div>
+          <div class="card-body">
+            <code>from-sky-500 to-blue-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-orange"><i class="fas fa-fire"></i></div>
+          <div class="card-body">
+            <code>from-orange-500 to-red-600</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img gradient-lime"><i class="fas fa-seedling"></i></div>
+          <div class="card-body">
+            <code>from-lime-500 to-green-600</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animations -->
+    <section class="section">
+      <h2><i class="fas fa-wave-square"></i> Animations</h2>
+
+      <div class="animation-grid">
+        <div class="animation-item">
+          <div class="animation-box animate-float"><i class="fas fa-feather"></i></div>
+          <h4>Float</h4>
+          <code>animate-float</code>
+        </div>
+        <div class="animation-item">
+          <div class="animation-box animate-bounce-subtle"><i class="fas fa-arrows-alt-v"></i></div>
+          <h4>Bounce Subtle</h4>
+          <code>animate-bounce-subtle</code>
+        </div>
+        <div class="animation-item">
+          <div class="animation-box animate-glow"><i class="fas fa-lightbulb"></i></div>
+          <h4>Glow</h4>
+          <code>animate-glow</code>
+        </div>
+        <div class="animation-item">
+          <div class="animation-box animate-wiggle"><i class="fas fa-sync"></i></div>
+          <h4>Wiggle</h4>
+          <code>animate-wiggle</code>
+        </div>
+      </div>
+
+      <div class="code-block">
+<span class="comment">/* Animation Classes */</span>
+<span class="keyword">.animate-float</span> { <span class="keyword">animation</span>: <span class="string">float 4s ease-in-out infinite</span>; }
+<span class="keyword">.animate-bounce-subtle</span> { <span class="keyword">animation</span>: <span class="string">bounceSubtle 2s ease-in-out infinite</span>; }
+<span class="keyword">.animate-glow</span> { <span class="keyword">animation</span>: <span class="string">glow 2s ease-in-out infinite alternate</span>; }
+<span class="keyword">.animate-wiggle</span> { <span class="keyword">animation</span>: <span class="string">wiggle 1s ease-in-out infinite</span>; }
+<span class="keyword">.animate-fade-in</span> { <span class="keyword">animation</span>: <span class="string">fadeIn 0.5s ease-out</span>; }
+<span class="keyword">.animate-slide-up</span> { <span class="keyword">animation</span>: <span class="string">slideUp 0.6s ease-out</span>; }
+<span class="keyword">.animate-scale-in</span> { <span class="keyword">animation</span>: <span class="string">scaleIn 0.3s ease-out</span>; }
+      </div>
+    </section>
+
+    <!-- Spacing -->
+    <section class="section">
+      <h2><i class="fas fa-ruler-combined"></i> Spacing</h2>
+
+      <div class="spacing-grid">
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 4px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-1 / 0.25rem</strong>
+            <span>4px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 8px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-2 / 0.5rem</strong>
+            <span>8px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 12px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-3 / 0.75rem</strong>
+            <span>12px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 16px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-4 / 1rem</strong>
+            <span>16px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 20px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-5 / 1.25rem</strong>
+            <span>20px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 24px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-6 / 1.5rem</strong>
+            <span>24px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 32px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-8 / 2rem</strong>
+            <span>32px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 48px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-12 / 3rem</strong>
+            <span>48px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 64px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-16 / 4rem</strong>
+            <span>64px</span>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 96px; height: 40px;"></div>
+          <div class="spacing-info">
+            <strong>px-24 / 6rem</strong>
+            <span>96px</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin: 2rem 0 1rem;">Section Padding</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Vertical Padding</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>py-16 lg:py-20</code></td>
+              <td>4rem - 5rem</td>
+              <td>Compact sections</td>
+            </tr>
+            <tr>
+              <td><code>py-20 lg:py-28</code></td>
+              <td>5rem - 7rem</td>
+              <td>Standard sections</td>
+            </tr>
+            <tr>
+              <td><code>py-24 lg:py-32</code></td>
+              <td>6rem - 8rem</td>
+              <td>Hero sections</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Icons -->
+    <section class="section">
+      <h2><i class="fas fa-icons"></i> Icons (Font Awesome 6.5)</h2>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Book & Library</h3>
+      <div class="icon-grid" style="margin-bottom: 2rem;">
+        <div class="icon-item"><i class="fas fa-book"></i><span>book</span></div>
+        <div class="icon-item"><i class="fas fa-book-open"></i><span>book-open</span></div>
+        <div class="icon-item"><i class="fas fa-book-reader"></i><span>book-reader</span></div>
+        <div class="icon-item"><i class="fas fa-bookmark"></i><span>bookmark</span></div>
+        <div class="icon-item"><i class="fas fa-file-pdf"></i><span>file-pdf</span></div>
+        <div class="icon-item"><i class="fas fa-file-lines"></i><span>file-lines</span></div>
+        <div class="icon-item"><i class="fas fa-graduation-cap"></i><span>graduation-cap</span></div>
+        <div class="icon-item"><i class="fas fa-library"></i><span>library</span></div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Category Icons</h3>
+      <div class="icon-grid" style="margin-bottom: 2rem;">
+        <div class="icon-item"><i class="fas fa-brain"></i><span>brain</span></div>
+        <div class="icon-item"><i class="fas fa-tools"></i><span>tools</span></div>
+        <div class="icon-item"><i class="fas fa-gavel"></i><span>gavel</span></div>
+        <div class="icon-item"><i class="fas fa-heart"></i><span>heart</span></div>
+        <div class="icon-item"><i class="fas fa-rocket"></i><span>rocket</span></div>
+        <div class="icon-item"><i class="fas fa-briefcase"></i><span>briefcase</span></div>
+        <div class="icon-item"><i class="fas fa-handshake"></i><span>handshake</span></div>
+        <div class="icon-item"><i class="fas fa-users"></i><span>users</span></div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">UI Icons</h3>
+      <div class="icon-grid">
+        <div class="icon-item"><i class="fas fa-search"></i><span>search</span></div>
+        <div class="icon-item"><i class="fas fa-filter"></i><span>filter</span></div>
+        <div class="icon-item"><i class="fas fa-arrow-right"></i><span>arrow-right</span></div>
+        <div class="icon-item"><i class="fas fa-arrow-left"></i><span>arrow-left</span></div>
+        <div class="icon-item"><i class="fas fa-chevron-down"></i><span>chevron-down</span></div>
+        <div class="icon-item"><i class="fas fa-chevron-up"></i><span>chevron-up</span></div>
+        <div class="icon-item"><i class="fas fa-star"></i><span>star</span></div>
+        <div class="icon-item"><i class="fas fa-heart"></i><span>heart</span></div>
+        <div class="icon-item"><i class="fas fa-eye"></i><span>eye</span></div>
+        <div class="icon-item"><i class="fas fa-download"></i><span>download</span></div>
+        <div class="icon-item"><i class="fas fa-cog"></i><span>cog</span></div>
+        <div class="icon-item"><i class="fas fa-moon"></i><span>moon</span></div>
+        <div class="icon-item"><i class="fas fa-sun"></i><span>sun</span></div>
+        <div class="icon-item"><i class="fas fa-bars"></i><span>bars</span></div>
+        <div class="icon-item"><i class="fas fa-times"></i><span>times</span></div>
+        <div class="icon-item"><i class="fas fa-check-circle"></i><span>check-circle</span></div>
+      </div>
+    </section>
+
+    <!-- Shadows -->
+    <section class="section">
+      <h2><i class="fas fa-cube"></i> Shadows</h2>
+
+      <div class="card-grid">
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-card);">
+          <strong>Card Shadow</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-card</code>
+        </div>
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-card-hover);">
+          <strong>Card Hover</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-card-hover</code>
+        </div>
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-glow-btn);">
+          <strong>Glow Button</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-glow-btn</code>
+        </div>
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-glow-orange);">
+          <strong>Glow Orange</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-glow-orange</code>
+        </div>
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-glow-green);">
+          <strong>Glow Green</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-glow-green</code>
+        </div>
+        <div style="padding: 2rem; text-align: center; background: white; border-radius: 0.75rem; box-shadow: var(--shadow-card-lift);">
+          <strong>Card Lift</strong>
+          <code style="display: block; margin-top: 0.5rem; font-size: 0.75rem;">shadow-card-lift</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dark Mode -->
+    <section class="section">
+      <h2><i class="fas fa-moon"></i> Dark Mode</h2>
+
+      <p style="margin-bottom: 1.5rem; color: var(--gray-600);">Dark mode uses <code>dark:</code> prefix for all color utilities.</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Light Mode</th>
+              <th>Dark Mode</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>bg-white</code></td>
+              <td><code>dark:bg-gray-900</code></td>
+              <td>Main background</td>
+            </tr>
+            <tr>
+              <td><code>bg-gray-50</code></td>
+              <td><code>dark:bg-gray-800</code></td>
+              <td>Section background</td>
+            </tr>
+            <tr>
+              <td><code>text-gray-900</code></td>
+              <td><code>dark:text-gray-100</code></td>
+              <td>Primary text</td>
+            </tr>
+            <tr>
+              <td><code>text-gray-500</code></td>
+              <td><code>dark:text-gray-400</code></td>
+              <td>Secondary text</td>
+            </tr>
+            <tr>
+              <td><code>border-gray-100</code></td>
+              <td><code>dark:border-gray-700</code></td>
+              <td>Borders</td>
+            </tr>
+            <tr>
+              <td><code>bg-brand-50</code></td>
+              <td><code>dark:bg-brand-900/30</code></td>
+              <td>Brand highlights</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="code-block">
+<span class="comment">/* Dark Mode Toggle Script */</span>
+<span class="keyword">const</span> html = document.documentElement;
+<span class="keyword">const</span> savedTheme = localStorage.getItem(<span class="string">'theme'</span>);
+
+<span class="keyword">if</span> (savedTheme === <span class="string">'dark'</span> || (!savedTheme && window.matchMedia(<span class="string">'(prefers-color-scheme: dark)'</span>).matches)) {
+  html.classList.add(<span class="string">'dark'</span>);
+}
+
+themeToggle?.addEventListener(<span class="string">'click'</span>, () => {
+  html.classList.toggle(<span class="string">'dark'</span>);
+  localStorage.setItem(<span class="string">'theme'</span>, html.classList.contains(<span class="string">'dark'</span>) ? <span class="string">'dark'</span> : <span class="string">'light'</span>);
+});
+      </div>
+    </section>
+
+    <!-- Breakpoints -->
+    <section class="section">
+      <h2><i class="fas fa-columns"></i> Breakpoints</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>Min Width</th>
+              <th>Device</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>sm:</code></td>
+              <td>640px</td>
+              <td>Small tablets (Landscape phones)</td>
+            </tr>
+            <tr>
+              <td><code>md:</code></td>
+              <td>768px</td>
+              <td>Tablets</td>
+            </tr>
+            <tr>
+              <td><code>lg:</code></td>
+              <td>1024px</td>
+              <td>Laptops</td>
+            </tr>
+            <tr>
+              <td><code>xl:</code></td>
+              <td>1280px</td>
+              <td>Desktops</td>
+            </tr>
+            <tr>
+              <td><code>2xl:</code></td>
+              <td>1536px</td>
+              <td>Large desktops</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <p>Buka Pintu Style Guide &copy; 2024 | Built with Tailwind CSS + Astro</p>
+  </footer>
+
+</body>
+</html>
