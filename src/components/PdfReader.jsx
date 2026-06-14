@@ -8,6 +8,7 @@ const PDFjsViewer = ({ url }) => {
       className="w-full h-full border-0"
       title="PDF Reader"
       allow="fullscreen"
+      onLoad={() => {}}
     />
   );
 };
@@ -36,6 +37,7 @@ const GoogleDriveViewer = ({ url }) => {
         className="w-full h-full border-0"
         title="Google Drive PDF Viewer"
         allow="fullscreen; autoplay"
+        sandbox="allow-scripts allow-same-origin allow-forms"
       />
     );
   }
@@ -48,6 +50,7 @@ const GoogleDriveViewer = ({ url }) => {
       className="w-full h-full border-0"
       title="PDF Viewer"
       allow="fullscreen"
+      sandbox="allow-scripts allow-same-origin"
     />
   );
 };
@@ -110,7 +113,16 @@ export default function PdfReader({ book, onClose }) {
     <div
       className="fixed inset-0 z-[100] bg-gray-900/95 backdrop-blur-sm flex flex-col"
       ref={modalRef}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onClick={(e) => {
+        // Only close if clicking the backdrop (not the content)
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+      onKeyDown={(e) => {
+        // Prevent keyboard events from propagating to parent
+        e.stopPropagation();
+      }}
     >
       {/* Top Bar */}
       <div className="bg-gray-900 border-b border-gray-700 px-4 py-3 flex items-center justify-between gap-4 flex-shrink-0">
