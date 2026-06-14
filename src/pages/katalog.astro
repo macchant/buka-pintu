@@ -1,126 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import KatalogClient from '../components/KatalogClient.jsx';
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_utnwESs_l3n6KFjnPsSmCAyWJjKdE9GEEi7nh3_5uChTuvfwSGeLXvnM6MLl3bzn/exec';
 ---
 
-<Layout title="Katalog - Coming Soon">
+<Layout title="Katalog">
 
-  <!-- Coming Soon Hero -->
-  <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-green-500 rounded-full blur-3xl"></div>
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-orange-600 via-orange-500 to-green-600 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
     </div>
-
-    <!-- Floating book icons -->
-    <div class="absolute top-20 left-10 text-6xl opacity-10 animate-float">
-      <i class="fas fa-book"></i>
-    </div>
-    <div class="absolute top-32 right-20 text-5xl opacity-10 animate-float" style="animation-delay: 0.5s">
-      <i class="fas fa-book-open"></i>
-    </div>
-    <div class="absolute bottom-40 left-20 text-4xl opacity-10 animate-float" style="animation-delay: 1s">
-      <i class="fas fa-bookmark"></i>
-    </div>
-    <div class="absolute bottom-20 right-10 text-6xl opacity-10 animate-float" style="animation-delay: 1.5s">
-      <i class="fas fa-graduation-cap"></i>
-    </div>
-
-    <div class="relative max-w-4xl mx-auto px-6 text-center">
-      <!-- Icon -->
-      <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-green-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-orange-500/30 animate-float">
-        <i class="fas fa-book-open text-white text-4xl"></i>
-      </div>
-
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/30 rounded-full text-sm font-semibold text-orange-300 mb-6">
-        <i class="fas fa-clock"></i>
-        Segera Hadir
-      </div>
-
-      <!-- Title -->
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold mb-6 leading-tight">
-        Katalog Buku<br>
-        <span class="bg-gradient-to-r from-orange-400 to-green-400 bg-clip-text text-transparent">Sedang Disiapkan</span>
-      </h1>
-
-      <!-- Description -->
-      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-        Kami sedang bekerja keras untuk menghadirkan koleksi buku digital yang lengkap dan berkualitas.
-        Nikmati akses ke ribuan buku gratis tentang pengembangan diri, keterampilan kerja, hukum, dan lainnya.
-      </p>
-
-      <!-- Progress indicator -->
-      <div class="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8 max-w-lg mx-auto mb-10">
-        <div class="flex items-center justify-center gap-3 mb-4">
-          <div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-          <div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
-          <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <nav class="text-sm text-white/60 mb-4">
+        <a href="/" class="hover:text-white transition">Beranda</a>
+        <span class="mx-2">/</span>
+        <span class="text-white font-medium">Katalog</span>
+      </nav>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-display font-extrabold mb-3">Katalog Buku</h1>
+          <p class="text-white/80 text-lg">Temukan pengetahuan yang tepat untuk membangun hidup baru Anda.</p>
         </div>
-        <p class="text-gray-400 text-sm">Tim kami sedang dalam proses development</p>
-      </div>
-
-      <!-- Features Preview -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10">
-        <div class="text-center p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <i class="fas fa-search text-orange-400 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-sm mb-1">Pencarian Cerdas</h3>
-          <p class="text-gray-500 text-xs">Temukan buku dengan cepat</p>
+        <div class="bg-white/15 backdrop-blur border border-white/20 rounded-2xl px-6 py-4 text-center flex-shrink-0">
+          <div class="text-3xl font-extrabold" id="book-count">...</div>
+          <div class="text-sm text-white/70">Judul Buku Gratis</div>
         </div>
-        <div class="text-center p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <i class="fas fa-filter text-green-400 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-sm mb-1">Filter Kategori</h3>
-          <p class="text-gray-500 text-xs">Filter sesuai kebutuhan</p>
-        </div>
-        <div class="text-center p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <i class="fas fa-mobile-alt text-blue-400 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-sm mb-1">Mobile Friendly</h3>
-          <p class="text-gray-500 text-xs">Akses dari mana saja</p>
-        </div>
-      </div>
-
-      <!-- Stats Preview -->
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-10">
-        <div class="text-center p-4 bg-white/5 rounded-2xl border border-white/10">
-          <div class="text-2xl font-bold text-orange-400">2,500+</div>
-          <div class="text-xs text-gray-500 mt-1">Judul Buku</div>
-        </div>
-        <div class="text-center p-4 bg-white/5 rounded-2xl border border-white/10">
-          <div class="text-2xl font-bold text-green-400">6</div>
-          <div class="text-xs text-gray-500 mt-1">Kategori</div>
-        </div>
-        <div class="text-center p-4 bg-white/5 rounded-2xl border border-white/10">
-          <div class="text-2xl font-bold text-white">100%</div>
-          <div class="text-xs text-gray-500 mt-1">Gratis</div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-green-600 text-white font-bold rounded-full hover:shadow-lg hover:-translate-y-1 transition-all">
-          <i class="fas fa-home"></i>
-          Kembali ke Beranda
-        </a>
-        <a href="/admin" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
-          <i class="fas fa-cog"></i>
-          Panel Admin
-        </a>
-      </div>
-
-      <!-- Contact -->
-      <div class="text-gray-500 text-sm mt-10">
-        <p>Ada pertanyaan? Hubungi kami di</p>
-        <a href="mailto:info@bukapintu.org" class="text-orange-400 hover:text-orange-300 transition">
-          info@bukapintu.org
-        </a>
       </div>
     </div>
   </section>
+
+  <!-- React Catalog (client-side fetch from Google Sheets) -->
+  <KatalogClient
+    apiUrl={GOOGLE_SCRIPT_URL}
+    client:load
+  />
 
 </Layout>
