@@ -192,8 +192,8 @@ export default function PdfReader({ book, onClose }) {
       <div className="flex-1 flex min-h-0">
         {activeTab === 'pdf' ? (
           <div className="flex-1 flex flex-col min-h-0">
-            {/* Loading overlay */}
-            {loading && (
+            {/* Only show loading if there's actually a PDF to load */}
+            {loading && pdfUrl && pdfUrl !== '#' ? (
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-900/80">
                 <div className="text-center">
                   <div className="w-16 h-16 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin mx-auto mb-4"></div>
@@ -201,7 +201,7 @@ export default function PdfReader({ book, onClose }) {
                   <p className="text-gray-600 text-xs mt-1">Pastikan tautan PDF bersifat publik</p>
                 </div>
               </div>
-            )}
+            ) : null}
 
             {/* Error state */}
             {error ? (
