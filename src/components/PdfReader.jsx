@@ -251,17 +251,25 @@ export default function PdfReader({ book, onClose }) {
                   <div className="flex-1 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <i className="fas fa-lock text-gray-500 text-3xl"></i>
+                        <i className="fas fa-book text-gray-500 text-3xl"></i>
                       </div>
-                      <h3 className="text-white font-bold text-xl mb-3">PDF Belum Tersedia</h3>
+                      <h3 className="text-white font-bold text-xl mb-3">Preview Buku</h3>
                       <p className="text-gray-400 text-sm mb-6 max-w-sm">
-                        Buku ini belum memiliki tautan PDF. Hubungi admin untuk menambahkan file.
+                        PDF belum tersedia untuk buku ini. Silakan buka katalog untuk melihat buku lain yang tersedia.
                       </p>
-                      <a href="/admin" target="_blank"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-all">
-                        <i className="fas fa-cog"></i>
-                        Kelola di Panel Admin
-                      </a>
+                      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                        <button
+                          onClick={onClose}
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 text-white font-semibold rounded-xl hover:bg-gray-600 transition-all">
+                          <i className="fas fa-arrow-left"></i>
+                          Kembali
+                        </button>
+                        <a href="/katalog" target="_blank"
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-all">
+                          <i className="fas fa-book"></i>
+                          Lihat Katalog
+                        </a>
+                      </div>
                     </div>
                   </div>
                 )}
