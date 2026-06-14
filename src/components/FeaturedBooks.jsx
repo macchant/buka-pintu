@@ -11,8 +11,8 @@ const GRADIENTS = [
   'from-lime-500 to-green-600',
 ];
 
-// Google Apps Script API URL - Replace with your current Web App URL
-const API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+// Google Apps Script API URL
+const API_URL = 'https://script.google.com/macros/s/AKfycby_utnwESs_l3n6KFjnPsSmCAyWJjKdE9GEEi7nh3_5uChTuvfwSGeLXvnM6MLl3bzn/exec';
 
 // Fallback featured books (local data)
 const FALLBACK_BOOKS = [
