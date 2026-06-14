@@ -11,8 +11,18 @@ const GRADIENTS = [
   'from-lime-500 to-green-600',
 ];
 
-// Google Apps Script API URL
-const API_URL = 'https://script.google.com/macros/s/AKfycby_utnwESs_l3n6KFjnPsSmCAyWJjKdE9GEEi7nh3_5uChTuvfwSGeLXvnM6MLl3bzn/exec';
+// Google Apps Script API URL - Replace with your current Web App URL
+const API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// Fallback featured books (local data)
+const FALLBACK_BOOKS = [
+  { id: '1', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pages: '198', featured: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
+  { id: '2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina', year: '2021', category: 'hukum', pages: '180', featured: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
+  { id: '3', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha', author: 'Budi Santoso', year: '2022', category: 'kisah-inspiratif', pages: '212', featured: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
+  { id: '4', title: 'Keterampilan Digital untuk UMKM', author: 'Tim Buka Pintu', year: '2023', category: 'keterampilan', pages: '156', featured: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
+  { id: '5', title: 'Dasar-dasar营销 untuk Pemula', author: 'Sarah Wijaya', year: '2023', category: 'wirausaha', pages: '134', featured: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
+  { id: '6', title: 'Mengelola Keuangan Keluarga', author: 'Dian Pratama', year: '2022', category: 'pengembangan-diri', pages: '98', featured: 'Ya', gradientFrom: 'from-sky-500', gradientTo: 'to-blue-600' },
+];
 
 export default function FeaturedBooks() {
   const [books, setBooks] = useState([]);
@@ -21,25 +31,29 @@ export default function FeaturedBooks() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    fetch(`${API_URL}?action=list`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.books && data.books.length > 0) {
-          // Filter featured books and limit to 8
-          const featured = data.books
-            .filter(b => b.featured === 'Ya' || b.featured === '1')
-            .slice(0, 8);
-          setBooks(featured);
-          // Staggered reveal
-          featured.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleBooks(prev => [...prev, featured[index]]);
-            }, index * 100);
-          });
-        }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    // Use fallback data immediately
+    const featured = FALLBACK_BOOKS.filter(b => b.featured === 'Ya').slice(0, 8);
+    setBooks(featured);
+    setVisibleBooks(featured);
+    setLoading(false);
+
+    // Try to fetch from API (optional - won't block UI)
+    if (API_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+      fetch(`${API_URL}?action=list`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.books && data.books.length > 0) {
+            const apiFeatured = data.books
+              .filter(b => b.featured === 'Ya' || b.featured === '1')
+              .slice(0, 8);
+            setBooks(apiFeatured);
+            setVisibleBooks(apiFeatured);
+          }
+        })
+        .catch(() => {
+          // Silently fail - we already have fallback data
+        });
+    }
   }, []);
 
   // Intersection Observer for scroll animations
