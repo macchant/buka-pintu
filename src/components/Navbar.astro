@@ -16,7 +16,7 @@ const navLinks = [
           <i class="fas fa-door-open text-white text-lg"></i>
         </div>
         <div>
-          <span class="font-display font-bold text-xl text-gray-900 dark:text-white leading-none tracking-tight">Buka<span class="text-brand-600 dark:text-brand-400">Pintu</span></span>
+          <span class="font-display font-bold text-2xl text-gray-900 dark:text-white leading-none tracking-tight">Buka<span class="text-brand-600 dark:text-brand-400">Pintu</span></span>
           <span class="block text-[9px] text-gray-400 dark:text-gray-500 font-sans font-normal uppercase tracking-[0.15em] mt-0.5">Perpustakaan Digital</span>
         </div>
       </a>
@@ -25,7 +25,7 @@ const navLinks = [
       <div class="hidden md:flex items-center gap-2">
         {navLinks.map((link) => (
           <a href={link.href}
-             class="px-4 py-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-700 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-gray-800 transition-all">
+             class="px-4 py-2 rounded-full text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-brand-700 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-gray-800 transition-all">
             {link.name}
           </a>
         ))}
@@ -106,3 +106,5 @@ const navLinks = [
     localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
   });
 </script>
+
+

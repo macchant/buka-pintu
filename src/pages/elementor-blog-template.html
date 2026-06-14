@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huasourcing Blog Post Template — Elementor Ready</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-dark: #0F172A;
+    --brand-blue: #1E40AF;
+    --brand-light: #3B82F6;
+    --brand-accent: #F59E0B;
+    --brand-green: #10B981;
+    --brand-red: #EF4444;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --bg-light: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ===== SIDEBAR NAV ===== */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--brand-dark);
+    color: white;
+    overflow-y: auto;
+    padding: 24px 0;
+    z-index: 100;
+  }
+
+  .sidebar-logo {
+    font-weight: 800;
+    font-size: 18px;
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .sidebar-logo span { color: var(--brand-accent); }
+
+  .sidebar-section {
+    padding: 0 12px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    margin-bottom: 4px;
+  }
+
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    background: rgba(255,255,255,0.08);
+    color: white;
+  }
+
+  .sidebar a .num {
+    background: rgba(255,255,255,0.1);
+    color: var(--brand-accent);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .sidebar a.active { color: var(--brand-accent); }
+
+  /* ===== MAIN CONTENT ===== */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* ===== TEMPLATE HEADER ===== */
+  .template-header {
+    background: var(--brand-dark);
+    color: white;
+    padding: 48px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .template-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .template-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: var(--brand-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .template-header h1 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .template-header h1 span { color: var(--brand-accent); }
+
+  .template-header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .template-header-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .template-header-stats .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .template-header-stats .stat .value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--brand-accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .template-header-stats .stat .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ===== MAIN CONTENT AREA ===== */
+  .content-area {
+    padding: 48px 60px;
+    max-width: 1100px;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-light);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .section-label .step-num {
+    background: var(--brand-blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-label .step-num.green { background: var(--brand-green); }
+  .section-label .step-num.accent { background: var(--brand-accent); color: var(--brand-dark); }
+  .section-label .step-num.red { background: var(--brand-red); }
+
+  .section-label span {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  .section-body {
+    padding: 28px;
+  }
+
+  /* ===== ELEMENTOR WIDGET REFERENCE ===== */
+  .widget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .widget-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--bg-light);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .widget-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .widget-icon.blue { background: #DBEAFE; color: var(--brand-blue); }
+  .widget-icon.green { background: #D1FAE5; color: #059669; }
+  .widget-icon.amber { background: #FEF3C7; color: #D97706; }
+  .widget-icon.red { background: #FEE2E2; color: #DC2626; }
+  .widget-icon.purple { background: #EDE9FE; color: #7C3AED; }
+  .widget-icon.cyan { background: #CFFAFE; color: #0891B2; }
+
+  .widget-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+
+  .widget-info p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ===== CODE / SETTINGS BLOCK ===== */
+  .setting-block {
+    background: #0F172A;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1.8;
+  }
+
+  .setting-block .key {
+    color: #7DD3FC;
+  }
+
+  .setting-block .val {
+    color: #86EFAC;
+  }
+
+  .setting-block .comment {
+    color: #64748B;
+    font-style: italic;
+  }
+
+  .setting-block .highlight {
+    color: #FCD34D;
+  }
+
+  /* ===== BLOG POST PREVIEW ===== */
+  .blog-preview {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .blog-preview-header {
+    background: var(--brand-dark);
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .blog-preview-breadcrumb {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+
+  .blog-preview-breadcrumb a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+  }
+
+  .blog-preview-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .blog-preview-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .blog-preview-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .blog-preview-body {
+    padding: 32px;
+  }
+
+  .blog-preview-hero {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(135deg, #1E3A5F 0%, #0F172A 100%);
+    border-radius: 8px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-preview-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .blog-preview-hero-text {
+    position: relative;
+    z-index: 1;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .blog-preview-hero-text span {
+    display: block;
+    font-size: 10px;
+    margin-top: 4px;
+    opacity: 0.6;
+  }
+
+  .blog-preview-toc {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+
+  .blog-preview-toc-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .blog-preview-toc ol {
+    padding-left: 20px;
+  }
+
+  .blog-preview-toc li {
+    font-size: 13px;
+    color: var(--brand-blue);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .blog-preview-toc li a {
+    color: var(--brand-blue);
+    text-decoration: none;
+  }
+
+  .blog-preview-toc li a:hover {
+    color: var(--brand-light);
+    text-decoration: underline;
+  }
+
+  .blog-preview-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .blog-preview-intro strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .blog-preview-h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 32px 0 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    letter-spacing: -0.3px;
+  }
+
+  .blog-preview-h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+  }
+
+  .blog-preview-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .blog-preview-list {
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  .blog-preview-list li {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .blog-preview-list li::marker {
+    color: var(--brand-blue);
+  }
+
+  /* ===== CALLOUT BOX ===== */
+  .callout-box {
+    background: #EFF6FF;
+    border-left: 4px solid var(--brand-blue);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .callout-box.warning {
+    background: #FFFBEB;
+    border-left-color: var(--brand-accent);
+  }
+
+  .callout-box.danger {
+    background: #FEF2F2;
+    border-left-color: var(--brand-red);
+  }
+
+  .callout-box.success {
+    background: #F0FDF4;
+    border-left-color: var(--brand-green);
+  }
+
+  .callout-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .callout-text strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  /* ===== ADSENSE AD PLACEHOLDER ===== */
+  .ad-placeholder {
+    border: 2px dashed #CBD5E1;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    margin: 24px 0;
+    background: #F8FAFC;
+    position: relative;
+  }
+
+  .ad-placeholder::before {
+    content: 'AD SLOT';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #CBD5E1;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .ad-placeholder .ad-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .ad-placeholder:hover .ad-info { opacity: 1; }
+
+  .ad-placeholder .ad-info span {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* ===== FAQ SECTION ===== */
+  .faq-section {
+    background: var(--bg-light);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 32px;
+  }
+
+  .faq-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-q {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .faq-q::before {
+    content: 'Q';
+    background: var(--brand-blue);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .faq-a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 28px;
+  }
+
+  /* ===== CTA BOX ===== */
+  .cta-box {
+    background: linear-gradient(135deg, #1E3A5F, #0F172A);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin: 32px 0;
+    color: white;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .cta-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--brand-accent);
+    color: var(--brand-dark);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #FBBF24;
+    transform: translateY(-1px);
+  }
+
+  /* ===== CHECKLIST ===== */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li .check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #D1FAE5;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .checklist li .check.important {
+    background: #FEF3C7;
+    color: #D97706;
+  }
+
+  .checklist li .check.critical {
+    background: #FEE2E2;
+    color: #DC2626;
+  }
+
+  /* ===== TIP BOX ===== */
+  .tip-box {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+
+  .tip-box .tip-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #059669;
+    margin-bottom: 6px;
+  }
+
+  .tip-box p {
+    font-size: 13px;
+    color: #065F46;
+    line-height: 1.6;
+  }
+
+  /* ===== PRINT BUTTON ===== */
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--brand-dark);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    z-index: 200;
+  }
+
+  .print-btn:hover {
+    background: var(--brand-blue);
+    transform: translateY(-2px);
+  }
+
+  @media print {
+    .sidebar, .print-btn { display: none; }
+    .main { margin-left: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .template-header { padding: 32px 24px; }
+    .content-area { padding: 24px; }
+    .widget-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">Hua<span>Sourcing</span></div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Setup</div>
+    <a href="#section1" class="active">
+      <span class="num">01</span> Featured Image
+    </a>
+    <a href="#section2">
+      <span class="num">02</span> Title & Meta
+    </a>
+    <a href="#section3">
+      <span class="num">03</span> Table of Contents
+    </a>
+    <a href="#section4">
+      <span class="num">04</span> Intro Paragraph
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Content Body</div>
+    <a href="#section5">
+      <span class="num">05</span> H2 Headings
+    </a>
+    <a href="#section6">
+      <span class="num">06</span> Callout Boxes
+    </a>
+    <a href="#section7">
+      <span class="num">07</span> Lists & Tables
+    </a>
+    <a href="#section8">
+      <span class="num">08</span> Images
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Bottom</div>
+    <a href="#section9">
+      <span class="num">09</span> FAQ Section
+    </a>
+    <a href="#section10">
+      <span class="num">10</span> CTA Box
+    </a>
+    <a href="#section11">
+      <span class="num">11</span> Ad Placement
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Checklist</div>
+    <a href="#checklist">
+      <span class="num">✓</span> Pre-Publish Checklist
+    </a>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+
+  <!-- ===== TEMPLATE HEADER ===== -->
+  <div class="template-header">
+    <div class="template-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      Elementor WordPress Template
+    </div>
+    <h1>Blog Post <span>Template</span><br>for Huasourcing</h1>
+    <p>Follow this exact structure for every blog post. Each section maps to an Elementor widget. Copy, paste, and replace the placeholder content.</p>
+
+    <div class="template-header-stats">
+      <div class="stat">
+        <div class="value">11</div>
+        <div class="label">Elementor Sections</div>
+      </div>
+      <div class="stat">
+        <div class="value">25+</div>
+        <div class="label">Widgets Used</div>
+      </div>
+      <div class="stat">
+        <div class="value">1,500+</div>
+        <div class="label">Target Words</div>
+      </div>
+      <div class="stat">
+        <div class="value">3</div>
+        <div class="label">Ad Placements</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- ===== SECTION 1: FEATURED IMAGE ===== -->
+    <div class="section" id="section1">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num">1</div>
+          Featured Image
+          <span>— Hero visual at top of post</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">I</div>
+            <div class="widget-info">
+              <h4>Elementor Image Box Widget</h4>
+              <p>Use Image Box — set image as background with overlay. Or use a regular Image widget above the post content.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">S</div>
+            <div class="widget-info">
+              <h4>Size: 1200×630px minimum</h4>
+              <p>Export as WebP format. Must include text overlay with post title and Huasourcing branding.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">A</div>
+            <div class="widget-info">
+              <h4>Alt Text (Required for AdSense)</h4>
+              <p>Set in Media Library: "[Post Title] | Huasourcing" — e.g. "Incoterms 2026 Explained | Huasourcing"</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon purple">T</div>
+            <div class="widget-info">
+              <h4>Text Overlay on Image</h4>
+              <p>White text on dark overlay. Include: Post title (H2 size), "HUASOURCING" small label, read time badge.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// Featured Image — Elementor Settings</span><br>
+          <span class="key">Widget:</span> <span class="val">Image Box</span> <span class="comment">or Section with Background Image</span><br>
+          <span class="key">Image Size:</span> <span class="val">Full</span> <span class="comment">— not thumbnail</span><br>
+          <span class="key">Width:</span> <span class="val">1170px</span> <span class="comment">— full content width</span><br>
+          <span class="key">Height:</span> <span class="val">630px</span> <span class="comment">— minimum, crop to fit</span><br>
+          <span class="key">Object Fit:</span> <span class="val">cover</span><br>
+          <span class="key">Overlay:</span> <span class="val">rgba(15,23,42,0.55)</span> <span class="comment">— dark overlay for text readability</span><br>
+          <span class="key">Alt Text:</span> <span class="highlight">"[Post Title] | Huasourcing"</span>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">Pro Tip</div>
+          <p>Create one branded template image in Figma or Canva with your logo, a relevant background photo, and the title text. Reuse it for every post — just swap the text. This makes all your blog thumbnails look cohesive and professional.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 2: TITLE & META ===== -->
+    <div class="section" id="section2">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num green">2</div>
+          Title & Meta Settings
+          <span>— SEO critical section</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">T</div>
+            <div class="widget-info">
+              <h4>Post Title (H1) — Elementor Heading Widget</h4>
+              <p>Add manually above the content area, or use your theme's single post template. Set tag to H1.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">M</div>
+            <div class="widget-info">
+              <h4>Meta Bar — Post Info Widget</h4>
+              <p>Author, date, read time, category. Display as a single horizontal row below the title.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// Title Format — follow this pattern every time</span><br>
+          <span class="highlight">"[Primary Keyword]: [Specific Benefit or Answer]"</span><br><br>
+          <span class="comment">// Examples:</span><br>
+          <span class="val">"Incoterms 2026 Explained: Stop Losing Margins to Hidden Import Fees"</span><br>
+          <span class="val">"How to Find and Verify Manufacturers in Asia: A Step-by-Step Guide"</span><br>
+          <span class="val">"FOB vs CIF: Which Incoterm Actually Saves You More Money"</span><br><br>
+          <span class="comment">// Meta Title (SEO — max 60 characters)</span><br>
+          <span class="val">"[Primary Keyword] 2026 Guide | Huasourcing"</span><br>
+          <span class="comment">// Meta Description (SEO — max 155 characters)</span><br>
+          <span class="val">"Learn [specific benefit]. Step-by-step guide from supply chain experts with 10+ years experience."</span>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// Yoast SEO / Rank Math Settings (do this before publishing)</span><br>
+          <span class="key">Focus Keyword:</span> <span class="val">incoterms 2026, incoterms explained</span><br>
+          <span class="key">SEO Title:</span> <span class="highlight">"[Title] | Huasourcing"</span><br>
+          <span class="key">Meta Description:</span> <span class="highlight">"[150 char summary ending with a hook]"</span><br>
+          <span class="key">Canonical URL:</span> <span class="val">Set automatically — do not change</span><br>
+          <span class="key">Cornerstone Content:</span> <span class="val">Yes (for Tier 1 cornerstone posts)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 3: TABLE OF CONTENTS ===== -->
+    <div class="section" id="section3">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num accent">3</div>
+          Table of Contents
+          <span>— Auto-generated, helps SEO and UX</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">R</div>
+            <div class="widget-info">
+              <h4>Rank Math — Table of Contents Block</h4>
+              <p>Add the TOC block in the Block Editor (Gutenberg). Or use Rank Math's "Table of Contents" module. Auto-generates from H2 headings.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">E</div>
+            <div class="widget-info">
+              <h4>Elementor — Icon List Widget</h4>
+              <p>Manually create a TOC using Icon List. Add each H2 as a list item with anchor links (#heading-id). More control over styling.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// TOC Section — Elementor Section Settings</span><br>
+          <span class="key">Section Layout:</span> <span class="val">Full Width (contained)</span><br>
+          <span class="key">Background:</span> <span class="val">#F8FAFC</span> <span class="comment">— light gray background</span><br>
+          <span class="key">Padding:</span> <span class="val">24px 32px</span><br>
+          <span class="key">Border:</span> <span class="val">1px solid #E2E8F0</span><br>
+          <span class="key">Border Radius:</span> <span class="val">8px</span><br><br>
+          <span class="comment">// Heading (H2) settings inside TOC</span><br>
+          <span class="key">Label style:</span> <span class="val">"In This Article" — 11px, uppercase, letter-spacing 1.5px</span><br>
+          <span class="key">List items:</span> <span class="val">Numbers + H2 text, color #3B82F6, hover underline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 4: INTRO ===== -->
+    <div class="section" id="section4">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num">4</div>
+          Intro Paragraph
+          <span>— Hook the reader in 150-200 words</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">E</div>
+            <div class="widget-info">
+              <h4>Elementor Text Editor Widget</h4>
+              <p>Use the Text Editor widget for the intro. Set to "divider hide" to remove the Elementor border. Style font: 16px, line-height 1.8, color #475569.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">G</div>
+            <div class="widget-info">
+              <h4>WordPress Block Editor (Gutenberg)</h4>
+              <p>Recommended: Write in Gutenberg using Paragraph blocks. Then edit in Elementor if needed. Gutenberg handles text better.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// INTRO PARAGRAPH TEMPLATE — copy and adapt</span><br><br>
+          <span class="val">"If you're importing from China or Asia, you've probably already run into [PROBLEM]. Maybe it was [SPECIFIC SITUATION]. Or you got hit with [SURPRISE COST]. Here's the truth: [MYTH/ASSUMPTION]. Most importers don't know [KEY INSIGHT], and it costs them [SPECIFIC CONSEQUENCE] every single time."</span><br><br>
+          <span class="val">"In this guide, you'll learn [WHAT THE POST COVERS]. We'll walk through [KEY STEPS/POINTS]. By the end, you'll know [BENEFIT]. Let's get into it."</span><br><br>
+          <span class="comment">// Rules:</span><br>
+          <span class="key">Length:</span> <span class="val">150-200 words max</span><br>
+          <span class="key">First sentence:</span> <span class="highlight">Must hook with a problem or question</span><br>
+          <span class="key">Primary keyword:</span> <span class="highlight">Must appear in the first 50 words</span><br>
+          <span class="key">No H2 heading before this</span> <span class="comment">— intro is just paragraph text</span>
+        </div>
+
+        <div class="callout-box warning" style="margin-top: 16px;">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-text">
+            <strong>AdSense Placement</strong>
+            Place your FIRST ad slot right after this intro paragraph, before the first H2. Use a responsive leaderboard ad unit.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 5: H2 HEADINGS ===== -->
+    <div class="section" id="section5">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num green">5</div>
+          H2 Headings & Body Content
+          <span>— One H2 per major topic, one ad slot per 3 H2s</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">H</div>
+            <div class="widget-info">
+              <h4>Elementor Heading Widget</h4>
+              <p>Use Heading widget set to H2 tag. Style: font-size 22px, weight 800, color #1E293B, letter-spacing -0.3px.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">T</div>
+            <div class="widget-info">
+              <h4>Elementor Text Editor Widget</h4>
+              <p>Each H2 is followed by a Text Editor widget containing the body content for that section. 200-400 words per section.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">A</div>
+            <div class="widget-info">
+              <h4>Anchor Links</h4>
+              <p>Add anchor ID to each H2: #what-are-incotherms, #fob-vs-cif, etc. Used by the Table of Contents for jump links.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon purple">L</div>
+            <div class="widget-info">
+              <h4>Internal Links</h4>
+              <p>Add 2-3 contextual links per section. Link to related blog posts and service pages. Use descriptive anchor text.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// H2 SECTION TEMPLATE — repeat for each main topic</span><br><br>
+          <span class="comment">// Section structure:</span><br>
+          <span class="key">Elementor Section</span> <span class="val">(Full Width, Contained, padding 32px top/bottom)</span><br>
+          <span class="key">  └─ Heading Widget (H2)</span> <span class="val">"What Are Incoterms and Why They Matter"</span><br>
+          <span class="key">  └─ Text Editor Widget</span> <span class="val">200-400 words of body content</span><br>
+          <span class="key">  └─ Callout Box Widget</span> <span class="val">(optional — key stat or takeaway)</span><br>
+          <span class="key">  └─ Image Widget</span> <span class="val">(optional — relevant photo with alt text)</span><br>
+          <span class="key">  └─ Ad Unit Widget</span> <span class="val">(every 3rd H2 section)</span><br><br>
+          <span class="comment">// H2 Style Guide:</span><br>
+          <span class="key">Font:</span> <span class="val">Inter or system font</span><br>
+          <span class="key">Size:</span> <span class="val">22px desktop / 18px mobile</span><br>
+          <span class="key">Weight:</span> <span class="val">800</span><br>
+          <span class="key">Color:</span> <span class="val">#1E293B</span><br>
+          <span class="key">Margin top:</span> <span class="val">32px</span><br>
+          <span class="key">Margin bottom:</span> <span class="val">16px</span><br>
+          <span class="key">Border top:</span> <span class="val">1px solid #E2E8F0</span> <span class="comment">— visual separator</span>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">Ad Placement Logic</div>
+          <p>Count your H2 sections. For every 3 H2s, insert one ad slot after the 3rd section's content and before the 4th H2. A 1,500-word post with 5 H2s gets 1 ad. A 3,000-word post with 8 H2s gets 2 ads. Never put an ad immediately after a heading or inside a list.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 6: CALLOUT BOXES ===== -->
+    <div class="section" id="section6">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num accent">6</div>
+          Callout / Highlight Boxes
+          <span>— Break up text, highlight key takeaways</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">I</div>
+            <div class="widget-info">
+              <h4>Info Callout</h4>
+              <p>Blue left border, light blue background. Use for key definitions, facts, or important notes.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">W</div>
+            <div class="widget-info">
+              <h4>Warning Callout</h4>
+              <p>Amber left border, light amber background. Use for common mistakes, things to avoid, or critical warnings.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon red">D</div>
+            <div class="widget-info">
+              <h4>Danger / Critical Callout</h4>
+              <p>Red left border, light red background. Use for scam warnings, costly mistakes, or things that will cost money.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">S</div>
+            <div class="widget-info">
+              <h4>Success / Tip Callout</h4>
+              <p>Green left border, light green background. Use for best practices, pro tips, or recommended approaches.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// CALLOUT BOX — Elementor Section + Inner Section approach</span><br><br>
+          <span class="comment">// Option A: Icon Box Widget (simplest)</span><br>
+          <span class="key">Widget:</span> <span class="val">Icon Box</span><br>
+          <span class="key">Icon:</span> <span class="val">info icon (ℹ) or custom SVG</span><br>
+          <span class="key">Title:</span> <span class="val">"Key Takeaway" or "Important" or "Warning"</span><br>
+          <span class="key">Text:</span> <span class="val">The callout content</span><br>
+          <span class="key">Position:</span> <span class="val">top</span><br>
+          <span class="key">Icon color:</span> <span class="val">Blue/Amber/Red/Green per type</span><br>
+          <span class="key">Background:</span> <span class="val">light tint of icon color</span><br>
+          <span class="key">Border left:</span> <span class="val">4px solid [icon color]</span><br>
+          <span class="key">Border radius:</span> <span class="val">0 8px 8px 0</span><br><br>
+          <span class="comment">// Option B: Inner Section (more control)</span><br>
+          <span class="key">Section:</span> <span class="val">Full Width, background: tinted color</span><br>
+          <span class="key">Inner Section:</span> <span class="val">Contained, padding 16px 20px</span><br>
+          <span class="key">Left Border:</span> <span class="val">4px solid [color]</span> <span class="comment">— via Advanced → Border</span><br>
+          <span class="key">Content:</span> <span class="val">Heading (H3) + Text Editor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 7: LISTS & TABLES ===== -->
+    <div class="section" id="section7">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num">7</div>
+          Lists & Tables
+          <span>— Use consistently, don't overdo either</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">U</div>
+            <div class="widget-info">
+              <h4>Unordered Lists</h4>
+              <p>Use for bullet points, features, benefits. Elementor Text Editor handles this natively. Max 7 items per list.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">O</div>
+            <div class="widget-info">
+              <h4>Ordered Lists</h4>
+              <p>Use for steps, processes, ranked items. Start with "Step 1:", "Step 2:" for clarity.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">T</div>
+            <div class="widget-info">
+              <h4>Table Widget</h4>
+              <p>Use Elementor's Table widget for comparisons (e.g., FOB vs CIF, DDP vs DAP). Always include a header row.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon purple">C</div>
+            <div class="widget-info">
+              <h4>Comparison Table</h4>
+              <p>For cost comparisons, feature comparisons. Header: dark background, white text. Rows: alternating light gray.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// TABLE WIDGET — Elementor Settings</span><br>
+          <span class="key">Widget:</span> <span class="val">Table</span><br>
+          <span class="key">Header Row:</span> <span class="val">Background #0F172A, Text White, Weight 700</span><br>
+          <span class="key">Body Rows:</span> <span class="val">Alternating #FFFFFF and #F8FAFC</span><br>
+          <span class="key">Border:</span> <span class="val">1px solid #E2E8F0, collapse on</span><br>
+          <span class="key">Cell Padding:</span> <span class="val">12px 16px</span><br>
+          <span class="key">Responsive:</span> <span class="val">Horizontal scroll on mobile</span><br><br>
+          <span class="comment">// COMPARISON TABLE EXAMPLE — FOB vs CIF</span><br>
+          <span class="key">Column 1:</span> <span class="val">Incoterm</span><br>
+          <span class="key">Column 2:</span> <span class="val">Who Pays Freight</span><br>
+          <span class="key">Column 3:</span> <span class="val">Who Pays Insurance</span><br>
+          <span class="key">Column 4:</span> <span class="val">Risk Transfers When</span><br>
+          <span class="key">Column 5:</span> <span class="val">Best For</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 8: IMAGES ===== -->
+    <div class="section" id="section8">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num green">8</div>
+          Images in Posts
+          <span>— One image per 500 words, always with alt text</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">I</div>
+            <div class="widget-info">
+              <h4>Elementor Image Widget</h4>
+              <p>Add images between text sections. Set size to "Large" not "Medium." Always add alt text in the widget settings.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">W</div>
+            <div class="widget-info">
+              <h4>WebP Format Required</h4>
+              <p>Convert all images to WebP using ShortPixel or Imagify plugin. 60-80% smaller than JPEG with same quality.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">C</div>
+            <div class="widget-info">
+              <h4>Caption Below Image</h4>
+              <p>Add a small caption text below each image: source, date, or what it shows. Styled in italic, muted color.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon red">N</div>
+            <div class="widget-info">
+              <h4>Never Skip Alt Text</h4>
+              <p>Every single image must have alt text. This is a hard AdSense requirement. Use "[Description of image] | Huasourcing" format.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// IMAGE — Elementor Settings</span><br>
+          <span class="key">Widget:</span> <span class="val">Image</span><br>
+          <span class="key">Image Size:</span> <span class="val">Large</span> <span class="comment">— not thumbnail or medium</span><br>
+          <span class="key">Width:</span> <span class="val">100%</span> <span class="comment">— full width of content area</span><br>
+          <span class="key">Max Width:</span> <span class="val">1170px</span><br>
+          <span class="key">Image Cap:</span> <span class="val">#94A3B8, italic, 12px, center aligned</span><br>
+          <span class="key">Alt Text:</span> <span class="highlight">"[What the image shows] | Huasourcing"</span><br>
+          <span class="key">Title Text:</span> <span class="val">"Same as alt text"</span><br><br>
+          <span class="comment">// Lazy Loading (Speed)</span><br>
+          <span class="key">Lazy Load:</span> <span class="val">Enabled</span> <span class="comment">— via Smush or ShortPixel plugin</span><br>
+          <span class="key">Decoding:</span> <span class="val">async</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 9: FAQ ===== -->
+    <div class="section" id="section9">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num accent">9</div>
+          FAQ Section
+          <span>— FAQPage schema required, drives featured snippets</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">A</div>
+            <div class="widget-info">
+              <h4>Accordion Widget</h4>
+              <p>Use Elementor's Accordion widget. Each FAQ item is a toggle. Clicking expands the answer. Clean, interactive.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">R</div>
+            <div class="widget-info">
+              <h4>Rank Math — FAQ Block</h4>
+              <p>Use the FAQ block in Gutenberg with Rank Math. It auto-generates FAQPage schema markup. Recommended over Elementor accordion.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">S</div>
+            <div class="widget-info">
+              <h4>Schema Markup — CRITICAL</h4>
+              <p>FAQPage schema is required for AdSense AND SEO. Without it, you won't get featured snippets. Use Rank Math to add it.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon red">N</div>
+            <div class="widget-info">
+              <h4>Minimum 5 Questions</h4>
+              <p>Every post must have at least 5 FAQ questions. More is better. Each answer should be 50-100 words, direct, and specific.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// FAQ SECTION — Elementor Section Settings</span><br>
+          <span class="key">Section Background:</span> <span class="val">#F8FAFC</span><br>
+          <span class="key">Padding:</span> <span class="val">32px</span><br>
+          <span class="key">Border:</span> <span class="val">1px solid #E2E8F0</span><br>
+          <span class="key">Border Radius:</span> <span class="val">8px</span><br><br>
+          <span class="comment">// H2 Heading: "Frequently Asked Questions"</span><br>
+          <span class="key">Font:</span> <span class="val">18px, weight 800, color #1E293B</span><br><br>
+          <span class="comment">// ACCORDION WIDGET Settings:</span><br>
+          <span class="key">Item Title:</span> <span class="val">14px, weight 700, color #1E293B</span><br>
+          <span class="key">Item Title Background:</span> <span class="val">transparent</span><br>
+          <span class="key">Item Title Border Bottom:</span> <span class="val">1px solid #E2E8F0</span><br>
+          <span class="key">Item Content:</span> <span class="val">13px, color #475569, line-height 1.7</span><br>
+          <span class="key">Icon:</span> <span class="val">icon plus/minus, right aligned</span><br>
+          <span class="key">First Item Active:</span> <span class="val">Yes</span><br><br>
+          <span class="comment">// SCHEMA MARKUP — Rank Math</span><br>
+          <span class="key">Schema Type:</span> <span class="val">FAQPage</span><br>
+          <span class="key">Questions:</span> <span class="val">Add each Q&A as a Q&A item in Rank Math FAQ block</span><br>
+          <span class="key">Validate:</span> <span class="val">test with Google's Rich Results Test</span>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">FAQ Questions — Template Format</div>
+          <p>Every question should be a real question someone would type into Google. Answer directly — no preamble like "great question." End answers with a natural link to your service if relevant.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 10: CTA BOX ===== -->
+    <div class="section" id="section10">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num">10</div>
+          CTA Box
+          <span>— End every post with a clear conversion opportunity</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">C</div>
+            <div class="widget-info">
+              <h4>Elementor Section — Full Width</h4>
+              <p>Create a full-width section with a dark background. Inside: Heading (H3), subtext, and a Button widget linking to /contact.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">B</div>
+            <div class="widget-info">
+              <h4>Button Widget</h4>
+              <p>Style: amber background (#F59E0B), dark text, border-radius 8px, padding 14px 32px. Hover: slight lift effect.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// CTA BOX — Elementor Section Settings</span><br>
+          <span class="key">Section Background:</span> <span class="val">linear-gradient(135deg, #1E3A5F, #0F172A)</span><br>
+          <span class="key">Padding:</span> <span class="val">48px vertical, 32px horizontal</span><br>
+          <span class="key">Text Align:</span> <span class="val">center</span><br><br>
+          <span class="comment">// HEADING WIDGET (H3)</span><br>
+          <span class="key">Text:</span> <span class="val">"Ready to Start Sourcing?"</span><br>
+          <span class="key">Font Size:</span> <span class="val">24px desktop / 20px mobile</span><br>
+          <span class="key">Weight:</span> <span class="val">800</span><br>
+          <span class="key">Color:</span> <span class="val">#FFFFFF</span><br><br>
+          <span class="comment">// TEXT EDITOR WIDGET</span><br>
+          <span class="key">Text:</span> <span class="val">"Send us your product specs and we'll send you a complete sourcing plan — free."</span><br>
+          <span class="key">Font Size:</span> <span class="val">15px</span><br>
+          <span class="key">Color:</span> <span class="val">rgba(255,255,255,0.6)</span><br><br>
+          <span class="comment">// BUTTON WIDGET</span><br>
+          <span class="key">Text:</span> <span class="val">"Get a Free Sourcing Plan"</span><br>
+          <span class="key">Link:</span> <span class="val">https://huasourcing.com/contact</span><br>
+          <span class="key">Alignment:</span> <span class="val">center</span><br>
+          <span class="key">Background:</span> <span class="val">#F59E0B</span><br>
+          <span class="key">Text Color:</span> <span class="val">#0F172A</span><br>
+          <span class="key">Border Radius:</span> <span class="val">8px</span><br>
+          <span class="key">Padding:</span> <span class="val">14px 32px</span><br>
+          <span class="key">Hover:</span> <span class="val">Background #FBBF24, translateY(-2px)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 11: ADSENSE PLACEMENT ===== -->
+    <div class="section" id="section11">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num red">11</div>
+          AdSense Ad Placement
+          <span>— Strategic placement = better CTR, better earnings</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="widget-grid">
+          <div class="widget-card">
+            <div class="widget-icon blue">L</div>
+            <div class="widget-info">
+              <h4>Leaderboard Ad — After Intro</h4>
+              <p>728×90 or responsive leaderboard. Placed after the intro paragraph, before the first H2. Highest visibility.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon green">I</div>
+            <div class="widget-info">
+              <h4>In-Article Ad — Mid Content</h4>
+              <p>300×250 rectangle or responsive. Placed after every 3rd H2 section. Never inside a list or immediately after a heading.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon amber">S</div>
+            <div class="widget-info">
+              <h4>Sidebar Ad — If Blog Has Sidebar</h4>
+              <p>300×250 rectangle in the blog sidebar. Only if your theme has a sidebar. Pairs with content ads.</p>
+            </div>
+          </div>
+          <div class="widget-card">
+            <div class="widget-icon red">N</div>
+            <div class="widget-info">
+              <h4>Disable Ads On</h4>
+              <p>/contact, /quote, /about, /services pages. Also disable on mobile unless using responsive ads.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <span class="comment">// ADSENSE PLACEMENT — WordPress/Elementor</span><br><br>
+          <span class="comment">// Method 1: Ad Inserter Plugin (Recommended)</span><br>
+          <span class="key">Plugin:</span> <span class="val">Ad Inserter Pro</span> <span class="comment">or free "AdSense Plugin" by WPForms</span><br>
+          <span class="key">Ad Code:</span> <span class="val">Paste your AdSense ad code here</span><br>
+          <span class="key">Position 1:</span> <span class="val">After paragraph 2 (intro ad)</span><br>
+          <span class="key">Position 2:</span> <span class="val">After H2 section 3 (mid-post ad)</span><br>
+          <span class="key">Position 3:</span> <span class="val">After H2 section 6 (if post has 6+ H2s)</span><br><br>
+          <span class="comment">// Method 2: Elementor Custom HTML Widget</span><br>
+          <span class="key">Widget:</span> <span class="val">HTML Embed</span><br>
+          <span class="key">Placement:</span> <span class="val">In a dedicated Elementor Section between content sections</span><br>
+          <span class="key">Width:</span> <span class="val">100%</span><br>
+          <span class="key">Alignment:</span> <span class="val">center</span><br>
+          <span class="key">Background:</span> <span class="val">transparent</span><br><br>
+          <span class="comment">// AdSense Ad Code Format:</span><br>
+          <span class="val"><ins class="adsbygoogle"<br>
+          &nbsp;&nbsp;style="display:block"<br>
+          &nbsp;&nbsp;data-ad-client="ca-pub-XXXXXXXXXXXXXX"<br>
+          &nbsp;&nbsp;data-ad-slot="XXXXXXXXXX"<br>
+          &nbsp;&nbsp;data-ad-format="auto"<br>
+          &nbsp;&nbsp;data-full-width-responsive="true"><br>
+          </ins><br>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></span>
+        </div>
+
+        <div class="callout-box danger" style="margin-top: 16px;">
+          <div class="callout-icon">🚫</div>
+          <div class="callout-text">
+            <strong>Never Do This with Ads</strong>
+            Don't place ads inside a list, immediately after a heading, within the first paragraph, or disguised as content. Don't use more than 3 ads per 1,000 words. Google will flag and ban your account for policy violations.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PREVIEW: HOW THE BLOG POST LOOKS ===== -->
+    <div class="section" id="preview">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num green">✓</div>
+          Live Preview — What the Post Looks Like
+          <span>— Simulated blog post following this template</span>
+        </div>
+      </div>
+      <div class="section-body" style="padding: 0;">
+        <div class="blog-preview">
+          <div class="blog-preview-header">
+            <div class="blog-preview-breadcrumb">
+              <a href="#">Home</a> / <a href="#">Blog</a> / Incoterms 2026
+            </div>
+            <div class="blog-preview-title">Incoterms 2026 Explained: Stop Losing Margins to Hidden Import Fees</div>
+            <div class="blog-preview-meta">
+              <span>📅 June 14, 2026</span>
+              <span>⏱️ 12 min read</span>
+              <span>📁 Logistics & Trade</span>
+            </div>
+          </div>
+
+          <div class="blog-preview-body">
+
+            <!-- Featured Image -->
+            <div class="blog-preview-hero">
+              <div class="blog-preview-hero-text">
+                Featured Image<br>
+                <span>1200×630px · WebP · Alt: "Incoterms 2026 Explained | Huasourcing"</span>
+              </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="blog-preview-toc">
+              <div class="blog-preview-toc-title">In This Article</div>
+              <ol>
+                <li><a href="#">What Are Incoterms and Why They Matter</a></li>
+                <li><a href="#">The 11 Incoterms 2026 Rules Explained</a></li>
+                <li><a href="#">FOB vs CIF: Which Saves You More</a></li>
+                <li><a href="#">DDP vs DAP: The Hidden Cost Difference</a></li>
+                <li><a href="#">How to Choose the Right Incoterm</a></li>
+                <li><a href="#">Common Incoterms Mistakes Importers Make</a></li>
+              </ol>
+            </div>
+
+            <!-- Intro -->
+            <div class="blog-preview-intro">
+              If you've ever received a shipping bill that was <strong>30% higher than what your supplier quoted</strong>, you already know the pain of hidden import fees. The culprit is almost always the same: <strong>misunderstood Incoterms</strong>. Most importers choose FOB or CIF without understanding exactly when risk transfers, who pays what, and what gets buried in the fine print. The result is surprise charges at every port, margin erosion you didn't budget for, and supplier relationships strained by finger-pointing over costs that should have been clear from day one. <strong>In this guide, you'll learn what Incoterms 2026 actually means</strong>, how each rule works, and how to pick the right one for your business so you stop losing money to import fees you didn't see coming.
+            </div>
+
+            <!-- AD SLOT 1 -->
+            <div class="ad-placeholder">
+              <div class="ad-info">
+                <span>Leaderboard · After Intro · 728×90</span>
+                <span>Highest visibility placement</span>
+              </div>
+            </div>
+
+            <!-- H2 Section 1 -->
+            <h2 class="blog-preview-h2">What Are Incoterms and Why They Matter</h2>
+            <p class="blog-preview-text">
+              Incoterms — short for International Commercial Terms — are a standardized set of rules published by the International Chamber of Commerce (ICC). They define who pays for freight, insurance, customs, and most importantly, <strong>when risk transfers from seller to buyer</strong>. The 2026 edition is the current version, updated to reflect modern trade practices.
+            </p>
+            <p class="blog-preview-text">
+              Think of Incoterms as a universal language for international trade. When you and your supplier both agree on an Incoterm, there's no ambiguity about who's responsible for what. No surprises at the port. No arguments about who should have paid for the inspection.
+            </p>
+
+            <!-- Callout Box -->
+            <div class="callout-box warning">
+              <div class="callout-icon">⚠️</div>
+              <div class="callout-text">
+                <strong>Incoterms Don't Cover Everything</strong>
+                Incoterms only define transport obligations and risk transfer points. They don't cover payment terms, ownership transfer, or contract remedies. You still need a solid purchase agreement.
+              </div>
+            </div>
+
+            <!-- H2 Section 2 -->
+            <h2 class="blog-preview-h2">The 11 Incoterms 2026 Rules Explained</h2>
+            <p class="blog-preview-text">Incoterms 2026 includes 11 rules divided into two groups:</p>
+            <ul class="blog-preview-list">
+              <li><strong>Rules for Any Mode:</strong> EXW, FCA, CPT, CIP, DAP, DPU, DDP — can be used for sea, air, rail, road, or multimodal shipping</li>
+              <li><strong>Rules for Sea/Inland Waterway:</strong> FAS, FOB, CFR, CIF — specifically for sea freight where the bill of lading matters</li>
+            </ul>
+
+            <!-- AD SLOT 2 -->
+            <div class="ad-placeholder">
+              <div class="ad-info">
+                <span>Rectangle · Mid-Post · 300×250</span>
+                <span>After H2 section 3</span>
+              </div>
+            </div>
+
+            <!-- H2 Section 3 -->
+            <h2 class="blog-preview-h2">FOB vs CIF: Which Saves You More</h2>
+            <p class="blog-preview-text">
+              FOB (Free on Board) and CIF (Cost, Insurance, and Freight) are the two most commonly used Incoterms. Here's the critical difference: under FOB, you arrange and pay for freight and insurance yourself. Under CIF, the supplier arranges and pays for them — then passes the cost to you.
+            </p>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+              <div class="faq-title">Frequently Asked Questions</div>
+
+              <div class="faq-item">
+                <div class="faq-q">What is the most commonly used Incoterm for sea freight?</div>
+                <div class="faq-a">FOB (Free on Board) is the most commonly used Incoterm for sea freight shipments from Asia. Under FOB, the buyer's responsibility and risk begin when the cargo is loaded onto the ship at the port of origin.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Does CIF mean the supplier is responsible for the cargo?</div>
+                <div class="faq-a">Partially. Under CIF, the supplier pays for freight and insurance to bring the cargo to the destination port. But risk transfers to the buyer once the cargo is loaded onto the ship at origin — not at destination.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Can I negotiate Incoterms with my supplier?</div>
+                <div class="faq-a">Absolutely. Incoterms are a starting point for negotiation, not a requirement. Most Chinese manufacturers quote FOB pricing by default, but you can negotiate CIF, DDP, or any other term that works better for your business.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">What Incoterm should small importers use?</div>
+                <div class="faq-a">Most small importers starting out benefit from DDP (Delivered Duty Paid) because the supplier handles everything including customs clearance. As volume grows, switching to FOB gives you more control and typically lower costs.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">What happens if I choose the wrong Incoterm?</div>
+                <div class="faq-a">Choosing the wrong Incoterm can result in surprise freight bills, customs delays, cargo being held at port, and disputes with suppliers over who should have covered specific costs. Getting it right from the start saves thousands.</div>
+              </div>
+            </div>
+
+            <!-- CTA Box -->
+            <div class="cta-box">
+              <h3>Ready to Stop Losing Money on Import Fees?</h3>
+              <p>Send us your product specs and we'll build you a complete sourcing plan — free.</p>
+              <a href="#" class="cta-btn">Get a Free Sourcing Plan →</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PRE-PUBLISH CHECKLIST ===== -->
+    <div class="section" id="checklist">
+      <div class="section-header">
+        <div class="section-label">
+          <div class="step-num green">✓</div>
+          Pre-Publish Checklist
+          <span>— Do this before every single post goes live</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <ul class="checklist">
+          <li>
+            <div class="check critical">!</div>
+            <div><strong>Primary keyword in H1 title</strong> — first 60 characters must include the main keyword</div>
+          </li>
+          <li>
+            <div class="check critical">!</div>
+            <div><strong>Primary keyword in first 100 words</strong> — Google weights early keyword placement</div>
+          </li>
+          <li>
+            <div class="check critical">!</div>
+            <div><strong>Alt text on EVERY image</strong> — format: "[Description] | Huasourcing" — this is non-negotiable for AdSense</div>
+          </li>
+          <li>
+            <div class="check critical">!</div>
+            <div><strong>FAQ section with 5+ questions</strong> — using Rank Math FAQ block with FAQPage schema</div>
+          </li>
+          <li>
+            <div class="check critical">!</div>
+            <div><strong>Cookie consent banner installed</strong> — GDPR compliance is required before AdSense approval</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Meta title (SEO title) set</strong> — max 60 characters, includes primary keyword</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Meta description set</strong> — max 155 characters, ends with a hook</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Focus keyword set in Rank Math or Yoast</strong> — use primary + 2 secondary keywords</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Internal links added</strong> — minimum 3 links to other blog posts, 1 link to service page</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>External links to credible sources</strong> — ICC.org, WTO, or government trade sites</div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Featured image: 1200×630px, WebP, alt text set</strong></div>
+          </li>
+          <li>
+            <div class="check important">!</div>
+            <div><strong>Table of Contents generated</strong> — from H2 headings</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>Ad Inserter or ad code placed</strong> — max 3 ads per 1,000 words, no ads before intro or inside lists</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>Read time calculated</strong> — target 8-15 minutes (1,500-3,000 words)</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>URL slug set</strong> — format: /incoterms-2026-explained or /incoterms-explained — clean, no numbers in path</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>Canonical URL confirmed</strong> — should match the final published URL</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>Submitted to Google Search Console</strong> — URL Inspection → Request Indexing after publishing</div>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <div><strong>CTA button links to /contact</strong> — verify the link works</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ===== PRINT BUTTON ===== -->
+<button class="print-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+  Print / Save PDF
+</button>
+
+</body>
+</html>
