@@ -10,251 +10,220 @@ import Layout from '../layouts/Layout.astro';
       <!-- Header -->
       <div class="text-center mb-12">
         <h1 class="text-3xl md:text-4xl font-display font-extrabold text-gray-900 dark:text-white mb-4">
-          Color Scheme Options for Buka Pintu
+          Enhanced Orange-Green Color Schemes
         </h1>
         <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Preview different gradient color schemes for your library brand. Each option has its own character.
+          Explore enhanced gradient variations for Buka Pintu's brand. More sophisticated uses of orange and green.
         </p>
       </div>
 
-      <!-- Color Schemes Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Current vs Enhanced -->
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <i class="fas fa-palette text-brand-500"></i>
+          Gradient Backgrounds
+        </h2>
 
-        <!-- Option 1: Current (Orange-Green) -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-orange-600 via-orange-500 to-green-600">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Current</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl" style="color: #ea580c"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span class="text-green-300">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-3 bg-white text-orange-600 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Original -->
+          <div class="h-32 rounded-xl bg-gradient-to-r from-brand-600 to-forest-600 flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Original</span>
           </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Orange → Green</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Transformation & Growth</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Energy</span>
-              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Growth</span>
-            </div>
+          <!-- Linear Enhanced -->
+          <div class="h-32 rounded-xl bg-brand-linear flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Brand Linear</span>
           </div>
-        </div>
-
-        <!-- Option 2: Deep Blue-Teal -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-blue-700 via-blue-600 to-teal-500">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Scholarly</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl text-blue-700"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span class="text-teal-300">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-3 bg-white text-blue-700 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
+          <!-- Sunset -->
+          <div class="h-32 rounded-xl bg-brand-sunset flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Sunset</span>
           </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Deep Blue → Teal</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Trustworthy & Calm</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Trust</span>
-              <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs">Calm</span>
-            </div>
+          <!-- Fire -->
+          <div class="h-32 rounded-xl bg-brand-fire flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Fire</span>
+          </div>
+          <!-- Dusk -->
+          <div class="h-32 rounded-xl bg-brand-dusk flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Dusk</span>
+          </div>
+          <!-- Leaf -->
+          <div class="h-32 rounded-xl bg-brand-leaf flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Leaf</span>
+          </div>
+          <!-- Radial Orange -->
+          <div class="h-32 rounded-xl bg-brand-radial flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Radial Orange</span>
+          </div>
+          <!-- Radial Green -->
+          <div class="h-32 rounded-xl bg-brand-radial-green flex items-end p-3">
+            <span class="text-white text-xs font-medium bg-black/30 px-2 py-1 rounded">Radial Green</span>
           </div>
         </div>
-
-        <!-- Option 3: Purple-Blue -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-violet-700 via-violet-600 to-blue-500">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Creative</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl text-violet-700"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span class="text-blue-300">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-3 bg-white text-violet-700 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
-          </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Purple → Blue</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Creative & Wise</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-xs">Creative</span>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Wise</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Option 4: Forest Green -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-emerald-700 via-emerald-600 to-green-500">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Recommended</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl text-emerald-700"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span class="text-green-300">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-1 bg-white text-emerald-700 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
-          </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Forest Green</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Growth & Nature</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs">Growth</span>
-              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Natural</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Option 5: Warm Cream-Amber -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-amber-600 via-amber-500 to-orange-400">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Classic</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl text-amber-600"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span style="color: #fed7aa">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-3 bg-white text-amber-600 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
-          </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Warm Cream → Amber</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Classic Library Feel</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">Classic</span>
-              <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Warm</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Option 6: Burgundy-Gold -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
-          <div class="p-6 bg-gradient-to-br from-rose-800 via-rose-700 to-amber-500">
-            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Premium</span>
-
-            <!-- Logo Preview -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-door-open text-2xl text-rose-800"></i>
-              </div>
-              <div>
-                <span class="font-extrabold text-2xl text-white">Buka<span class="text-amber-300">Pintu</span></span>
-              </div>
-            </div>
-
-            <!-- Button Preview -->
-            <button class="px-6 py-3 bg-white text-rose-800 font-bold rounded-full shadow-lg mb-4">
-              Jelajahi Katalog
-            </button>
-
-            <!-- Text Preview -->
-            <p class="text-white/90 text-sm">
-              Perpustakaan digital gratis untuk Indonesia
-            </p>
-          </div>
-
-          <div class="p-5">
-            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Burgundy → Gold</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Prestigious & Scholarly</p>
-            <div class="flex gap-2">
-              <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs">Premium</span>
-              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">Gold</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Recommendation Section -->
-      <div class="mt-16 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 rounded-3xl p-8 border border-emerald-200 dark:border-emerald-800">
+      <!-- Button Styles -->
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <i class="fas fa-mouse-pointer text-brand-500"></i>
+          Button Variants
+        </h2>
+
+        <div class="flex flex-wrap gap-4">
+          <button class="px-6 py-3 bg-gradient-to-r from-brand-600 to-forest-600 text-white font-bold rounded-full shadow-lg hover:shadow-glow-brand hover:-translate-y-0.5 transition-all">
+            <i class="fas fa-book-open mr-2"></i>Brand Gradient
+          </button>
+          <button class="px-6 py-3 bg-gradient-to-r from-ember-600 to-brand-500 text-white font-bold rounded-full shadow-lg hover:shadow-glow-orange-lg hover:-translate-y-0.5 transition-all">
+            <i class="fas fa-fire mr-2"></i>Fire Gradient
+          </button>
+          <button class="px-6 py-3 bg-gradient-to-r from-forest-600 to-forest-500 text-white font-bold rounded-full shadow-lg hover:shadow-glow-green hover:-translate-y-0.5 transition-all">
+            <i class="fas fa-leaf mr-2"></i>Forest Green
+          </button>
+          <button class="px-6 py-3 bg-gradient-to-r from-brand-500 to-ember-500 text-white font-bold rounded-full shadow-lg hover:shadow-glow-orange hover:-translate-y-0.5 transition-all">
+            <i class="fas fa-sun mr-2"></i>Warm Orange
+          </button>
+        </div>
+      </div>
+
+      <!-- Logo Variations -->
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <i class="fas fa-door-open text-brand-500"></i>
+          Logo & Badge Styles
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Original Logo -->
+          <div class="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-500 to-forest-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <i class="fas fa-door-open text-white text-2xl"></i>
+            </div>
+            <p class="font-extrabold text-xl text-gray-900 dark:text-white">Buka<span class="text-brand-600 dark:text-brand-400">Pintu</span></p>
+            <p class="text-xs text-gray-500 mt-1">Original</p>
+          </div>
+
+          <!-- Fire Logo -->
+          <div class="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+            <div class="w-16 h-16 bg-gradient-to-br from-ember-600 via-brand-500 to-ember-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <i class="fas fa-door-open text-white text-2xl"></i>
+            </div>
+            <p class="font-extrabold text-xl text-gray-900 dark:text-white">Buka<span class="text-ember-600 dark:text-ember-400">Pintu</span></p>
+            <p class="text-xs text-gray-500 mt-1">Fire</p>
+          </div>
+
+          <!-- Forest Logo -->
+          <div class="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+            <div class="w-16 h-16 bg-gradient-to-br from-forest-600 to-forest-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <i class="fas fa-door-open text-white text-2xl"></i>
+            </div>
+            <p class="font-extrabold text-xl text-gray-900 dark:text-white">Buka<span class="text-forest-600 dark:text-forest-400">Pintu</span></p>
+            <p class="text-xs text-gray-500 mt-1">Forest</p>
+          </div>
+
+          <!-- Sunset Logo -->
+          <div class="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-sunset rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <i class="fas fa-door-open text-white text-2xl"></i>
+            </div>
+            <p class="font-extrabold text-xl text-gray-900 dark:text-white">Buka<span class="bg-gradient-to-r from-ember-500 to-forest-500 bg-clip-text text-transparent">Pintu</span></p>
+            <p class="text-xs text-gray-500 mt-1">Sunset</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tag/Badge Styles -->
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <i class="fas fa-tags text-brand-500"></i>
+          Tag & Badge Styles
+        </h2>
+
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 rounded-full text-sm font-semibold">
+            <i class="fas fa-star mr-1"></i> Pilihan Editor
+          </span>
+          <span class="px-4 py-2 bg-forest-100 dark:bg-forest-900/40 text-forest-700 dark:text-forest-300 rounded-full text-sm font-semibold">
+            <i class="fas fa-check-circle mr-1"></i> Gratis
+          </span>
+          <span class="px-4 py-2 bg-ember-100 dark:bg-ember-900/40 text-ember-700 dark:text-ember-300 rounded-full text-sm font-semibold">
+            <i class="fas fa-fire mr-1"></i> Populer
+          </span>
+          <span class="px-4 py-2 bg-gradient-to-r from-brand-500/10 to-forest-500/10 border border-brand-300/30 dark:border-brand-600/30 text-brand-700 dark:text-brand-300 rounded-full text-sm font-semibold">
+            <i class="fas fa-sparkles mr-1"></i> Baru
+          </span>
+        </div>
+      </div>
+
+      <!-- Shadow Effects -->
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <i class="fas fa-magic text-brand-500"></i>
+          Glow & Shadow Effects
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl mx-auto mb-3 shadow-glow-orange"></div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Glow Orange</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-forest-500 to-forest-600 rounded-2xl mx-auto mb-3 shadow-glow-green"></div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Glow Green</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-brand-500 to-forest-500 rounded-2xl mx-auto mb-3 shadow-glow-brand"></div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Glow Brand</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-ember-600 to-brand-500 rounded-2xl mx-auto mb-3 shadow-glow-orange-lg"></div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Glow Fire LG</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section Preview -->
+      <div class="mb-12">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">CTA Section Examples</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Original CTA -->
+          <div class="rounded-3xl p-8 bg-gradient-to-br from-orange-500 via-orange-400 to-green-600 text-white text-center">
+            <h3 class="text-2xl font-bold mb-3">Original Gradient</h3>
+            <p class="text-white/80 mb-4">Orange → Green</p>
+            <button class="px-8 py-3 bg-white text-orange-600 font-bold rounded-full shadow-lg hover:shadow-xl">
+              Jelajahi Sekarang
+            </button>
+          </div>
+
+          <!-- Enhanced CTA -->
+          <div class="rounded-3xl p-8 bg-gradient-to-br from-brand-600 via-brand-500 to-forest-500 text-white text-center">
+            <h3 class="text-2xl font-bold mb-3">Enhanced Gradient</h3>
+            <p class="text-white/80 mb-4">Brand Linear</p>
+            <button class="px-8 py-3 bg-white text-brand-600 font-bold rounded-full shadow-lg hover:shadow-glow-brand">
+              Jelajahi Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation -->
+      <div class="bg-gradient-to-br from-brand-50 to-forest-50 dark:from-gray-800 dark:to-gray-800 rounded-3xl p-8 border border-brand-200 dark:border-brand-800">
         <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="w-20 h-20 bg-gradient-to-br from-emerald-700 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-            <i class="fas fa-star text-white text-2xl"></i>
+          <div class="w-20 h-20 bg-gradient-to-br from-brand-600 to-forest-600 rounded-2xl flex items-center justify-center shadow-glow-brand flex-shrink-0">
+            <i class="fas fa-lightbulb text-white text-2xl"></i>
           </div>
           <div>
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">My Top Recommendation</h2>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">My Recommendations</h2>
             <p class="text-gray-600 dark:text-gray-400 mb-4">
-              For a <strong>free digital library serving people rebuilding their lives</strong>, I recommend keeping your <strong class="text-emerald-600 dark:text-emerald-400">Orange-Green</strong> scheme or switching to <strong class="text-emerald-600 dark:text-emerald-400">Forest Green</strong>.
+              For a cohesive brand experience with your orange-green scheme:
             </p>
             <div class="flex flex-wrap gap-3">
-              <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
-                ✓ Current Orange-Green is distinctive & energetic
+              <span class="px-4 py-2 bg-white dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-full text-sm font-medium shadow">
+                ✓ Use <code class="bg-brand-100 dark:bg-brand-900/50 px-1 rounded">bg-brand-linear</code> for hero gradients
               </span>
-              <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
-                ✓ Forest Green is calmer & more "library-like"
+              <span class="px-4 py-2 bg-white dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-full text-sm font-medium shadow">
+                ✓ Use <code class="bg-brand-100 dark:bg-brand-900/50 px-1 rounded">shadow-glow-brand</code> for buttons
+              </span>
+              <span class="px-4 py-2 bg-white dark:bg-gray-700 text-forest-600 dark:text-forest-400 rounded-full text-sm font-medium shadow">
+                ✓ Use <code class="bg-forest-100 dark:bg-forest-900/50 px-1 rounded">tag-forest</code> for positive tags
               </span>
             </div>
           </div>

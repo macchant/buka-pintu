@@ -61,9 +61,28 @@ export default {
         },
         // Enhanced gray scale for dark mode
         gray: {
-          750: '#1f2937', // Custom dark mode intermediate
-          850: '#111827', // Custom dark mode darker
-          950: '#030712', // Custom dark mode darkest
+          750: '#1f2937',
+          850: '#111827',
+          950: '#030712',
+        },
+        // Ember palette - warmer oranges/reds
+        ember: {
+          50: '#FFF7ED',
+          100: '#FFEDD5',
+          200: '#FED7AA',
+          300: '#FBD38D',
+          400: '#F6AD55',
+          500: '#ED8936',
+          600: '#DD6B20',
+          700: '#C05621',
+          800: '#9C4221',
+          900: '#7B341E',
+        },
+        // Lime accent for freshness
+        lime: {
+          400: '#A3E635',
+          500: '#84CC16',
+          600: '#65A30D',
         },
       },
       fontFamily: {
@@ -85,6 +104,16 @@ export default {
       backgroundImage: {
         'midnight-gradient': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
         'cream-gradient': 'linear-gradient(135deg, #e8d5b7 0%, #c9a96e 100%)',
+        // Enhanced Orange-Green variations
+        'brand-linear': 'linear-gradient(135deg, #EA580C 0%, #16A34A 100%)',
+        'brand-radial': 'radial-gradient(ellipse at top right, #EA580C 0%, transparent 60%)',
+        'brand-radial-green': 'radial-gradient(ellipse at bottom left, #16A34A 0%, transparent 60%)',
+        'brand-sunset': 'linear-gradient(135deg, #F97316 0%, #EA580C 40%, #16A34A 100%)',
+        'brand-dusk': 'linear-gradient(135deg, #16A34A 0%, #22C55E 50%, #F97316 100%)',
+        'brand-fire': 'linear-gradient(135deg, #C2410C 0%, #F97316 50%, #FB923C 100%)',
+        'brand-leaf': 'linear-gradient(135deg, #15803D 0%, #16A34A 50%, #22C55E 100%)',
+        'brand-shimmer': 'linear-gradient(110deg, transparent 20%, #EA580C22 40%, #16A34A44 60%, transparent 80%)',
+        'brand-glow': 'radial-gradient(ellipse at center, #EA580C33 0%, #16A34A22 50%, transparent 70%)',
       },
       animation: {
         'float': 'float 4s ease-in-out infinite',
@@ -105,6 +134,7 @@ export default {
         'gradient-shift': 'gradientShift 8s ease infinite',
         'spin-slow': 'spin 20s linear infinite',
         'breathe': 'breathe 4s ease-in-out infinite',
+        'shimmer': 'shimmer 3s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -120,8 +150,8 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(232, 213, 183, 0.15)' },
-          '100%': { boxShadow: '0 0 40px rgba(232, 213, 183, 0.3)' },
+          '0%': { boxShadow: '0 0 20px rgba(234, 88, 12, 0.15)' },
+          '100%': { boxShadow: '0 0 40px rgba(234, 88, 12, 0.3)' },
         },
         scaleIn: {
           '0%': { opacity: '0', transform: 'scale(0.95)' },
@@ -140,6 +170,10 @@ export default {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
           '50%': { transform: 'scale(1.05)', opacity: '0.8' },
         },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
       },
       boxShadow: {
         'glow-cream': '0 0 30px rgba(232, 213, 183, 0.25)',
@@ -149,8 +183,17 @@ export default {
         'card-hover': '0 20px 40px rgba(0, 0, 0, 0.5)',
         'card-lift': '0 12px 40px -12px rgba(0, 0, 0, 0.25)',
         'inner-glow': 'inset 0 1px 0 rgba(232, 213, 183, 0.1)',
+        // Enhanced brand shadows
+        'glow-orange': '0 8px 32px -4px rgba(234, 88, 12, 0.4)',
+        'glow-orange-lg': '0 16px 48px -8px rgba(234, 88, 12, 0.5)',
+        'glow-green': '0 8px 32px -4px rgba(22, 163, 74, 0.4)',
+        'glow-green-lg': '0 16px 48px -8px rgba(22, 163, 74, 0.5)',
+        'glow-brand': '0 8px 24px -4px rgba(234, 88, 12, 0.3), 0 8px 24px -4px rgba(22, 163, 74, 0.2)',
+        'glow-brand-hover': '0 12px 32px -4px rgba(234, 88, 12, 0.4), 0 12px 32px -4px rgba(22, 163, 74, 0.3)',
         'glow-btn': '0 8px 24px -4px rgba(234, 88, 12, 0.3)',
         'glow-btn-hover': '0 12px 32px -4px rgba(234, 88, 12, 0.4)',
+        'inner-orange': 'inset 0 0 20px rgba(234, 88, 12, 0.2)',
+        'inner-green': 'inset 0 0 20px rgba(22, 163, 74, 0.2)',
       },
       backdropBlur: {
         'xs': '2px',
