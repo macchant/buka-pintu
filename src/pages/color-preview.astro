@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Color Scheme Preview">
+
+  <div class="min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-950 py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-display font-extrabold text-gray-900 dark:text-white mb-4">
+          Color Scheme Options for Buka Pintu
+        </h1>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Preview different gradient color schemes for your library brand. Each option has its own character.
+        </p>
+      </div>
+
+      <!-- Color Schemes Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Option 1: Current (Orange-Green) -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-orange-600 via-orange-500 to-green-600">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Current</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl" style="color: #ea580c"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span class="text-green-300">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-3 bg-white text-orange-600 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Orange → Green</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Transformation & Growth</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Energy</span>
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Growth</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 2: Deep Blue-Teal -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-blue-700 via-blue-600 to-teal-500">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Scholarly</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl text-blue-700"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span class="text-teal-300">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-3 bg-white text-blue-700 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Deep Blue → Teal</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Trustworthy & Calm</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Trust</span>
+              <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs">Calm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 3: Purple-Blue -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-violet-700 via-violet-600 to-blue-500">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Creative</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl text-violet-700"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span class="text-blue-300">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-3 bg-white text-violet-700 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Purple → Blue</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Creative & Wise</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-xs">Creative</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Wise</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 4: Forest Green -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-emerald-700 via-emerald-600 to-green-500">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Recommended</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl text-emerald-700"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span class="text-green-300">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-1 bg-white text-emerald-700 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Forest Green</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Growth & Nature</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs">Growth</span>
+              <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Natural</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 5: Warm Cream-Amber -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-amber-600 via-amber-500 to-orange-400">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Classic</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl text-amber-600"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span style="color: #fed7aa">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-3 bg-white text-amber-600 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Warm Cream → Amber</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Classic Library Feel</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">Classic</span>
+              <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Warm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 6: Burgundy-Gold -->
+        <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+          <div class="p-6 bg-gradient-to-br from-rose-800 via-rose-700 to-amber-500">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-xs text-white mb-4">Premium</span>
+
+            <!-- Logo Preview -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <i class="fas fa-door-open text-2xl text-rose-800"></i>
+              </div>
+              <div>
+                <span class="font-extrabold text-2xl text-white">Buka<span class="text-amber-300">Pintu</span></span>
+              </div>
+            </div>
+
+            <!-- Button Preview -->
+            <button class="px-6 py-3 bg-white text-rose-800 font-bold rounded-full shadow-lg mb-4">
+              Jelajahi Katalog
+            </button>
+
+            <!-- Text Preview -->
+            <p class="text-white/90 text-sm">
+              Perpustakaan digital gratis untuk Indonesia
+            </p>
+          </div>
+
+          <div class="p-5">
+            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Burgundy → Gold</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Prestigious & Scholarly</p>
+            <div class="flex gap-2">
+              <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs">Premium</span>
+              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs">Gold</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recommendation Section -->
+      <div class="mt-16 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 rounded-3xl p-8 border border-emerald-200 dark:border-emerald-800">
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-700 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+            <i class="fas fa-star text-white text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">My Top Recommendation</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              For a <strong>free digital library serving people rebuilding their lives</strong>, I recommend keeping your <strong class="text-emerald-600 dark:text-emerald-400">Orange-Green</strong> scheme or switching to <strong class="text-emerald-600 dark:text-emerald-400">Forest Green</strong>.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
+                ✓ Current Orange-Green is distinctive & energetic
+              </span>
+              <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
+                ✓ Forest Green is calmer & more "library-like"
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-12 text-center">
+        <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-800 dark:hover:bg-gray-700 transition-all">
+          <i class="fas fa-arrow-left"></i>
+          Kembali ke Beranda
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</Layout>
