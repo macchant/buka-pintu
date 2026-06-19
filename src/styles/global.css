@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     @apply font-sans antialiased;
@@ -50,6 +51,13 @@
   .tag {
     @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
   }
+
+  /* Enhanced dark mode card */
+  .dark-card {
+    @apply bg-white dark:bg-gray-800
+           border-gray-100 dark:border-gray-700
+           shadow-sm dark:shadow-lg dark:shadow-gray-900/50;
+  }
 }
 
 @layer utilities {
@@ -71,6 +79,20 @@
   .stagger-4 { animation-delay: 300ms; }
   .stagger-5 { animation-delay: 400ms; }
   .stagger-6 { animation-delay: 500ms; }
+
+  /* Custom perspective for 3D effects */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  /* Enhanced text shadows for better readability */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
 }
 
 @keyframes fadeIn {
@@ -87,13 +109,68 @@
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { @apply bg-warm-50 dark:bg-gray-900; }
-::-webkit-scrollbar-thumb { @apply bg-brand-300 dark:bg-gray-700 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-brand-500; }
-::selection { @apply bg-brand-200 dark:bg-brand-800 text-brand-900 dark:text-brand-100; }
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-300 dark:bg-gray-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-500;
+}
+::selection {
+  @apply bg-brand-200 dark:bg-brand-800 text-brand-900 dark:text-brand-100;
+}
 
 /* Focus visible */
 :focus-visible {
   @apply outline-none ring-2 ring-brand-500 ring-offset-2 dark:ring-offset-gray-900;
+}
+
+/* Font-display swap for faster text rendering */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/fraunces/v15/6NUh8lLN_60vWtIaxqjwcJ9_s.woff2) format('woff2');
+}
+
+/* Enhanced dark mode transitions */
+.dark {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+/* Smooth color transitions for dark mode */
+* {
+  transition-property: background-color, border-color, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Disable transitions on animations to prevent jank */
+.animate-float,
+.animate-fade-in,
+.animate-slide-up,
+.animate-pulse,
+.animate-bounce {
+  transition: none;
+}
+
+/* Enhanced mobile text visibility */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

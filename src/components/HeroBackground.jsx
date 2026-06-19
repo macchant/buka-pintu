@@ -19,11 +19,89 @@ const HERO_IMAGES = [
   },
 ];
 
+// 3D Book SVG Component
+const Book3DMockup = () => (
+  <div className="relative w-64 h-80 perspective-1000">
+    {/* Book Stack - 3D Effect */}
+    <div className="absolute inset-0 animate-float" style={{ animationDelay: '0s' }}>
+      {/* Bottom Book */}
+      <div className="absolute bottom-0 left-4 w-48 h-64 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-lg shadow-2xl transform -rotate-6 translate-y-4"
+           style={{ transform: 'rotateY(-15deg) rotateZ(-6deg) translateY(16px)' }}>
+        <div className="absolute left-2 top-0 bottom-0 w-3 bg-gradient-to-r from-emerald-800 to-emerald-700 rounded-l" />
+        <div className="p-4 pt-8">
+          <div className="w-3/4 h-2 bg-white/30 rounded mb-2" />
+          <div className="w-1/2 h-2 bg-white/20 rounded" />
+        </div>
+      </div>
+
+      {/* Middle Book */}
+      <div className="absolute bottom-0 left-2 w-48 h-64 bg-gradient-to-br from-violet-600 to-purple-700 rounded-lg shadow-2xl transform -rotate-3 translate-y-2"
+           style={{ transform: 'rotateY(-10deg) rotateZ(-3deg) translateY(8px)' }}>
+        <div className="absolute left-2 top-0 bottom-0 w-3 bg-gradient-to-r from-purple-800 to-purple-700 rounded-l" />
+        <div className="p-4 pt-6">
+          <div className="w-full h-4 bg-white/30 rounded mb-3" />
+          <div className="w-2/3 h-2 bg-white/20 rounded mb-1" />
+          <div className="w-3/4 h-2 bg-white/20 rounded" />
+        </div>
+      </div>
+
+      {/* Top Book - Main */}
+      <div className="absolute bottom-0 left-0 w-48 h-64 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg shadow-2xl transform"
+           style={{ transform: 'rotateY(-5deg) rotateZ(2deg)' }}>
+        <div className="absolute left-2 top-0 bottom-0 w-3 bg-gradient-to-r from-red-700 to-orange-600 rounded-l" />
+        <div className="p-4 pt-5">
+          {/* Book Icon */}
+          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3">
+            <i className="fas fa-door-open text-white text-xl"></i>
+          </div>
+          <div className="w-full h-3 bg-white/40 rounded mb-2" />
+          <div className="w-full h-2 bg-white/30 rounded mb-1" />
+          <div className="w-3/4 h-2 bg-white/30 rounded" />
+        </div>
+        {/* Shine Effect */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent rounded-r" />
+      </div>
+    </div>
+
+    {/* Floating Elements */}
+    <div className="absolute -top-4 -right-4 animate-float" style={{ animationDelay: '0.5s' }}>
+      <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-xl flex items-center justify-center rotate-12">
+        <i className="fas fa-book text-white text-2xl"></i>
+      </div>
+    </div>
+
+    <div className="absolute -top-2 -left-6 animate-float" style={{ animationDelay: '1s' }}>
+      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl shadow-lg flex items-center justify-center -rotate-6">
+        <i className="fas fa-graduation-cap text-white text-lg"></i>
+      </div>
+    </div>
+
+    {/* Glow Effect */}
+    <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-emerald-500/20 rounded-3xl blur-xl -z-10" />
+  </div>
+);
+
 export default function HeroBackground() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState(new Set([0]));
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef(null);
+
+  // Parallax effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        if (rect.bottom > 0) {
+          setScrollY(window.scrollY * 0.3);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Preload next images
   useEffect(() => {
@@ -113,12 +191,18 @@ export default function HeroBackground() {
             backgroundImage: `url(${image.url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            transform: `translateY(${scrollY}px)`,
           }}
         >
-          {/* Optimized Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-900/60 to-gray-900/80 dark:from-gray-950/80 dark:via-gray-900/70 dark:to-gray-950/90"></div>
+          {/* Enhanced Overlay for better text visibility */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-gray-900/90 dark:from-gray-950/85 dark:via-gray-900/75 dark:to-gray-950/95" />
         </div>
       ))}
+
+      {/* Floating Book 3D Mockup - Desktop Only */}
+      <div className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 hidden lg:block z-10">
+        <Book3DMockup />
+      </div>
 
       {/* Dots Indicator - Enhanced */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
