@@ -251,30 +251,6 @@ export default function KatalogClient({ apiUrl }) {
                 className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 outline-none transition-all text-sm bg-white dark:bg-gray-800"
               />
             </div>
-            {/* Data source badge */}
-            {loading ? (
-              <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-500">
-                <i className="fas fa-spinner fa-spin text-orange-500"></i>Memuat...
-              </div>
-            ) : (
-              <div className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium border ${
-                dataSource === 'api' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' :
-                dataSource === 'local' ? 'bg-amber-50 border-amber-200 text-amber-700' :
-                'bg-gray-50 border-gray-200 text-gray-500'
-              }`}>
-                <span className={`w-2 h-2 rounded-full ${
-                  dataSource === 'api' ? 'bg-emerald-500 animate-pulse' :
-                  dataSource === 'local' ? 'bg-amber-500' : 'bg-gray-400'
-                }`}></span>
-                {dataSource === 'api' ? 'Data langsung dari Google Sheets' :
-                 dataSource === 'local' ? 'Data dari Panel Admin' :
-                 dataSource === 'json' ? 'Data perpustakaan' :
-                 'Data statis — '}
-                {dataSource !== 'api' && (
-                  <a href="/admin" target="_blank" className="underline font-semibold text-orange-600 ml-1">Hubungkan API</a>
-                )}
-              </div>
-            )}
           </div>
           {/* Category pills */}
           <div className="flex gap-2 overflow-x-auto pb-1">
