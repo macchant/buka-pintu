@@ -38,85 +38,67 @@ const partners = [
   { name: 'Kementerian Hukum', type: 'Mitra Resmi', icon: 'fa-landmark' },
   { name: 'Komunitas Sobat Berbagi', type: 'Mitra Komunitas', icon: 'fa-hands-helping' },
 ];
+
+const storyStats = [
+  { year: '2023', label: 'Buka Pintu didirikan', icon: 'fa-calendar-check', iconBg: 'bg-brand-100 dark:bg-brand-900/40', iconColor: 'text-brand-600 dark:text-brand-400', valueBg: 'bg-white dark:bg-gray-800', valueText: 'text-gray-900 dark:text-gray-100' },
+  { year: '2.500+', label: 'Buku tersedia', icon: 'fa-book-open', iconBg: 'bg-forest-100 dark:bg-forest-900/40', iconColor: 'text-forest-600 dark:text-forest-400', valueBg: 'bg-white dark:bg-gray-800', valueText: 'text-gray-900 dark:text-gray-100' },
+  { year: '1.200+', label: 'Pengguna aktif', icon: 'fa-users', iconBg: 'bg-sky-100 dark:bg-sky-900/40', iconColor: 'text-sky-600 dark:text-sky-400', valueBg: 'bg-white dark:bg-gray-800', valueText: 'text-gray-900 dark:text-gray-100' },
+  { year: '100%', label: 'Gratis', icon: 'fa-heart', iconBg: 'bg-brand-50 dark:bg-brand-900/40', iconColor: 'text-brand-500 dark:text-brand-400', valueBg: 'bg-brand-50 dark:bg-brand-900/40', valueText: 'text-brand-700 dark:text-brand-300', border: 'border-2 border-brand-200 dark:border-brand-800' },
+];
 ---
 
 <Layout title="Tentang Kami" description="Kenali kisah di balik Buka Pintu — perpustakaan digital gratis untuk masyarakat Indonesia.">
 
   <!-- Hero -->
-  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-28 overflow-hidden">
-    <div class="absolute inset-0 opacity-15">
+  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-white py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-15 dark:opacity-10">
       <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-500 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
       <div class="absolute bottom-0 left-0 w-96 h-96 bg-forest-500 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 text-center">
-      <div class="w-24 h-24 bg-gradient-to-br from-brand-500 to-forest-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-brand-500/30">
-        <i class="fas fa-door-open text-white text-4xl"></i>
+    <div class="relative max-w-7xl mx-auto px-5 md:px-6 text-center">
+      <div class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-brand-500 to-forest-500 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-6 md:mb-8 shadow-2xl shadow-brand-500/30">
+        <i class="fas fa-door-open text-white text-3xl md:text-4xl"></i>
       </div>
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 leading-tight">
         Buka Pintu<br/><span class="text-brand-400">Buka Kesempatan</span>
       </h1>
-      <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+      <p class="text-gray-400 text-base md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed px-2">
         Kami percaya bahwa setiap orang berhak mendapatkan kesempatan untuk membangun kehidupan yang bermartabat — dimulai dari akses terhadap pengetahuan.
       </p>
     </div>
   </section>
 
   <!-- Our Story -->
-  <section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
-          <span class="tag bg-brand-100 text-brand-700 mb-4">📖 Kisah Kami</span>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+          <span class="tag bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 mb-4">📖 Kisah Kami</span>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
             Membuka Pintu,<br/><span class="gradient-text">Membangun Masa Depan</span>
           </h2>
-          <div class="space-y-4 text-gray-600 leading-relaxed">
+          <div class="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
             <p>
               Buka Pintu lahir pada tahun 2023 dari keprihatinan terhadap terbatasnya akses pendidikan bagi masyarakat di Indonesia. Banyak orang memiliki keinginan kuat untuk berubah dan belajar, namun tidak memiliki sumber daya untuk melakukannya.
             </p>
             <p>
-              Dari situlah muncul ide untuk membangun <strong class="text-gray-900">perpustakaan digital gratis</strong> yang bisa diakses siapa saja, kapan saja — tanpa biaya, tanpa batasan, tanpa stigma.
+              Dari situlah muncul ide untuk membangun <strong class="text-gray-900 dark:text-gray-100">perpustakaan digital gratis</strong> yang bisa diakses siapa saja, kapan saja — tanpa biaya, tanpa batasan, tanpa stigma.
             </p>
           </div>
         </div>
         <div class="relative">
-          <div class="bg-gradient-to-br from-brand-50 to-forest-50 rounded-3xl p-10 space-y-6">
-            <div class="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm">
-              <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-calendar-check text-brand-600 text-2xl"></i>
+          <div class="bg-gradient-to-br from-brand-50 to-forest-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl md:rounded-3xl p-6 md:p-10 space-y-4 md:space-y-6">
+            {storyStats.map((stat) => (
+              <div class={`flex items-center gap-4 rounded-xl md:rounded-2xl p-4 md:p-5 shadow-sm ${stat.valueBg} ${stat.border || ''}`}>
+                <div class={`w-12 h-12 md:w-14 md:h-14 ${stat.iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                  <i class={`fas ${stat.icon} ${stat.iconColor} text-xl md:text-2xl`}></i>
+                </div>
+                <div>
+                  <p class={`font-bold ${stat.valueText}`}>{stat.year}</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+                </div>
               </div>
-              <div>
-                <p class="font-bold text-gray-900">2023</p>
-                <p class="text-sm text-gray-500">Buka Pintu didirikan</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm">
-              <div class="w-14 h-14 bg-forest-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-book-open text-forest-600 text-2xl"></i>
-              </div>
-              <div>
-                <p class="font-bold text-gray-900">2.500+ Buku</p>
-                <p class="text-sm text-gray-500">Tersedia di katalog</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm">
-              <div class="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-users text-sky-600 text-2xl"></i>
-              </div>
-              <div>
-                <p class="font-bold text-gray-900">1.200+ Pengguna</p>
-                <p class="text-sm text-gray-500">Aktif membaca setiap bulan</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-brand-50 rounded-2xl p-5 border-2 border-brand-200">
-              <div class="w-14 h-14 bg-brand-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-heart text-white text-2xl"></i>
-              </div>
-              <div>
-                <p class="font-bold text-brand-700">100% Gratis</p>
-                <p class="text-sm text-brand-500">Tanpa biaya tersembunyi</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -124,22 +106,22 @@ const partners = [
   </section>
 
   <!-- Values -->
-  <section class="py-24 bg-warm-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="tag bg-forest-100 text-forest-700 mb-4">💡 Nilai-Nilai Kami</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+  <section class="py-16 md:py-24 bg-warm-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
+        <span class="tag bg-forest-100 dark:bg-forest-900/40 text-forest-700 dark:text-forest-300 mb-4">💡 Nilai-Nilai Kami</span>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white">
           Prinsip yang <span class="gradient-text">Kami Pegang</span>
         </h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {values.map((v) => (
-          <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-forest-500 rounded-2xl flex items-center justify-center mb-5">
-              <i class={`fas ${v.icon} text-white text-xl`}></i>
+          <div class="bg-white dark:bg-gray-900 rounded-xl md:rounded-2xl p-5 md:p-7 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-brand-500 to-forest-500 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-5">
+              <i class={`fas ${v.icon} text-white text-lg md:text-xl`}></i>
             </div>
-            <h3 class="font-bold text-gray-900 text-lg mb-2">{v.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-base md:text-lg mb-2">{v.title}</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
           </div>
         ))}
       </div>
@@ -147,28 +129,28 @@ const partners = [
   </section>
 
   <!-- Community Voices -->
-  <section class="py-24 bg-warm-50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="tag bg-brand-100 text-brand-700 mb-4">💬 Suara Komunitas</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+  <section class="py-16 md:py-24 bg-warm-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
+        <span class="tag bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 mb-4">💬 Suara Komunitas</span>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white">
           Apa yang Mereka <span class="gradient-text">Katakan</span>
         </h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {quotes.map((q) => (
-          <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 shadow-lg dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col h-full">
             <div class="flex gap-1 mb-4">
               {[1,2,3,4,5].map(() => <i class="fas fa-star text-amber-400 text-sm"></i>)}
             </div>
-            <p class="text-gray-600 leading-relaxed text-sm flex-1 mb-6">"{q.quote}"</p>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm flex-1 mb-6">"{q.quote}"</p>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
               <div class={`w-11 h-11 bg-gradient-to-br ${q.color} rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
                 {q.avatar}
               </div>
               <div>
-                <p class="font-bold text-gray-900 text-sm">{q.name}</p>
-                <p class="text-xs text-gray-500">{q.role}</p>
+                <p class="font-bold text-gray-900 dark:text-gray-100 text-sm">{q.name}</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">{q.role}</p>
               </div>
             </div>
           </div>
@@ -178,22 +160,22 @@ const partners = [
   </section>
 
   <!-- Partners -->
-  <section class="py-24 bg-gray-900 text-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-14">
+  <section class="py-16 md:py-24 bg-gray-900 dark:bg-gray-950 text-white">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
         <span class="tag bg-brand-500/20 text-brand-300 mb-4">🤝 Mitra & Partner</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold">
           Didukung oleh <span class="text-brand-400">Komunitas</span>
         </h2>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
         {partners.map((p) => (
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all">
-            <div class="w-14 h-14 bg-brand-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <i class={`fas ${p.icon} text-brand-400 text-2xl`}></i>
+          <div class="bg-white/5 dark:bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 text-center hover:bg-white/10 dark:hover:bg-white/15 transition-all">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-brand-500/20 rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <i class={`fas ${p.icon} text-brand-400 text-xl md:text-2xl`}></i>
             </div>
-            <p class="font-bold text-white text-sm">{p.name}</p>
-            <p class="text-gray-500 text-xs mt-1">{p.type}</p>
+            <p class="font-bold text-white text-sm md:text-base">{p.name}</p>
+            <p class="text-gray-500 text-xs md:text-sm mt-1">{p.type}</p>
           </div>
         ))}
       </div>
