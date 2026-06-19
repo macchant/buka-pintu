@@ -23,23 +23,7 @@ export default function HeroBackground() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState(new Set([0]));
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef(null);
-
-  // Parallax effect on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        if (rect.bottom > 0) {
-          setScrollY(window.scrollY * 0.3);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Preload next images
   useEffect(() => {
@@ -129,15 +113,14 @@ export default function HeroBackground() {
             backgroundImage: `url(${image.url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            transform: `translateY(${scrollY}px)`,
           }}
         >
-          {/* Enhanced Overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-gray-900/90 dark:from-gray-950/85 dark:via-gray-900/75 dark:to-gray-950/95" />
+          {/* Optimized Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-900/60 to-gray-900/80 dark:from-gray-950/80 dark:via-gray-900/70 dark:to-gray-950/90"></div>
         </div>
       ))}
 
-      {/* Dots Indicator */}
+      {/* Dots Indicator - Enhanced */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {HERO_IMAGES.map((_, index) => (
           <button
@@ -153,7 +136,7 @@ export default function HeroBackground() {
         ))}
       </div>
 
-      {/* Left Arrow */}
+      {/* Left Arrow - Enhanced */}
       <button
         onClick={goToPrev}
         className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-300 z-20 opacity-0 hover:opacity-100 focus:opacity-100"
@@ -162,7 +145,7 @@ export default function HeroBackground() {
         <i className="fas fa-chevron-left text-white"></i>
       </button>
 
-      {/* Right Arrow */}
+      {/* Right Arrow - Enhanced */}
       <button
         onClick={goToNext}
         className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-300 z-20 opacity-0 hover:opacity-100 focus:opacity-100"
