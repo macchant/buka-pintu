@@ -3,11 +3,11 @@ import { useState } from 'react';
 const categories = [
   { id: 'semua', label: 'Semua', icon: 'fa-th-large', color: 'gray' },
   { id: 'pengembangan-diri', label: 'Pengembangan Diri', icon: 'fa-brain', color: 'amber' },
-  { id: 'keterampilan', label: 'Keterampilan Kerja', icon: 'fa-tools', color: 'orange' },
+  { id: 'keterampilan', label: 'Keterampilan Kerja', icon: 'fa-tools', color: 'blue' },
   { id: 'hukum', label: 'Hukum & Hak', icon: 'fa-gavel', color: 'emerald' },
   { id: 'kesehatan', label: 'Kesehatan Mental', icon: 'fa-heart', color: 'rose' },
-  { id: 'wirausaha', label: 'Wirausaha', icon: 'fa-rocket', color: 'green' },
-  { id: 'pendidikan', label: 'Pendidikan', icon: 'fa-graduation-cap', color: 'orange' },
+  { id: 'wirausaha', label: 'Wirausaha', icon: 'fa-rocket', color: 'violet' },
+  { id: 'pendidikan', label: 'Pendidikan', icon: 'fa-graduation-cap', color: 'sky' },
   { id: 'kisah-inspiratif', label: 'Kisah Inspiratif', icon: 'fa-book-open', color: 'orange' },
 ];
 
@@ -54,11 +54,11 @@ export default function SearchFilter({ onSearch, onCategoryChange }) {
           const colorMap = {
             gray: isActive ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50',
             amber: isActive ? 'bg-amber-500 text-white' : 'bg-white text-amber-700 border border-amber-200 hover:border-amber-300 hover:bg-amber-50',
-            blue: isActive ? 'bg-orange-600 text-white' : 'bg-white text-blue-700 border border-blue-200 hover:border-blue-300 hover:bg-blue-50',
+            blue: isActive ? 'bg-blue-600 text-white' : 'bg-white text-blue-700 border border-blue-200 hover:border-blue-300 hover:bg-blue-50',
             emerald: isActive ? 'bg-emerald-600 text-white' : 'bg-white text-emerald-700 border border-emerald-200 hover:border-emerald-300 hover:bg-emerald-50',
             rose: isActive ? 'bg-rose-500 text-white' : 'bg-white text-rose-700 border border-rose-200 hover:border-rose-300 hover:bg-rose-50',
-            violet: isActive ? 'bg-green-600 text-white' : 'bg-white text-violet-700 border border-violet-200 hover:border-violet-300 hover:bg-violet-50',
-            sky: isActive ? 'bg-orange-600 text-white' : 'bg-white text-sky-700 border border-sky-200 hover:border-sky-300 hover:bg-sky-50',
+            violet: isActive ? 'bg-violet-600 text-white' : 'bg-white text-violet-700 border border-violet-200 hover:border-violet-300 hover:bg-violet-50',
+            sky: isActive ? 'bg-sky-600 text-white' : 'bg-white text-sky-700 border border-sky-200 hover:border-sky-300 hover:bg-sky-50',
             orange: isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-700 border border-orange-200 hover:border-orange-300 hover:bg-orange-50',
           };
           return (

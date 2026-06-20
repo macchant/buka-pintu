@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import KatalogClient from '../components/KatalogClient.jsx';
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_utnwESs_l3n6KFjnPsSmCAyWJjKdE9GEEi7nh3_5uChTuvfwSGeLXvnM6MLl3bzn/exec';
+---
+
+<Layout title="Katalog">
+
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-orange-600 via-orange-500 to-green-600 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <nav class="text-sm text-white/60 mb-4">
+        <a href="/" class="hover:text-white transition">Beranda</a>
+        <span class="mx-2">/</span>
+        <span class="text-white font-medium">Katalog</span>
+      </nav>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-display font-extrabold mb-3">Katalog Buku</h1>
+          <p class="text-white/80 text-lg">Temukan pengetahuan yang tepat untuk membangun hidup baru Anda.</p>
+        </div>
+        <div class="bg-white/15 backdrop-blur border border-white/20 rounded-2xl px-6 py-4 text-center flex-shrink-0">
+          <div class="text-3xl font-extrabold" id="book-count">...</div>
+          <div class="text-sm text-white/70">Judul Buku Gratis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- React Catalog (client-side fetch from Google Sheets) -->
+  <KatalogClient
+    apiUrl={GOOGLE_SCRIPT_URL}
+    client:load
+  />
+
+</Layout>

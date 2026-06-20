@@ -8,22 +8,22 @@ const isApiConfigured = () => !API_URL.includes('YOUR_SCRIPT_ID');
 // --- Category Options ---
 const CATEGORIES = [
   { id: 'pengembangan-diri', label: 'Pengembangan Diri', color: 'bg-amber-100 text-amber-700' },
-  { id: 'keterampilan', label: 'Keterampilan Kerja', color: 'bg-orange-100 text-orange-700' },
+  { id: 'keterampilan', label: 'Keterampilan Kerja', color: 'bg-blue-100 text-blue-700' },
   { id: 'hukum', label: 'Hukum & Hak', color: 'bg-emerald-100 text-emerald-700' },
   { id: 'kesehatan', label: 'Kesehatan Mental', color: 'bg-rose-100 text-rose-700' },
-  { id: 'wirausaha', label: 'Wirausaha', color: 'bg-green-100 text-green-700' },
-  { id: 'pendidikan', label: 'Pendidikan', color: 'bg-orange-100 text-orange-700' },
+  { id: 'wirausaha', label: 'Wirausaha', color: 'bg-violet-100 text-violet-700' },
+  { id: 'pendidikan', label: 'Pendidikan', color: 'bg-sky-100 text-sky-700' },
   { id: 'kisah-inspiratif', label: 'Kisah Inspiratif', color: 'bg-orange-100 text-orange-700' },
 ];
 
 // --- Gradient presets ---
 const GRADIENTS = [
   'from-amber-500 to-orange-600',
-  'from-orange-500 to-amber-600',
+  'from-blue-500 to-cyan-600',
   'from-emerald-500 to-teal-600',
   'from-rose-500 to-pink-600',
-  'from-green-500 to-emerald-600',
-  'from-amber-500 to-orange-600',
+  'from-violet-500 to-purple-600',
+  'from-sky-500 to-blue-600',
   'from-orange-500 to-red-600',
   'from-lime-500 to-green-600',
 ];
@@ -32,8 +32,8 @@ const GRADIENTS = [
 const DEMO_BOOKS = [
   { id: '1', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha Sukses', author: 'Budi Santoso', year: '2022', category: 'kisah-inspiratif', pdfUrl: '', pages: '212', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
   { id: '2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina', year: '2021', category: 'hukum', pdfUrl: '', pages: '180', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
-  { id: '3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-orange-500', gradientTo: 'to-amber-600' },
-  { id: '4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-green-500', gradientTo: 'to-emerald-600' },
+  { id: '3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
+  { id: '4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
   { id: '5', title: 'Dasar-Dasar Akuntansi untuk Pelaku UMKM', author: 'Dewi Kusuma', year: '2022', category: 'wirausaha', pdfUrl: '', pages: '224', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
 ];
 
@@ -114,7 +114,7 @@ function LoginScreen({ onLogin }) {
 function StatsBar({ books }) {
   const stats = [
     { label: 'Total Buku', value: books.length, icon: 'fa-book', gradient: 'from-orange-500 to-orange-600' },
-    { label: 'Kategori', value: new Set(books.map(b => b.category)).size, icon: 'fa-th-large', gradient: 'from-orange-500 to-amber-600' },
+    { label: 'Kategori', value: new Set(books.map(b => b.category)).size, icon: 'fa-th-large', gradient: 'from-blue-500 to-cyan-600' },
     { label: 'Unggulan', value: books.filter(b => b.featured === 'Ya' || b.featured === '1').length, icon: 'fa-star', gradient: 'from-amber-500 to-orange-600' },
     { label: 'Dengan PDF', value: books.filter(b => b.pdfUrl && b.pdfUrl !== '#').length, icon: 'fa-file-pdf', gradient: 'from-emerald-500 to-teal-600' },
   ];
@@ -372,7 +372,7 @@ function ImportModal({ onImport, onClose, loading }) {
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder={'[{\n  "title": "Judul Buku",\n  "author": "Nama Penulis"\n}]'}
-              className="w-full h-40 px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-400 outline-none transition-all text-sm font-mono bg-white dark:bg-gray-800"
+              className="w-full h-40 px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-blue-400 outline-none transition-all text-sm font-mono bg-white dark:bg-gray-800"
             />
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               <i className="fas fa-info-circle mr-1"></i>
@@ -388,19 +388,19 @@ function ImportModal({ onImport, onClose, loading }) {
           )}
 
           {preview.length > 0 && (
-            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
-              <p className="text-sm font-semibold text-orange-700 dark:text-orange-400 mb-2">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+              <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2">
                 <i className="fas fa-check-circle mr-1"></i>
                 {preview.length} buku siap diimport:
               </p>
               <div className="space-y-1 max-h-40 overflow-y-auto">
                 {preview.slice(0, 10).map((b, i) => (
-                  <p key={i} className="text-xs text-orange-600 dark:text-orange-300 truncate">
+                  <p key={i} className="text-xs text-blue-600 dark:text-blue-300 truncate">
                     • {b.title || 'Tanpa judul'} - {b.author || 'Tanpa penulis'}
                   </p>
                 ))}
                 {preview.length > 10 && (
-                  <p className="text-xs text-orange-500 dark:text-orange-400 italic">...dan {preview.length - 10} buku lainnya</p>
+                  <p className="text-xs text-blue-500 dark:text-blue-400 italic">...dan {preview.length - 10} buku lainnya</p>
                 )}
               </div>
             </div>
@@ -409,7 +409,7 @@ function ImportModal({ onImport, onClose, loading }) {
 
         <div className="flex gap-3 px-6 pb-6">
           <button onClick={handlePreview}
-            className="flex-1 py-3 bg-orange-600 text-white font-bold rounded-xl hover:bg-orange-700 transition-all">
+            className="flex-1 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all">
             <i className="fas fa-eye mr-2"></i>Preview
           </button>
           <button onClick={handleImport} disabled={loading}
@@ -664,7 +664,7 @@ export default function AdminPanel() {
           </div>
           <div className="flex gap-3">
             <button onClick={() => setShowImport(true)}
-              className="inline-flex items-center gap-2 px-4 py-3 bg-orange-600 text-white font-bold rounded-xl hover:bg-orange-700 transition-all hover:-translate-y-0.5">
+              className="inline-flex items-center gap-2 px-4 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all hover:-translate-y-0.5">
               <i className="fas fa-file-import"></i>
               Import
             </button>
@@ -763,7 +763,7 @@ export default function AdminPanel() {
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2 justify-end">
                           <button onClick={() => setEditBook(book)}
-                            className="w-8 h-8 bg-blue-50 text-orange-600 rounded-lg flex items-center justify-center hover:bg-blue-100 transition"
+                            className="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-100 transition"
                             title="Edit">
                             <i className="fas fa-pen text-xs"></i>
                           </button>
@@ -786,14 +786,14 @@ export default function AdminPanel() {
         </div>
 
         {/* Setup Guide */}
-        <div className="mt-8 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-orange-100 p-6">
+        <div className="mt-8 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl border border-blue-100 p-6">
           <h3 className="font-bold text-gray-900 text-base mb-3 flex items-center gap-2">
-            <i className="fas fa-google text-orange-600"></i>
+            <i className="fas fa-google text-blue-600"></i>
             Koneksi Google Sheets
           </h3>
           {demo ? (
             <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-              <p>Untuk menghubungkan ke Google Sheets, buka file <code className="bg-white px-2 py-1 rounded bg-white px-2 py-1 rounded text-orange-700 font-mono">public/google-apps-script.js</code> di project untuk melihat kode lengkapnya.</p>
+              <p>Untuk menghubungkan ke Google Sheets, buka file <code className="bg-white px-2 py-1 rounded text-blue-700 font-mono">public/google-apps-script.js</code> di project untuk melihat kode lengkapnya.</p>
               <p className="text-xs text-gray-400 mt-2">Setelah diatur, rebuild dan deploy untuk mengaktifkan.</p>
             </div>
           ) : (

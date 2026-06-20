@@ -1,0 +1,108 @@
+---
+const navLinks = [
+  { name: "Beranda", href: "/" },
+  { name: "Katalog", href: "/katalog" },
+  { name: "Tentang", href: "/tentang" },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-brand-100/50 dark:border-gray-800/50">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 bg-gradient-to-br from-brand-500 to-forest-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+          <i class="fas fa-door-open text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-xl text-gray-900 dark:text-white leading-none">Buka<span class="text-brand-600 dark:text-brand-400">Pintu</span></span>
+          <span class="block text-[10px] text-gray-500 dark:text-gray-400 font-medium tracking-wide uppercase mt-0.5">Perpustakaan Digital</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-2">
+        {navLinks.map((link) => (
+          <a href={link.href}
+             class="px-4 py-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-700 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-gray-800 transition-all">
+            {link.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-3">
+        <a href="/katalog" class="hidden md:inline-flex btn-primary text-sm">
+          <i class="fas fa-search"></i>
+          Cari Buku
+        </a>
+
+        <!-- Dark Mode Toggle -->
+        <button id="theme-toggle" aria-label="Toggle dark mode"
+          class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110 shadow-sm">
+          <i class="fas fa-moon hidden dark:block text-sm"></i>
+          <i class="fas fa-sun dark:hidden text-sm"></i>
+        </button>
+
+        <!-- Admin Button -->
+        <a href="/admin"
+           class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 text-white dark:text-gray-200 flex items-center justify-center hover:bg-gray-900 dark:hover:bg-gray-600 transition-all hover:scale-110 shadow-sm"
+           aria-label="Panel Admin">
+          <i class="fas fa-cog text-sm"></i>
+        </a>
+
+        <button id="mobile-menu-btn"
+          class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-brand-50 dark:hover:bg-gray-800 transition text-gray-700 dark:text-gray-200"
+          aria-label="Menu">
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden mt-4 pt-4 border-t border-brand-100 dark:border-gray-800">
+      <div class="flex flex-col gap-1 pb-2">
+        {navLinks.map((link) => (
+          <a href={link.href}
+             class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 dark:text-gray-200 hover:text-brand-700 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-gray-800 font-medium transition">
+            <i class="fas fa-link text-brand-400 dark:text-brand-500 w-5 text-center"></i>
+            {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navbar = document.getElementById('navbar');
+  const themeToggle = document.getElementById('theme-toggle');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const icon = mobileMenuBtn.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('shadow-lg', window.scrollY > 20);
+  });
+
+  // Dark mode toggle
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    html.classList.add('dark');
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>

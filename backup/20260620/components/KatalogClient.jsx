@@ -15,9 +15,9 @@ const CATEGORIES = [
 
 // --- Gradient presets ---
 const GRADIENTS = [
-  'from-amber-500 to-orange-600', 'from-orange-500 to-amber-600',
+  'from-amber-500 to-orange-600', 'from-blue-500 to-cyan-600',
   'from-emerald-500 to-teal-600', 'from-rose-500 to-pink-600',
-  'from-green-500 to-emerald-600', 'from-amber-500 to-orange-600',
+  'from-violet-500 to-purple-600', 'from-sky-500 to-blue-600',
   'from-orange-500 to-red-600', 'from-lime-500 to-green-600',
 ];
 
@@ -25,18 +25,18 @@ const GRADIENTS = [
 const FALLBACK_BOOKS = [
   { id: 'f1', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha Sukses', author: 'Budi Santoso', year: '2022', category: 'pengembangan-diri', pdfUrl: '', coverId: '8292851', pages: '212', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
   { id: 'f2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina, S.H.', year: '2021', category: 'hukum', pdfUrl: '', coverId: '8225261', pages: '180', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
-  { id: 'f3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', coverId: '10157403', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-orange-500', gradientTo: 'to-amber-600' },
-  { id: 'f4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', coverId: '10386659', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-green-500', gradientTo: 'to-emerald-600' },
+  { id: 'f3', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pdfUrl: '', coverId: '10157403', pages: '198', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
+  { id: 'f4', title: 'Keterampilan Las & Kerja Logam untuk UMKM', author: 'Ir. Hendra Wijaya', year: '2023', category: 'keterampilan', pdfUrl: '', coverId: '10386659', pages: '156', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
   { id: 'f5', title: 'Dasar-Dasar Akuntansi untuk Pelaku UMKM', author: 'Dewi Kusuma, S.E.', year: '2022', category: 'wirausaha', pdfUrl: '', coverId: '8221093', pages: '224', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
-  { id: 'f6', title: 'Hidup Sehat dengan Pola Makan Sederhana', author: 'dr. Santi Rahayu', year: '2021', category: 'kesehatan', pdfUrl: '', coverId: '10389132', pages: '142', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
+  { id: 'f6', title: 'Hidup Sehat dengan Pola Makan Sederhana', author: 'dr. Santi Rahayu', year: '2021', category: 'kesehatan', pdfUrl: '', coverId: '10389132', pages: '142', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-sky-500', gradientTo: 'to-blue-600' },
   { id: 'f7', title: 'Belajar Bahasa Inggris dari Nol tanpa Guru', author: 'Michael Chen', year: '2023', category: 'pendidikan', pdfUrl: '', coverId: '8231997', pages: '178', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-lime-500', gradientTo: 'to-green-600' },
   { id: 'f8', title: 'Wirausaha dari Garasi: Kisah Nyata Anak Bangsa', author: 'Tim Buka Pintu', year: '2024', category: 'kisah-inspiratif', pdfUrl: '', coverId: '9255566', pages: '200', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-orange-500', gradientTo: 'to-red-600' },
   { id: 'f9', title: 'Self-Healing: Pemulihan Diri Tanpa Terapis', author: 'dr. Ratna Dewi', year: '2023', category: 'kesehatan', pdfUrl: '', coverId: '8228697', pages: '165', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-rose-400', gradientTo: 'to-pink-600' },
-  { id: 'f10', title: 'Memulai Bisnis dari Kamar Kos', author: 'Rizky Ramadhan', year: '2022', category: 'wirausaha', pdfUrl: '', coverId: '10521230', pages: '188', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-green-400', gradientTo: 'to-emerald-600' },
+  { id: 'f10', title: 'Memulai Bisnis dari Kamar Kos', author: 'Rizky Ramadhan', year: '2022', category: 'wirausaha', pdfUrl: '', coverId: '10521230', pages: '188', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-violet-400', gradientTo: 'to-purple-600' },
   { id: 'f11', title: 'Kenali Hak Anda sebagai Warga Negara', author: 'Prof. Dr. Iwan Setiawan', year: '2021', category: 'hukum', pdfUrl: '', coverId: '8221997', pages: '210', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-emerald-400', gradientTo: 'to-teal-600' },
-  { id: 'f12', title: 'Teknik Reparasi Elektronik untuk Pemula', author: 'Joko Susilo', year: '2023', category: 'keterampilan', pdfUrl: '', coverId: '10586322', pages: '134', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-orange-400', gradientTo: 'to-amber-600' },
+  { id: 'f12', title: 'Teknik Reparasi Elektronik untuk Pemula', author: 'Joko Susilo', year: '2023', category: 'keterampilan', pdfUrl: '', coverId: '10586322', pages: '134', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-blue-400', gradientTo: 'to-cyan-600' },
   { id: 'f13', title: 'Berani Gagal, Berani Sukses', author: 'Andi Tanoto', year: '2020', category: 'pengembangan-diri', pdfUrl: '', coverId: '8231451', pages: '176', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-amber-400', gradientTo: 'to-orange-600' },
-  { id: 'f14', title: 'Matematika Dasar untuk Kehidupan Sehari-hari', author: 'Susiati, M.Pd.', year: '2022', category: 'pendidikan', pdfUrl: '', coverId: '10210798', pages: '152', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-amber-400', gradientTo: 'to-orange-600' },
+  { id: 'f14', title: 'Matematika Dasar untuk Kehidupan Sehari-hari', author: 'Susiati, M.Pd.', year: '2022', category: 'pendidikan', pdfUrl: '', coverId: '10210798', pages: '152', featured: 'Tidak', aktif: 'Ya', gradientFrom: 'from-sky-400', gradientTo: 'to-blue-600' },
   { id: 'f15', title: 'Dari Penjara ke Pasar: Kisah Eks Narapidana', author: 'Koordinator Buka Pintu', year: '2024', category: 'kisah-inspiratif', pdfUrl: '', coverId: '9245891', pages: '230', featured: 'Ya', aktif: 'Ya', gradientFrom: 'from-lime-400', gradientTo: 'to-green-600' },
 ];
 

@@ -2,22 +2,22 @@ import { useState } from 'react';
 
 const COVER_COLORS = [
   'from-amber-500 to-orange-600',
-  'from-orange-500 to-amber-600',
+  'from-blue-500 to-cyan-600',
   'from-emerald-500 to-teal-600',
   'from-rose-500 to-pink-600',
-  'from-green-500 to-emerald-600',
-  'from-amber-500 to-orange-600',
+  'from-violet-500 to-purple-600',
+  'from-sky-500 to-blue-600',
   'from-orange-500 to-red-600',
   'from-lime-500 to-green-600',
 ];
 
 const CATEGORY_COLORS = {
   'pengembangan-diri': { bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200' },
-  'keterampilan': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
+  'keterampilan': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-200' },
   'hukum': { bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-200' },
   'kesehatan': { bg: 'bg-rose-100', text: 'text-rose-700', border: 'border-rose-200' },
-  'wirausaha': { bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200' },
-  'pendidikan': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
+  'wirausaha': { bg: 'bg-violet-100', text: 'text-violet-700', border: 'border-violet-200' },
+  'pendidikan': { bg: 'bg-sky-100', text: 'text-sky-700', border: 'border-sky-200' },
   'kisah-inspiratif': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
 };
 

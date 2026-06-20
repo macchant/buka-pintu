@@ -3,11 +3,11 @@ import PdfReader from './PdfReader';
 
 const GRADIENTS = [
   'from-amber-500 to-orange-600',
-  'from-orange-500 to-amber-600',
+  'from-blue-500 to-cyan-600',
   'from-emerald-500 to-teal-600',
   'from-rose-500 to-pink-600',
-  'from-green-500 to-emerald-600',
-  'from-amber-500 to-orange-600',
+  'from-violet-500 to-purple-600',
+  'from-sky-500 to-blue-600',
   'from-orange-500 to-red-600',
   'from-lime-500 to-green-600',
 ];
@@ -17,12 +17,12 @@ const API_URL = 'https://script.google.com/macros/s/AKfycby_utnwESs_l3n6KFjnPsSm
 
 // Fallback featured books (local data - always works)
 const FALLBACK_BOOKS = [
-  { id: '1', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pages: '198', featured: 'Ya', gradientFrom: 'from-orange-500', gradientTo: 'to-amber-600' },
+  { id: '1', title: 'Membangun Mental Baja: Bangkit dari Keterpurukan', author: 'Ahmad Fauzi', year: '2020', category: 'pengembangan-diri', pages: '198', featured: 'Ya', gradientFrom: 'from-blue-500', gradientTo: 'to-cyan-600' },
   { id: '2', title: 'Panduan Hukum bagi Masyarakat Indonesia', author: 'Dr. Rina Marlina', year: '2021', category: 'hukum', pages: '180', featured: 'Ya', gradientFrom: 'from-emerald-500', gradientTo: 'to-teal-600' },
   { id: '3', title: 'Belajar dari Kegagalan: Kisah 100 Pengusaha', author: 'Budi Santoso', year: '2022', category: 'kisah-inspiratif', pages: '212', featured: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
-  { id: '4', title: 'Keterampilan Digital untuk UMKM', author: 'Tim Buka Pintu', year: '2023', category: 'keterampilan', pages: '156', featured: 'Ya', gradientFrom: 'from-green-500', gradientTo: 'to-emerald-600' },
+  { id: '4', title: 'Keterampilan Digital untuk UMKM', author: 'Tim Buka Pintu', year: '2023', category: 'keterampilan', pages: '156', featured: 'Ya', gradientFrom: 'from-violet-500', gradientTo: 'to-purple-600' },
   { id: '5', title: 'Dasar-dasar Marketing untuk Pemula', author: 'Sarah Wijaya', year: '2023', category: 'wirausaha', pages: '134', featured: 'Ya', gradientFrom: 'from-rose-500', gradientTo: 'to-pink-600' },
-  { id: '6', title: 'Mengelola Keuangan Keluarga', author: 'Dian Pratama', year: '2022', category: 'pengembangan-diri', pages: '98', featured: 'Ya', gradientFrom: 'from-amber-500', gradientTo: 'to-orange-600' },
+  { id: '6', title: 'Mengelola Keuangan Keluarga', author: 'Dian Pratama', year: '2022', category: 'pengembangan-diri', pages: '98', featured: 'Ya', gradientFrom: 'from-sky-500', gradientTo: 'to-blue-600' },
 ];
 
 export default function FeaturedBooks() {

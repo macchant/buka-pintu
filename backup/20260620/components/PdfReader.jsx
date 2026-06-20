@@ -346,11 +346,11 @@ export default function PdfReader({ book, onClose }) {
               </div>
 
               {/* Help */}
-              <div className="bg-orange-900/30 border border-orange-700/30 rounded-2xl p-5">
-                <h4 className="text-orange-300 font-bold text-sm mb-3 flex items-center gap-2">
+              <div className="bg-blue-900/30 border border-blue-700/30 rounded-2xl p-5">
+                <h4 className="text-blue-300 font-bold text-sm mb-3 flex items-center gap-2">
                   <i className="fas fa-lightbulb"></i> Tips Membaca
                 </h4>
-                <ul className="space-y-2 text-sm text-orange-200/70">
+                <ul className="space-y-2 text-sm text-blue-200/70">
                   <li>• Tekan <kbd className="bg-gray-700 px-2 py-0.5 rounded text-xs">+</kbd> / <kbd className="bg-gray-700 px-2 py-0.5 rounded text-xs">-</kbd> untuk zoom</li>
                   <li>• Tekan <kbd className="bg-gray-700 px-2 py-0.5 rounded text-xs">Esc</kbd> untuk menutup</li>
                   <li>• Pastikan tautan PDF bersifat "Publik" di Google Drive</li>
